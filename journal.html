@@ -14,16 +14,15 @@
 </head>
 <body>
 
+<!-- ===== HEADER (updated) ===== -->
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand">
-      <svg class="brand-mark" viewBox="0 0 32 32" fill="none">
-        <path d="M9 13c-1 5 0.5 9 7 9s8-4 7-9" stroke="#2B1810" stroke-width="1.6" fill="none"/>
-        <path d="M22 14c2-0.3 4 0.8 4 3s-2 3.3-4 3" stroke="#2B1810" stroke-width="1.6" fill="none"/>
-        <path d="M16 13V8" stroke="#C4622D" stroke-width="1.6"/>
-        <circle cx="16" cy="6" r="1.4" fill="#C4622D"/>
-      </svg>
-      Hyper Coffee
+      <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
+      <span>
+        Hyper Coffee
+        <span class="brand-sub">መገኛችን</span>
+      </span>
     </a>
     <nav class="nav-links">
       <a href="/#about">About</a>
@@ -105,11 +104,31 @@
   </div>
 </section>
 
+<!-- ===== FOOTER (updated) ===== -->
 <footer class="site-footer">
-  <div class="wrap" style="padding:2.5rem 1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
-    <span style="font-family:var(--serif); font-size:1.1rem;">Hyper Coffee</span>
-    <span style="font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</span>
+  <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
+    <div>
+      <div class="brand" style="color:var(--cream);">
+        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
+        Hyper Coffee
+      </div>
+      <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
+    </div>
+    <div style="display:flex; gap:3rem; flex-wrap:wrap;">
+      <div>
+        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Explore</p>
+        <a href="/order" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Order online</a>
+        <a href="/journal" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Journal</a>
+        <a href="/events" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Events</a>
+      </div>
+      <div>
+        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Follow</p>
+        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-telegram"></i> Telegram</a>
+      </div>
+    </div>
   </div>
+  <div class="wrap" style="padding:1.5rem; border-top:1px solid rgba(247,239,227,0.12); font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</div>
 </footer>
 
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
@@ -122,9 +141,6 @@
   <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
 </div>
 
-<style>
-@media (min-width:768px){ .featured-post{grid-template-columns:1fr 1fr !important;} #post-grid{grid-template-columns:repeat(3,1fr) !important;} }
-</style>
 <script src="assets/site.js"></script>
 </body>
 </html>
