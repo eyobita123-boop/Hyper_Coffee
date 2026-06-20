@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Order Online | Hyper Coffee</title>
+<meta name="description" content="Order specialty Ethiopian coffee, espresso, and pastries online from Hyper Coffee, Bole, Addis Ababa." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="assets/style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2B1810">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M9 13c-1 5 0.5 9 7 9s8-4 7-9" stroke="#2B1810" stroke-width="1.6" fill="none"/>
+        <path d="M22 14c2-0.3 4 0.8 4 3s-2 3.3-4 3" stroke="#2B1810" stroke-width="1.6" fill="none"/>
+        <path d="M16 13V8" stroke="#C4622D" stroke-width="1.6"/>
+        <circle cx="16" cy="6" r="1.4" fill="#C4622D"/>
+      </svg>
+      Hyper Coffee
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#menu">Menu</a>
+      <a href="events.html">Events</a>
+      <a href="journal.html">Journal</a>
+      <a href="order.html" class="active">Order</a>
+      <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
+    </nav>
+    <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div id="mobile-panel" class="mobile-panel">
+  <a href="index.html#about">About</a>
+  <a href="index.html#menu">Menu</a>
+  <a href="events.html">Events</a>
+  <a href="journal.html">Journal</a>
+  <a href="order.html" style="color:var(--terracotta);">Order online</a>
+</div>
+
+<section style="padding:7.5rem 1.5rem 2rem; max-width:1240px; margin:0 auto;">
+  <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Pickup in 15–20 minutes</span></div>
+  <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">Order online</h1>
+  <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Order ahead for pickup at Bole Rwanda. Pay at the counter or pre-pay — your call.</p>
+</section>
+
+<section style="max-width:1240px; margin:0 auto; padding:0 1.5rem 6rem; display:grid; grid-template-columns:1fr; gap:1.5rem;" id="order-layout">
+
+  <div id="menu-list" style="display:flex; flex-direction:column; gap:2.5rem;">
+    <!-- categories injected by JS -->
+  </div>
+
+  <!-- Inline checkout summary for desktop (drawer still works on all sizes) -->
+  <aside style="position:relative;">
+    <div style="background:#fff; border-radius:20px; border:1px solid var(--line); padding:1.75rem; position:sticky; top:96px;">
+      <h3 class="h-display" style="font-size:1.4rem; color:var(--roast); margin:0 0 1rem;">Your order</h3>
+      <div id="summary-body"><div class="empty-state" style="padding:1.5rem 0;">Nothing yet — add something from the menu.</div></div>
+      <div id="summary-footer" style="margin-top:1rem;"></div>
+    </div>
+  </aside>
+</section>
+
+<!-- ===== CHECKOUT ===== -->
+<section id="checkout" class="bg-cream-deep" style="padding:5rem 0;">
+  <div class="wrap" style="max-width:640px;">
+    <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Last step</span></div>
+    <h2 class="h-display" style="font-size:clamp(1.8rem,4vw,2.4rem); color:var(--roast); margin-bottom:1.5rem;">Pickup details</h2>
+    <form id="checkout-form" style="background:#fff; border-radius:20px; padding:2rem; border:1px solid var(--line); display:flex; flex-direction:column; gap:1rem;">
+      <div id="checkout-order-recap" style="font-family:var(--mono); font-size:0.85rem; color:var(--roast-soft); padding-bottom:1rem; border-bottom:1px solid var(--line);"></div>
+      <input type="text" id="ck-name" required placeholder="Your name" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem;">
+      <input type="tel" id="ck-phone" required placeholder="Phone number" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem;">
+      <select id="ck-time" required style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:#fff;">
+        <option value="">Pickup time</option>
+        <option>As soon as possible</option>
+        <option>In 30 minutes</option>
+        <option>In 1 hour</option>
+      </select>
+      <button type="submit" id="ck-submit" class="btn btn-primary" style="margin-top:0.5rem;">Place order</button>
+      <p style="font-size:0.78rem; color:var(--roast-soft); text-align:center; margin:0;">You’ll be redirected to WhatsApp to confirm your order.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap" style="padding:2.5rem 1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
+    <span style="font-family:var(--serif); font-size:1.1rem;">Hyper Coffee</span>
+    <span style="font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</span>
+  </div>
+</footer>
+
+<div id="cart-overlay" class="cart-overlay" data-close-cart></div>
+<div id="cart-drawer" class="cart-drawer">
+  <div style="padding:1.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+    <h3 class="h-display" style="font-size:1.3rem; margin:0;">Your cup</h3>
+    <button data-close-cart aria-label="Close cart" style="background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--roast);">&times;</button>
+  </div>
+  <div id="cart-drawer-body" style="flex:1; overflow-y:auto; padding:0.5rem 1.5rem;"></div>
+  <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
+</div>
+
+<style>
+@media (min-width:960px){ #order-layout{grid-template-columns:1fr 360px !important; align-items:flex-start;} }
+.qty-pill{display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--mono); background:var(--cream-deep); border-radius:999px; padding:0.25rem 0.4rem;}
+.qty-pill button{width:26px; height:26px; border-radius:50%; border:none; background:#fff; cursor:pointer; font-size:1rem; line-height:1; box-shadow:0 1px 2px rgba(0,0,0,0.08);}
+.add-btn{transition:transform 0.2s, background 0.2s;}
+.add-btn:active{transform:scale(0.95);}
+</style>
+
+<script src="assets/site.js"></script>
+<script>
+const MENU = [
+  { category: "Coffee", items: [
+    { id:"yirgacheffe", name:"Ethiopian Yirgacheffe", desc:"Floral, citrus, light roast pour-over.", price:120 },
+    { id:"sidamo-espresso", name:"Sidamo Espresso", desc:"Bold double shot, chocolate notes.", price:100 },
+    { id:"harrar-macchiato", name:"Harrar Macchiato", desc:"Espresso, steamed milk, wild-berry finish.", price:130 },
+    { id:"buna-traditional", name:"Traditional Buna", desc:"Jebena-brewed, served in the three rounds.", price:150 },
+  ]},
+  { category: "Cold & Specialty", items: [
+    { id:"iced-yirga", name:"Iced Yirgacheffe Pour-over", desc:"Slow-brewed, served over ice.", price:135 },
+    { id:"spiced-latte", name:"Berbere Spiced Latte", desc:"Espresso, milk, a whisper of berbere and honey.", price:145 },
+  ]},
+  { category: "Pastries", items: [
+    { id:"croissant", name:"Butter Croissant", desc:"Baked fresh each morning.", price:80 },
+    { id:"himbasha", name:"Himbasha Slice", desc:"Ethiopian sweet bread, cardamom and honey.", price:90 },
+    { id:"muffin", name:"Banana Coffee Muffin", desc:"Made with our own espresso grounds.", price:85 },
+  ]},
+];
+
+function buildMenu(){
+  const list = document.getElementById('menu-list');
+  list.innerHTML = MENU.map(cat => `
+    <div>
+      <h2 class="h-display" style="font-size:1.5rem; color:var(--roast); margin-bottom:1rem;">${cat.category}</h2>
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        ${cat.items.map(item => `
+          <div class="card" style="display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.1rem 1.4rem;" data-item-row="${item.id}">
+            <div style="flex:1;">
+              <p style="font-weight:600; margin:0 0 0.2rem;">${item.name}</p>
+              <p style="font-size:0.85rem; color:var(--roast-soft); margin:0 0 0.4rem;">${item.desc}</p>
+              <span class="price-tag" style="font-size:0.92rem;">${item.price} ETB</span>
+            </div>
+            <div class="row-control"></div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function findItem(id){
+  for(const cat of MENU){ const f = cat.items.find(i=>i.id===id); if(f) return f; }
+  return null;
+}
+
+async function renderRowControls(){
+  await Cart.load();
+  const state = Cart.getState();
+  document.querySelectorAll('[data-item-row]').forEach(row => {
+    const id = row.dataset.itemRow;
+    const inCart = state.items.find(i => i.id === id);
+    const control = row.querySelector('.row-control');
+    if(inCart){
+      control.innerHTML = `
+        <div class="qty-pill">
+          <button data-dec="${id}" aria-label="Decrease quantity">−</button>
+          <span style="min-width:1rem; text-align:center;">${inCart.qty}</span>
+          <button data-inc="${id}" aria-label="Increase quantity">+</button>
+        </div>`;
+    } else {
+      control.innerHTML = `<button class="btn btn-outline btn-sm add-btn" data-add="${id}">Add</button>`;
+    }
+  });
+  document.querySelectorAll('[data-add]').forEach(b => b.onclick = async () => {
+    const item = findItem(b.dataset.add);
+    await Cart.add({id:item.id, name:item.name, price:item.price});
+    showToast(`${item.name} added`);
+    renderRowControls(); renderSummary();
+    if(window._cartDrawerRender) window._cartDrawerRender();
+  });
+  document.querySelectorAll('[data-inc]').forEach(b => b.onclick = async () => {
+    const item = state.items.find(i=>i.id===b.dataset.inc);
+    await Cart.setQty(item.id, item.qty+1);
+    renderRowControls(); renderSummary();
+    if(window._cartDrawerRender) window._cartDrawerRender();
+  });
+  document.querySelectorAll('[data-dec]').forEach(b => b.onclick = async () => {
+    const item = state.items.find(i=>i.id===b.dataset.dec);
+    await Cart.setQty(item.id, item.qty-1);
+    renderRowControls(); renderSummary();
+    if(window._cartDrawerRender) window._cartDrawerRender();
+  });
+}
+
+async function renderSummary(){
+  await Cart.load();
+  const items = Cart.getState().items;
+  const body = document.getElementById('summary-body');
+  const footer = document.getElementById('summary-footer');
+  const recap = document.getElementById('checkout-order-recap');
+  if(!items.length){
+    body.innerHTML = '<div class="empty-state" style="padding:1.5rem 0;">Nothing yet — add something from the menu.</div>';
+    footer.innerHTML = '';
+    recap.innerHTML = 'Your cart is empty.';
+    document.getElementById('ck-submit').disabled = true;
+    return;
+  }
+  document.getElementById('ck-submit').disabled = false;
+  const rows = items.map(i => `<div style="display:flex; justify-content:space-between; font-size:0.88rem; padding:0.4rem 0;"><span>${i.qty}× ${i.name}</span><span class="price-tag" style="font-size:0.85rem;">${i.price*i.qty} ETB</span></div>`).join('');
+  body.innerHTML = rows;
+  footer.innerHTML = `<div style="display:flex; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--line); font-weight:600;"><span>Total</span><span class="price-tag" style="font-size:1.2rem;">${Cart.total()} ETB</span></div><a href="#checkout" class="btn btn-primary" style="width:100%; margin-top:1rem;">Checkout</a>`;
+  recap.innerHTML = rows + `<div style="display:flex; justify-content:space-between; padding-top:0.5rem; font-weight:600; color:var(--roast);"><span>Total</span><span>${Cart.total()} ETB</span></div>`;
+}
+
+document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('ck-name').value.trim();
+  const phone = document.getElementById('ck-phone').value.trim();
+  const time = document.getElementById('ck-time').value;
+  if (!name || !phone || !time) return;
+  const items = Cart.getState().items;
+  if (!items.length) return;
+  
+  // Build WhatsApp message
+  let msg = `*New Order from ${name}*\n\n`;
+  items.forEach(i => msg += `- ${i.qty}× ${i.name}  ${i.price*i.qty} ETB\n`);
+  msg += `\n*Total:* ${Cart.total()} ETB\n`;
+  msg += `*Pickup time:* ${time}\n`;
+  msg += `*Phone:* ${phone}`;
+  
+  const encoded = encodeURIComponent(msg);
+  const waUrl = `https://wa.me/251940887089?text=${encoded}`;
+  
+  // Clear cart and show toast
+  await Cart.clear();
+  showToast(`Order sent, ${name.split(' ')[0]}! Redirecting to WhatsApp…`, 3000);
+  renderRowControls(); renderSummary();
+  if(window._cartDrawerRender) window._cartDrawerRender();
+  
+  // Open WhatsApp after a short delay
+  setTimeout(() => window.open(waUrl, '_blank'), 400);
+});
+
+buildMenu();
+renderRowControls();
+renderSummary();
+</script>
+</body>
+    </html>
