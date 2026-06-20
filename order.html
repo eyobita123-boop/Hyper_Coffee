@@ -14,16 +14,15 @@
 </head>
 <body>
 
+<!-- ===== HEADER (updated) ===== -->
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand">
-      <svg class="brand-mark" viewBox="0 0 32 32" fill="none">
-        <path d="M9 13c-1 5 0.5 9 7 9s8-4 7-9" stroke="#2B1810" stroke-width="1.6" fill="none"/>
-        <path d="M22 14c2-0.3 4 0.8 4 3s-2 3.3-4 3" stroke="#2B1810" stroke-width="1.6" fill="none"/>
-        <path d="M16 13V8" stroke="#C4622D" stroke-width="1.6"/>
-        <circle cx="16" cy="6" r="1.4" fill="#C4622D"/>
-      </svg>
-      Hyper Coffee
+      <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
+      <span>
+        Hyper Coffee
+        <span class="brand-sub">መገኛችን</span>
+      </span>
     </a>
     <nav class="nav-links">
       <a href="/#about">About</a>
@@ -47,7 +46,7 @@
 <section style="padding:7.5rem 1.5rem 2rem; max-width:1240px; margin:0 auto;">
   <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Pickup in 15–20 minutes</span></div>
   <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">Order online</h1>
-  <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Order ahead for pickup at Bole Rwanda. Pay at the counter or pre-pay — your call.</p>
+  <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Order ahead for pickup at Bole Rwanda. Pay at the counter or pre‑pay — your call.</p>
 </section>
 
 <section style="max-width:1240px; margin:0 auto; padding:0 1.5rem 6rem; display:grid; grid-template-columns:1fr; gap:1.5rem;" id="order-layout">
@@ -56,7 +55,7 @@
     <!-- categories injected by JS -->
   </div>
 
-  <!-- Inline checkout summary for desktop (drawer still works on all sizes) -->
+  <!-- Inline checkout summary for desktop -->
   <aside style="position:relative;">
     <div style="background:#fff; border-radius:20px; border:1px solid var(--line); padding:1.75rem; position:sticky; top:96px;">
       <h3 class="h-display" style="font-size:1.4rem; color:var(--roast); margin:0 0 1rem;">Your order</h3>
@@ -87,11 +86,31 @@
   </div>
 </section>
 
+<!-- ===== FOOTER (updated) ===== -->
 <footer class="site-footer">
-  <div class="wrap" style="padding:2.5rem 1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;">
-    <span style="font-family:var(--serif); font-size:1.1rem;">Hyper Coffee</span>
-    <span style="font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</span>
+  <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
+    <div>
+      <div class="brand" style="color:var(--cream);">
+        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
+        Hyper Coffee
+      </div>
+      <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
+    </div>
+    <div style="display:flex; gap:3rem; flex-wrap:wrap;">
+      <div>
+        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Explore</p>
+        <a href="/order" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Order online</a>
+        <a href="/journal" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Journal</a>
+        <a href="/events" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Events</a>
+      </div>
+      <div>
+        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Follow</p>
+        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-telegram"></i> Telegram</a>
+      </div>
+    </div>
   </div>
+  <div class="wrap" style="padding:1.5rem; border-top:1px solid rgba(247,239,227,0.12); font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</div>
 </footer>
 
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
@@ -103,14 +122,6 @@
   <div id="cart-drawer-body" style="flex:1; overflow-y:auto; padding:0.5rem 1.5rem;"></div>
   <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
 </div>
-
-<style>
-@media (min-width:960px){ #order-layout{grid-template-columns:1fr 360px !important; align-items:flex-start;} }
-.qty-pill{display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--mono); background:var(--cream-deep); border-radius:999px; padding:0.25rem 0.4rem;}
-.qty-pill button{width:26px; height:26px; border-radius:50%; border:none; background:#fff; cursor:pointer; font-size:1rem; line-height:1; box-shadow:0 1px 2px rgba(0,0,0,0.08);}
-.add-btn{transition:transform 0.2s, background 0.2s;}
-.add-btn:active{transform:scale(0.95);}
-</style>
 
 <script src="assets/site.js"></script>
 <script>
@@ -226,7 +237,6 @@ document.getElementById('checkout-form').addEventListener('submit', async (e) =>
   const items = Cart.getState().items;
   if (!items.length) return;
   
-  // Build WhatsApp message
   let msg = `*New Order from ${name}*\n\n`;
   items.forEach(i => msg += `- ${i.qty}× ${i.name}  ${i.price*i.qty} ETB\n`);
   msg += `\n*Total:* ${Cart.total()} ETB\n`;
@@ -236,13 +246,11 @@ document.getElementById('checkout-form').addEventListener('submit', async (e) =>
   const encoded = encodeURIComponent(msg);
   const waUrl = `https://wa.me/251940887089?text=${encoded}`;
   
-  // Clear cart and show toast
   await Cart.clear();
   showToast(`Order sent, ${name.split(' ')[0]}! Redirecting to WhatsApp…`, 3000);
   renderRowControls(); renderSummary();
   if(window._cartDrawerRender) window._cartDrawerRender();
   
-  // Open WhatsApp after a short delay
   setTimeout(() => window.open(waUrl, '_blank'), 400);
 });
 
@@ -251,4 +259,4 @@ renderRowControls();
 renderSummary();
 </script>
 </body>
-</html>
+        </html>
