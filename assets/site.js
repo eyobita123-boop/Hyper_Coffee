@@ -180,3 +180,8 @@ function initCartDrawer(){
   window._cartDrawerRender = render;
 }
 document.addEventListener('DOMContentLoaded', initCartDrawer);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js');
+  });
+}
