@@ -156,7 +156,7 @@ function initCartDrawer(){
         <span style="font-family:var(--mono); font-size:0.85rem; color:var(--roast-soft);">Total</span>
         <span class="price-tag" style="font-size:1.4rem;">${Cart.total()} ETB</span>
       </div>
-      <a href="order.html#checkout" class="btn btn-primary" style="width:100%;">Go to checkout</a>
+      <a href="/order#checkout" class="btn btn-primary" style="width:100%;">Go to checkout</a>
     `;
     body.querySelectorAll('[data-step]').forEach(btn => {
       btn.addEventListener('click', async (e) => {
