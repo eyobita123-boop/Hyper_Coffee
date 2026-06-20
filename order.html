@@ -16,7 +16,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <a href="index.html" class="brand">
+    <a href="/" class="brand">
       <svg class="brand-mark" viewBox="0 0 32 32" fill="none">
         <path d="M9 13c-1 5 0.5 9 7 9s8-4 7-9" stroke="#2B1810" stroke-width="1.6" fill="none"/>
         <path d="M22 14c2-0.3 4 0.8 4 3s-2 3.3-4 3" stroke="#2B1810" stroke-width="1.6" fill="none"/>
@@ -26,22 +26,22 @@
       Hyper Coffee
     </a>
     <nav class="nav-links">
-      <a href="index.html#about">About</a>
-      <a href="index.html#menu">Menu</a>
-      <a href="events.html">Events</a>
-      <a href="journal.html">Journal</a>
-      <a href="order.html" class="active">Order</a>
+      <a href="/#about">About</a>
+      <a href="/#menu">Menu</a>
+      <a href="/events">Events</a>
+      <a href="/journal">Journal</a>
+      <a href="/order" class="active">Order</a>
       <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
     </nav>
     <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div id="mobile-panel" class="mobile-panel">
-  <a href="index.html#about">About</a>
-  <a href="index.html#menu">Menu</a>
-  <a href="events.html">Events</a>
-  <a href="journal.html">Journal</a>
-  <a href="order.html" style="color:var(--terracotta);">Order online</a>
+  <a href="/#about">About</a>
+  <a href="/#menu">Menu</a>
+  <a href="/events">Events</a>
+  <a href="/journal">Journal</a>
+  <a href="/order" style="color:var(--terracotta);">Order online</a>
 </div>
 
 <section style="padding:7.5rem 1.5rem 2rem; max-width:1240px; margin:0 auto;">
@@ -213,7 +213,7 @@ async function renderSummary(){
   document.getElementById('ck-submit').disabled = false;
   const rows = items.map(i => `<div style="display:flex; justify-content:space-between; font-size:0.88rem; padding:0.4rem 0;"><span>${i.qty}× ${i.name}</span><span class="price-tag" style="font-size:0.85rem;">${i.price*i.qty} ETB</span></div>`).join('');
   body.innerHTML = rows;
-  footer.innerHTML = `<div style="display:flex; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--line); font-weight:600;"><span>Total</span><span class="price-tag" style="font-size:1.2rem;">${Cart.total()} ETB</span></div><a href="#checkout" class="btn btn-primary" style="width:100%; margin-top:1rem;">Checkout</a>`;
+  footer.innerHTML = `<div style="display:flex; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--line); font-weight:600;"><span>Total</span><span class="price-tag" style="font-size:1.2rem;">${Cart.total()} ETB</span></div><a href="/order#checkout" class="btn btn-primary" style="width:100%; margin-top:1rem;">Checkout</a>`;
   recap.innerHTML = rows + `<div style="display:flex; justify-content:space-between; padding-top:0.5rem; font-weight:600; color:var(--roast);"><span>Total</span><span>${Cart.total()} ETB</span></div>`;
 }
 
@@ -251,4 +251,4 @@ renderRowControls();
 renderSummary();
 </script>
 </body>
-  </html>
+</html>
