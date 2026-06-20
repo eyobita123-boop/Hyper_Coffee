@@ -11,6 +11,143 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2B1810">
+<style>
+  /* ---------- Additional hero-specific styles ---------- */
+  .hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding-top: 76px;
+    background: #1c1410; /* dark base */
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 4rem 4rem;
+    background: radial-gradient(ellipse at 30% 50%, #2b1a14, #0f0b09);
+    color: #f7efe3;
+  }
+
+  .hero-left .eyebrow-line .rule {
+    background: #d4a537;
+  }
+  .hero-left .h-eyebrow {
+    color: #d4a537;
+  }
+
+  .hero-left h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0 1rem;
+    line-height: 1;
+  }
+
+  .hero-left p {
+    max-width: 28rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(247, 239, 227, 0.75);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-left .btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #1c1410;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-right .jebena-scene {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    padding: 2rem;
+  }
+
+  /* ---------- Enhanced jebena SVG ---------- */
+  .jebena-scene svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+  }
+
+  .jebena-scene .steam-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .steam-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(247,239,227,0.25) 0%, transparent 70%);
+    animation: steamFloat 4s ease-in-out infinite;
+  }
+
+  .steam-particle:nth-child(1) { width: 80px; height: 80px; bottom: 70%; left: 30%; animation-delay: 0s; }
+  .steam-particle:nth-child(2) { width: 100px; height: 100px; bottom: 75%; left: 55%; animation-delay: 1.2s; }
+  .steam-particle:nth-child(3) { width: 60px; height: 60px; bottom: 60%; left: 10%; animation-delay: 2.4s; }
+  .steam-particle:nth-child(4) { width: 90px; height: 90px; bottom: 65%; left: 70%; animation-delay: 0.8s; }
+
+  @keyframes steamFloat {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    30% { opacity: 0.7; }
+    100% { transform: translateY(-120px) scale(1.4); opacity: 0; }
+  }
+
+  .pour-stream {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: pourFlow 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pourFlow {
+    0% { stroke-dashoffset: 400; opacity: 0.2; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0.2; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 768px) {
+    .hero-split {
+      grid-template-columns: 1fr;
+      padding-top: 76px;
+    }
+    .hero-left {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      align-items: center;
+    }
+    .hero-left p {
+      max-width: 100%;
+    }
+    .hero-left .btn-group {
+      justify-content: center;
+    }
+    .hero-right {
+      min-height: 50vh;
+    }
+    .hero-right .jebena-scene {
+      max-width: 300px;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -18,9 +155,12 @@
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand">
-      <!-- New logo, larger size (48px) -->
+      <!-- Logo -->
       <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark" style="width:48px; height:48px;">
-      Hyper Coffee
+      <span>
+        Hyper Coffee
+        <span class="h-eyebrow" style="display:block; font-size:0.6rem; letter-spacing:0.2em; color:var(--terracotta); margin-top:-2px;">መገኛችን</span>
+      </span>
     </a>
     <nav class="nav-links">
       <a href="/#about">About</a>
@@ -44,43 +184,76 @@
 </div>
 
 <!-- ===== HERO ===== -->
-<section style="min-height:100vh; display:flex; align-items:center; padding-top:76px; position:relative; overflow:hidden; background:radial-gradient(ellipse at 70% 20%, var(--cream-deep), var(--cream));">
-  <div class="wrap" style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center; padding-top:2rem; padding-bottom:2rem;">
-    <div style="grid-row:1;">
-      <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Bole, Addis Ababa — since 2019</span></div>
-      <h1 class="h-display" style="font-size:clamp(2.6rem, 8vw, 5.2rem); color:var(--roast);">
-        Three pours.<br>One story.
-      </h1>
-      <p class="body-lg" style="max-width:32rem; margin:1.5rem 0 2.25rem; color:var(--roast-soft);">
-        Every cup at Hyper Coffee follows the rhythm of <em>abol, tona,</em> and <em>baraka</em> — the traditional three rounds of an Ethiopian coffee ceremony, reimagined for a city that moves fast but still knows how to sit down for coffee.
-      </p>
-      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-        <a href="/order" class="btn btn-primary">Order online <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i></a>
-        <a href="#menu" class="btn btn-outline">See the menu</a>
-      </div>
+<section class="hero-split">
+  <!-- Left: Dark minimal copy -->
+  <div class="hero-left">
+    <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Bole, Addis Ababa — since 2019</span></div>
+    <h1>The Art of Buna</h1>
+    <p>
+      Three pours, one ritual. Hyper Coffee brings the Ethiopian coffee ceremony
+      into a modern café — where every cup tells a story of origin, craft, and community.
+    </p>
+    <div class="btn-group">
+      <a href="/order" class="btn btn-primary">Order online</a>
+      <a href="#menu" class="btn btn-outline" style="border-color:rgba(247,239,227,0.3); color:#f7efe3;">Explore the menu</a>
     </div>
   </div>
 
-  <!-- Jebena pour signature animation -->
-  <div aria-hidden="true" style="position:absolute; right:-40px; bottom:-20px; width:340px; height:340px; opacity:0.95; pointer-events:none;" class="hide-on-small">
-    <svg viewBox="0 0 300 300" width="100%" height="100%">
-      <defs>
-        <linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#4A2E20"/>
-          <stop offset="100%" stop-color="#2B1810"/>
-        </linearGradient>
-      </defs>
-      <ellipse cx="150" cy="210" rx="62" ry="58" fill="url(#potGrad)"/>
-      <path d="M100 175 Q150 130 200 175" stroke="#2B1810" stroke-width="14" fill="none"/>
-      <rect x="138" y="120" width="24" height="34" rx="6" fill="#2B1810"/>
-      <ellipse cx="150" cy="118" rx="13" ry="7" fill="#1C1410"/>
-      <path d="M205 190 Q235 175 248 150" stroke="#2B1810" stroke-width="12" fill="none" stroke-linecap="round"/>
-      <path id="pourStream" d="M248 150 Q252 190 256 230" stroke="#C4622D" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.85"/>
-      <ellipse cx="258" cy="250" rx="22" ry="8" fill="#1C1410" opacity="0.15"/>
-      <path d="M242 236 h32 l-4 22 a14 14 0 0 1 -24 0 z" fill="#F7EFE3" stroke="#2B1810" stroke-width="2"/>
-    </svg>
-    <div class="jebena-pour" style="position:absolute; top:0; left:0; width:100%; height:100%;">
-      <div class="steam"></div><div class="steam"></div><div class="steam"></div>
+  <!-- Right: Jebena pour scene (macro-style) -->
+  <div class="hero-right">
+    <div class="jebena-scene">
+      <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4A2E20"/>
+            <stop offset="100%" stop-color="#1C1410"/>
+          </linearGradient>
+          <linearGradient id="streamGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#C4622D" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#D4A537" stop-opacity="0.4"/>
+          </linearGradient>
+          <radialGradient id="cupShine" cx="50%" cy="30%" r="50%">
+            <stop offset="0%" stop-color="#F7EFE3" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#2B1810" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background subtle glow -->
+        <ellipse cx="200" cy="350" rx="160" ry="60" fill="#D4A537" opacity="0.08"/>
+
+        <!-- Jebena body -->
+        <ellipse cx="200" cy="340" rx="90" ry="80" fill="url(#potGrad)"/>
+        <path d="M130 290 Q200 230 270 290" stroke="#2B1810" stroke-width="18" fill="none"/>
+        <!-- Neck -->
+        <rect x="178" y="230" width="44" height="50" rx="8" fill="#2B1810"/>
+        <!-- Rim -->
+        <ellipse cx="200" cy="228" rx="24" ry="10" fill="#1C1410"/>
+        <!-- Spout -->
+        <path d="M270 300 Q310 280 330 240" stroke="#2B1810" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+        <!-- Pour stream (animated) -->
+        <path d="M330 240 Q360 300 320 390" 
+              stroke="url(#streamGrad)" 
+              stroke-width="8" 
+              fill="none" 
+              stroke-linecap="round"
+              class="pour-stream" />
+
+        <!-- Sini cup (catching the pour) -->
+        <ellipse cx="310" cy="400" rx="40" ry="14" fill="#2B1810" stroke="#D4A537" stroke-width="2"/>
+        <ellipse cx="310" cy="400" rx="34" ry="10" fill="#F7EFE3" opacity="0.9"/>
+        <ellipse cx="310" cy="400" rx="30" ry="8" fill="url(#cupShine)"/>
+        <!-- Coffee surface ripple -->
+        <ellipse cx="310" cy="399" rx="20" ry="5" fill="#C4622D" opacity="0.4"/>
+
+        <!-- Ambient steam (CSS animated particles) -->
+        <div class="steam-container">
+          <div class="steam-particle"></div>
+          <div class="steam-particle"></div>
+          <div class="steam-particle"></div>
+          <div class="steam-particle"></div>
+        </div>
+      </svg>
     </div>
   </div>
 </section>
@@ -189,10 +362,10 @@
 <section id="location" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap location-grid" style="display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
-      <!-- Logo + መገኛችን + curve (larger logo: 5rem) -->
+      <!-- Logo (no motto here anymore) -->
       <div data-reveal style="text-align:center; margin-bottom:2rem;">
         <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" style="width:5rem; height:auto; margin:0 auto 1rem; display:block;">
-        <h2 class="h-display" style="font-size:clamp(2.2rem,5vw,3rem); color:var(--roast); margin:0 0 0.5rem;">መገኛችን</h2>
+        <h2 class="h-display" style="font-size:clamp(2.2rem,5vw,3rem); color:var(--roast); margin:0 0 0.5rem;">Find us</h2>
         <svg width="120" height="20" viewBox="0 0 120 20" fill="none" style="display:block; margin:0 auto 1.5rem;">
           <path d="M10,15 Q60,-10 110,15" stroke="var(--terracotta)" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
@@ -263,15 +436,6 @@
   <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
 </div>
 
-<style>
-@media (min-width:640px){ .menu-grid{grid-template-columns:repeat(3,1fr) !important;} .gallery-grid{grid-template-columns:repeat(4,1fr) !important;} }
-@media (min-width:768px){ .rounds-grid{grid-template-columns:repeat(3,1fr) !important;} .location-grid{grid-template-columns:1.1fr 1fr !important; align-items:center;} .footer-grid{grid-template-columns:1.3fr 1fr !important;} }
-@media (max-width:640px){ .hide-on-small{display:none !important;} }
-.lightbox{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:100; justify-content:center; align-items:center;}
-.lightbox:target{display:flex;}
-.lightbox img{max-width:90%; max-height:90%; border-radius:8px;}
-</style>
-
 <script src="assets/site.js"></script>
 </body>
-</html>
+    </html>
