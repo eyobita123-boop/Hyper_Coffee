@@ -1,21 +1,116 @@
 {
-  "name": "Hyper Coffee",
-  "short_name": "Hyper",
-  "description": "Specialty Ethiopian coffee in Bole, Addis Ababa",
-  "start_url": "index.html",
+  "name": "Hyper Coffee — Specialty Ethiopian Coffee",
+  "short_name": "Hyper Coffee",
+  "description": "Specialty Ethiopian coffee in Bole, Addis Ababa. Order online, read the journal, or visit us.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
   "background_color": "#F7EFE3",
   "theme_color": "#2B1810",
+  "categories": ["food", "lifestyle"],
+  "prefer_related_applications": false,
+
   "icons": [
     {
       "src": "assets/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "assets/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "assets/screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home page"
+    },
+    {
+      "src": "assets/screenshots/order.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Order online"
+    },
+    {
+      "src": "assets/screenshots/events.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Events calendar"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Order online",
+      "short_name": "Order",
+      "description": "Order specialty coffee for pickup",
+      "url": "/order",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View events",
+      "short_name": "Events",
+      "description": "Upcoming events at Hyper Coffee",
+      "url": "/events",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Read the journal",
+      "short_name": "Journal",
+      "description": "Notes from the bar",
+      "url": "/journal",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Training programs",
+      "short_name": "Training",
+      "description": "Cupping and barista training",
+      "url": "/training",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
