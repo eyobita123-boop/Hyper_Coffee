@@ -156,7 +156,7 @@
   <div class="wrap">
     <a href="/" class="brand">
       <!-- Logo -->
-      <img src="assets/image/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:48px; height:48px;">
+      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:48px; height:48px;">
       <span>
         Hyper Coffee
         <span class="h-eyebrow" style="display:block; font-size:0.6rem; letter-spacing:0.2em; color:var(--terracotta); margin-top:-2px;">መገኛችን</span>
@@ -205,8 +205,8 @@
     </div>
   </div>
 
-  <!-- RIGHT: illustrated pour scene -->
-  <div style="position:relative; background:#0B0807; min-height:46vh;" aria-hidden="true">
+  <!-- RIGHT: illustrated pour scene (increased height for impact) -->
+  <div style="position:relative; background:#0B0807; min-height:55vh;" aria-hidden="true">
     <svg viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" style="position:absolute; inset:0; width:100%; height:100%;">
       <defs>
         <radialGradient id="studioGlow" cx="62%" cy="30%" r="60%">
@@ -336,6 +336,7 @@
   .steam-wisp, .drip-1, .drip-2{ animation:none !important; }
 }
 </style>
+
 <!-- ===== ABOUT ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
@@ -412,16 +413,29 @@
     <div data-reveal class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Inside the café</span></div>
     <h2 data-reveal class="h-display" style="text-align:center; font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-bottom:2.5rem;">Gallery</h2>
     <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;" class="gallery-grid">
-      <a href="#img1" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/image/gallery2.jpg" alt="Coffee being poured" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img2" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/image/hyperlogo.png" alt="Café interior" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img3" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/image/gallery2.jpg" alt="Latte art" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img4" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/image/hyperlogo.png" alt="Coffee beans" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
+      <a href="#img1" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/gallery2.jpg" alt="Coffee being poured" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
+      <a href="#img2" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/hyperlogo.png" alt="Café interior" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
+      <a href="#img3" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/gallery2.jpg" alt="Latte art" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
+      <a href="#img4" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/hyperlogo.png" alt="Coffee beans" style="width:100%; height:220px; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
     </div>
   </div>
-  <div id="img1" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/image/gallery2.jpg" alt=""></div>
-  <div id="img2" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><vid src="assets/image/hyperlogo.png" alt=""></div>
-  <div id="img3" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/image/gallery2.jpg" alt=""></div>
-  <div id="img4" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/image/hyperlogo.png" alt=""></div>
+  <div id="img1" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/gallery2.jpg" alt=""></div>
+  <div id="img2" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/hyperlogo.png" alt=""></div>
+  <div id="img3" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/gallery2.jpg" alt=""></div>
+  <div id="img4" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/hyperlogo.png" alt=""></div>
+</section>
+
+<!-- ===== TRAINING TEASER ===== -->
+<section class="bg-roast" style="padding:5rem 0; color:var(--cream);">
+  <div class="wrap" style="text-align:center; max-width:760px;">
+    <div class="eyebrow-line" style="justify-content:center;">
+      <span class="rule" style="background:var(--gold);"></span>
+      <span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span>
+    </div>
+    <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem);">Cupping & Barista Training</h2>
+    <p style="color:var(--cream-deep); margin-bottom:2rem;">Master coffee production, roasting, latte art, and more. Hands‑on sessions led by industry professionals.</p>
+    <a href="/training" class="btn btn-primary">Explore training</a>
+  </div>
 </section>
 
 <!-- ===== UPCOMING EVENT TEASER ===== -->
@@ -436,32 +450,18 @@
   </div>
 </section>
 
-  <!-- ===== TRAINING TEASER ===== -->
-<section class="bg-roast" style="padding:5rem 0; color:var(--cream);">
-  <div class="wrap" style="text-align:center; max-width:760px;">
-    <div class="eyebrow-line" style="justify-content:center;">
-      <span class="rule" style="background:var(--gold);"></span>
-      <span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span>
-    </div>
-    <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem);">Cupping & Barista Training</h2>
-    <p style="color:var(--cream-deep); margin-bottom:2rem;">Master coffee production, roasting, latte art, and more. Hands‑on sessions led by industry professionals.</p>
-    <a href="/training" class="btn btn-primary">Explore training</a>
-  </div>
-</section>
-
 <!-- ===== LOCATION ===== -->
 <section id="location" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap location-grid" style="display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
-      <!-- Logo (no motto here anymore) -->
       <div data-reveal style="text-align:center; margin-bottom:2rem;">
-        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" style="width:5rem; height:auto; margin:0 auto 1rem; display:block;">
+        <!-- Local logo now -->
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:5rem; height:auto; margin:0 auto 1rem; display:block;">
         <h2 class="h-display" style="font-size:clamp(2.2rem,5vw,3rem); color:var(--roast); margin:0 0 0.5rem;">መገኛችን</h2>
         <svg width="120" height="20" viewBox="0 0 120 20" fill="none" style="display:block; margin:0 auto 1.5rem;">
           <path d="M10,15 Q60,-10 110,15" stroke="var(--terracotta)" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
-
       <div data-reveal>
         <p style="margin:0.4rem 0; color:var(--roast-soft);"><i class="fas fa-location-dot" style="color:var(--terracotta); width:1.4rem;"></i> Bole Rwanda, Addis Ababa</p>
         <p style="margin:0.4rem 0; color:var(--roast-soft);"><i class="fas fa-clock" style="color:var(--terracotta); width:1.4rem;"></i> Mon–Sat 7:00 AM – 9:00 PM · Sun 8:00 AM – 6:00 PM</p>
@@ -494,7 +494,7 @@
   <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
       <div class="brand" style="color:var(--cream);">
-        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark" style="width:48px; height:48px;">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:48px; height:48px;">
         Hyper Coffee
       </div>
       <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
@@ -529,4 +529,4 @@
 
 <script src="assets/site.js"></script>
 </body>
-    </html>
+                                    </html>
