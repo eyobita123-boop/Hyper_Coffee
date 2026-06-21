@@ -1,29 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Journal | Hyper Coffee</title>
-<meta name="description" content="Notes on roasting, the buna ceremony, and life at Hyper Coffee in Addis Ababa." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-<link rel="stylesheet" href="assets/style.css">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2B1810">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal | Hyper Coffee</title>
+  <meta name="description" content="Notes on roasting, the buna ceremony, and life at Hyper Coffee in Addis Ababa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2B1810">
+
+  <style>
+    /* ----- Journal page specific styles (enhanced) ----- */
+
+    /* Featured post */
+    .featured-post {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .featured-post:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .featured-post .featured-image {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+    .featured-post .featured-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-post .featured-content .featured-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .featured-post .featured-content h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--roast);
+      margin: 0.5rem 0 0.75rem;
+      line-height: 1.2;
+    }
+    .featured-post .featured-content p {
+      color: var(--roast-soft);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .featured-post .featured-content .featured-meta {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--terracotta);
+    }
+
+    /* Article cards */
+    .article-card {
+      background: #fff;
+      padding: 1.75rem;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .article-card .article-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      opacity: 0.8;
+    }
+    .article-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--roast);
+      margin: 0.25rem 0;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+    .article-card:hover h3 {
+      color: var(--terracotta);
+    }
+    .article-card .article-excerpt {
+      font-size: 0.92rem;
+      color: var(--roast-soft);
+      line-height: 1.6;
+      margin: 0 0 0.5rem;
+      flex: 1;
+    }
+    .article-card .article-meta {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--sage);
+      margin-top: 0.25rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .featured-post {
+        grid-template-columns: 1fr;
+      }
+      .featured-post .featured-image {
+        min-height: 200px;
+      }
+      .featured-post .featured-content {
+        padding: 1.75rem;
+      }
+      .featured-post .featured-content h2 {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #post-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .featured-post .featured-content h2 {
+        font-size: 1.2rem;
+      }
+      .article-card {
+        padding: 1.25rem;
+      }
+      .article-card h3 {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== HEADER (curved Amharic, no line) ===== -->
+<!-- ===== HEADER (premium with Amharic) ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
-      <div style="display:flex; align-items:center; gap:0.65rem;">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
-        <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
+    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
+      <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" 
+             style="width:clamp(3rem, 8vw, 5rem); height:auto; flex-shrink:0; margin-top:3px;">
+        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem, 2.4vw, 1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">
+          Hyper Coffee
+        </span>
       </div>
-      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
-        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+      <!-- Amharic signature (preserved) -->
+      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" 
+           viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
+        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" 
+              fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
@@ -38,10 +191,17 @@
       <a href="/events">Events</a>
       <a href="/journal" class="active">Journal</a>
       <a href="/#contact">Contact</a>
-      <a href="/order" class="btn btn-primary btn-sm">Order online</a>
-      <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
+      <a href="/order" class="btn btn-accent btn-sm" style="font-family:var(--sans);">
+        <i class="fas fa-coffee" style="font-size:0.85rem;"></i> Order online
+      </a>
+      <button class="nav-cart" data-open-cart aria-label="Open cart">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="cart-badge" style="display:none;">0</span>
+      </button>
     </nav>
-    <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button id="menu-btn" class="menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 <div id="mobile-panel" class="mobile-panel">
@@ -51,78 +211,94 @@
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
   <a href="/#contact">Contact</a>
-  <a href="/order" style="color:var(--terracotta);">Order online →</a>
+  <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
+<!-- ===== HERO ===== -->
 <section style="padding:7.5rem 1.5rem 3rem; max-width:1240px; margin:0 auto;">
   <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Notes from the bar</span></div>
   <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">The Journal</h1>
   <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Roasting notes, ceremony traditions, and stories from the people who grow and pour your coffee.</p>
 </section>
 
+<!-- ===== FEATURED POST ===== -->
 <section class="wrap" style="max-width:1240px; margin-bottom:4rem;">
-  <a href="#post-three-rounds" data-reveal style="display:grid; grid-template-columns:1fr; background:#fff; border-radius:22px; overflow:hidden; border:1px solid var(--line); transition:box-shadow 0.35s;" class="featured-post" onmouseover="this.style.boxShadow='0 24px 50px -20px rgba(43,24,16,0.25)'" onmouseout="this.style.boxShadow='none'">
-    <img src="assets/images/gallery2.jpg" alt="Pouring coffee" style="width:100%; height:280px; object-fit:cover;">
-    <div style="padding:2rem;">
-      <span class="h-eyebrow">Featured · Tradition</span>
-      <h2 class="h-display" style="font-size:1.8rem; color:var(--roast); margin:0.6rem 0;">Why We Still Pour Three Rounds</h2>
-      <p style="color:var(--roast-soft); margin-bottom:1rem;">On the meaning behind abol, tona, and baraka — and why we kept the ceremony alive inside a fast-moving café.</p>
-      <span style="font-family:var(--mono); font-size:0.8rem; color:var(--terracotta);">June 12, 2026 · 4 min read</span>
+  <a href="#post-three-rounds" class="featured-post" data-reveal>
+    <img src="assets/images/gallery2.jpg" alt="Pouring coffee" class="featured-image" loading="lazy">
+    <div class="featured-content">
+      <span class="featured-tag">Featured · Tradition</span>
+      <h2>Why We Still Pour Three Rounds</h2>
+      <p>On the meaning behind abol, tona, and baraka — and why we kept the ceremony alive inside a fast-moving café.</p>
+      <span class="featured-meta">June 12, 2026 · 4 min read</span>
     </div>
   </a>
 </section>
 
+<!-- ===== ARTICLE GRID ===== -->
 <section class="wrap" style="max-width:1240px; padding-bottom:6rem;">
   <div style="display:grid; grid-template-columns:1fr; gap:1.75rem;" id="post-grid">
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Roasting</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">Reading a Roast by Sound, Not Just Smell</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">Our head roaster on first crack, second crack, and the seconds in between that decide a batch.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">June 5, 2026 · 3 min</span>
+    <!-- Article 1 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Roasting</span>
+      <h3>Reading a Roast by Sound, Not Just Smell</h3>
+      <p class="article-excerpt">Our head roaster on first crack, second crack, and the seconds in between that decide a batch.</p>
+      <span class="article-meta">June 5, 2026 · 3 min read</span>
     </article>
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Sourcing</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">Meet the Growers of Our Yirgacheffe Lot</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">A trip to the highlands, and the cooperative behind our most floral cup.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">May 28, 2026 · 5 min</span>
+
+    <!-- Article 2 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Sourcing</span>
+      <h3>Meet the Growers of Our Yirgacheffe Lot</h3>
+      <p class="article-excerpt">A trip to the highlands, and the cooperative behind our most floral cup.</p>
+      <span class="article-meta">May 28, 2026 · 5 min read</span>
     </article>
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Recipes</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">Making Himbasha at Home</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">Our baker shares the cardamom-honey bread recipe behind our best-selling pastry.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">May 14, 2026 · 6 min</span>
+
+    <!-- Article 3 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Recipes</span>
+      <h3>Making Himbasha at Home</h3>
+      <p class="article-excerpt">Our baker shares the cardamom-honey bread recipe behind our best-selling pastry.</p>
+      <span class="article-meta">May 14, 2026 · 6 min read</span>
     </article>
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Community</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">One Year of Saturday Cuppings</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">What we've learned hosting a free public tasting every first Saturday of the month.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">April 30, 2026 · 4 min</span>
+
+    <!-- Article 4 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Community</span>
+      <h3>One Year of Saturday Cuppings</h3>
+      <p class="article-excerpt">What we've learned hosting a free public tasting every first Saturday of the month.</p>
+      <span class="article-meta">April 30, 2026 · 4 min read</span>
     </article>
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Brewing</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">Pour-Over vs Jebena: When We Use Each</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">Two brewing traditions, two very different cups — and how our baristas choose.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">April 18, 2026 · 3 min</span>
+
+    <!-- Article 5 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Brewing</span>
+      <h3>Pour-Over vs Jebena: When We Use Each</h3>
+      <p class="article-excerpt">Two brewing traditions, two very different cups — and how our baristas choose.</p>
+      <span class="article-meta">April 18, 2026 · 3 min read</span>
     </article>
-    <article class="card" data-reveal style="padding:1.75rem; border:1px solid var(--line);">
-      <span class="h-eyebrow">Sustainability</span>
-      <h3 class="h-display" style="font-size:1.3rem; color:var(--roast); margin:0.5rem 0;">What We Do With Spent Coffee Grounds</h3>
-      <p style="color:var(--roast-soft); font-size:0.92rem; margin-bottom:0.75rem;">From compost to our muffin batter — a look at our small zero-waste habits.</p>
-      <span style="font-family:var(--mono); font-size:0.78rem; color:var(--sage);">April 2, 2026 · 3 min</span>
+
+    <!-- Article 6 -->
+    <article class="article-card" data-reveal>
+      <span class="article-tag">Sustainability</span>
+      <h3>What We Do With Spent Coffee Grounds</h3>
+      <p class="article-excerpt">From compost to our muffin batter — a look at our small zero-waste habits.</p>
+      <span class="article-meta">April 2, 2026 · 3 min read</span>
     </article>
   </div>
 </section>
 
-<!-- ===== FOOTER (curved Amharic, no line) ===== -->
-<footer class="site-footer">
-  <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
-    <div>
-      <div class="brand" style="color:var(--cream); display:flex; flex-direction:column; align-items:flex-start; gap:0; text-decoration:none;">
-        <div style="display:flex; align-items:center; gap:0.65rem;">
-          <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
-          <span style="font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--cream);">Hyper Coffee</span>
+<!-- ===== ENHANCED FOOTER (with Amharic) ===== -->
+<footer class="footer-enhanced">
+  <div class="wrap">
+    <div class="footer-grid">
+      <!-- Brand + Social -->
+      <div class="footer-brand">
+        <div class="brand-row">
+          <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:44px; height:44px;">
+          <span class="brand-name">Hyper Coffee</span>
         </div>
-        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0 0 8px;">
+        <!-- Amharic signature in footer (preserved) -->
+        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0;">
           <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
             <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
           </text>
@@ -130,27 +306,73 @@
             <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
           </defs>
         </svg>
+        <p>Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
       </div>
-      <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="/order">Order online</a>
+        <a href="/training">Training</a>
+        <a href="/journal">Journal</a>
+        <a href="/events">Events</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-newsletter">
+        <h4>Stay caffeinated</h4>
+        <p>Subscribe for updates on new roasts, events, and brewing tips.</p>
+        <form id="newsletter-form" action="https://formspree.io/f/xeeddjzw" method="POST">
+          <input type="email" name="email" placeholder="Your email address" required>
+          <button type="submit" class="btn-subscribe">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Location + Map -->
+      <div>
+        <div class="footer-links">
+          <h4>Visit us</h4>
+          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;">
+            <i class="fas fa-location-dot" style="color:var(--gold); margin-right:0.5rem;"></i>
+            Bole Rwanda, Addis Ababa
+          </p>
+          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;">
+            <i class="fas fa-clock" style="color:var(--gold); margin-right:0.5rem;"></i>
+            Mon–Sat 7AM–9PM · Sun 8AM–6PM
+          </p>
+          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:1rem;">
+            <i class="fas fa-phone" style="color:var(--gold); margin-right:0.5rem;"></i>
+            +251 940 887 089
+          </p>
+        </div>
+        <div class="footer-map">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789!2d38.7577!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyNy43IkU!5e0!3m2!1sen!2sus!4v1610000000000" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Hyper Coffee Location Map">
+          </iframe>
+        </div>
+      </div>
     </div>
-    <div style="display:flex; gap:3rem; flex-wrap:wrap;">
-      <div>
-        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Explore</p>
-        <a href="/order" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Order online</a>
-        <a href="/training" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Training</a>
-        <a href="/journal" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Journal</a>
-        <a href="/events" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Events</a>
-      </div>
-      <div>
-        <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Follow</p>
-        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="#" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;"><i class="fab fa-telegram"></i> Telegram</a>
-      </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Hyper Coffee. All rights reserved.</span>
+      <span>Built with <i class="fas fa-heart" style="color:var(--terracotta);"></i> in Addis Ababa</span>
     </div>
   </div>
-  <div class="wrap" style="padding:1.5rem; border-top:1px solid rgba(247,239,227,0.12); font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</div>
 </footer>
 
+<!-- ===== CART DRAWER ===== -->
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
 <div id="cart-drawer" class="cart-drawer">
   <div style="padding:1.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
@@ -163,4 +385,4 @@
 
 <script src="assets/site.js"></script>
 </body>
-      </html>
+</html>
