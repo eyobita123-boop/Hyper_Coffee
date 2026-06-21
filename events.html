@@ -12,25 +12,68 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2B1810">
 
-<!-- ===== INLINE FIX FOR EVENT TEXT COLORS ===== -->
 <style>
-  #event-list .event-card p {
-    color: var(--roast) !important;
+  /* ----- FORCE VISIBILITY ON EVENT CARDS ----- */
+  #event-list .event-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(43,24,16,0.12) !important;
+    border-radius: 16px !important;
+    padding: 1.25rem !important;
+    display: flex !important;
+    gap: 1rem !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
   }
-  #event-list .event-card p:last-of-type {
-    color: var(--roast-soft) !important;
+  #event-list .event-card .event-title {
+    font-weight: 700 !important;
+    margin: 0 0 0.2rem !important;
+    color: #2B1810 !important;
+    font-size: 1rem !important;
   }
   #event-list .event-card .event-time {
-    color: var(--terracotta) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.78rem !important;
+    color: #C4622D !important;
+    margin: 0 0 0.4rem !important;
   }
-  .empty-state {
-    color: var(--roast-soft) !important;
-    opacity: 0.8 !important;
+  #event-list .event-card .event-desc {
+    font-size: 0.88rem !important;
+    color: #4A2E20 !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
   }
-  /* Ensure the date chip text is always visible */
-  .event-date-chip .num,
+  #event-list .empty-state {
+    color: #4A2E20 !important;
+    text-align: center !important;
+    padding: 2rem !important;
+    opacity: 0.7 !important;
+  }
+  .event-date-chip {
+    flex: 0 0 56px !important;
+    height: 56px !important;
+    background: #2B1810 !important;
+    color: #F7EFE3 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'JetBrains Mono', monospace !important;
+  }
+  .event-date-chip .num {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    color: #F7EFE3 !important;
+  }
   .event-date-chip .mon {
-    color: var(--cream) !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    opacity: 0.8 !important;
+    color: #F7EFE3 !important;
+  }
+  #event-list-label {
+    color: #C4622D !important;
   }
 </style>
 </head>
@@ -45,8 +88,8 @@
         <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
       </div>
       <svg width="130" height="26" viewBox="0 0 130 26" style="display:block; margin:-2px auto 0;">
-        <path d="M8,16 Q65,2 122,16" class="brand-curve-line"/>
-        <text class="brand-curve-text" font-size="9">
+        <path d="M8,16 Q65,2 122,16" stroke="var(--terracotta)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <text font-family="'Fraunces', serif" font-size="9" fill="var(--terracotta)" font-weight="500" letter-spacing="2">
           <textPath href="#headerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
@@ -75,12 +118,14 @@
   <a href="/order" style="color:var(--terracotta);">Order online →</a>
 </div>
 
+<!-- ===== HERO ===== -->
 <section style="padding:7.5rem 1.5rem 3rem; max-width:1240px; margin:0 auto;">
   <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">What's on</span></div>
   <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">Events</h1>
   <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Cuppings, ceremonies, and the occasional live set — all hosted in the café.</p>
 </section>
 
+<!-- ===== CALENDAR + EVENT LIST ===== -->
 <section class="wrap" style="max-width:1240px; padding-bottom:3rem; display:grid; grid-template-columns:1fr; gap:2rem;" id="events-layout">
 
   <!-- Calendar -->
@@ -155,12 +200,10 @@
 <script src="assets/site.js"></script>
 <script>
 // ============================================================
-//  EVENTS DATA — Edit this object to add/remove events
+//  EVENTS DATA — Edit this to add/remove events
 // ============================================================
 const EVENTS = {
-  // Test event for today to verify visibility
-  "2026-06-21": { title:"Test Event — Today", time:"All day", desc:"If you can read this, the font color is fixed." },
-  
+  "2026-06-21": { title:"TEST EVENT — Today", time:"All day", desc:"If you can see this, the events page is working!" },
   "2026-07-04": { title:"Cupping & Ceremony", time:"10:00 AM", desc:"Guided tasting + full traditional buna ceremony with our head roaster. Free, limited seats." },
   "2026-06-27": { title:"Live Acoustic Set", time:"7:00 PM", desc:"Local acoustic duo plays the courtyard. No cover, just buy a coffee." },
   "2026-07-11": { title:"Roasting 101 Workshop", time:"11:00 AM", desc:"A hands-on intro to roast curves and tasting, capped at 8 guests." },
@@ -169,7 +212,7 @@ const EVENTS = {
 };
 
 // ============================================================
-//  CALENDAR ENGINE
+//  CALENDAR ENGINE — Do not edit below
 // ============================================================
 let viewDate = new Date(2026, 5, 20);
 const today = new Date(2026, 5, 20);
@@ -217,22 +260,22 @@ function renderEventList(filterIso){
   }
   
   if(!entries.length){
-    list.innerHTML = '<div class="empty-state">No events on this day.</div>';
+    list.innerHTML = '<div class="empty-state">✨ No events on this day.</div>';
     return;
   }
   
   list.innerHTML = entries.map(([iso, ev]) => {
     const d = new Date(iso+'T00:00:00');
     return `
-    <div class="event-card" data-reveal>
+    <div class="event-card">
       <div class="event-date-chip">
         <span class="num">${d.getDate()}</span>
         <span class="mon">${monthAbbrev(d.getMonth())}</span>
       </div>
       <div>
-        <p style="font-weight:700; margin:0 0 0.2rem; color:var(--roast) !important;">${ev.title}</p>
-        <p class="event-time" style="font-family:var(--mono); font-size:0.78rem; color:var(--terracotta) !important; margin:0 0 0.4rem;">${ev.time}</p>
-        <p style="font-size:0.88rem; color:var(--roast-soft) !important; margin:0;">${ev.desc}</p>
+        <p class="event-title">${ev.title}</p>
+        <p class="event-time">${ev.time}</p>
+        <p class="event-desc">${ev.desc}</p>
       </div>
     </div>`;
   }).join('');
@@ -243,6 +286,10 @@ document.getElementById('cal-next').addEventListener('click', () => { viewDate.s
 
 renderCalendar();
 renderEventList(null);
+
+// Debug: log events to console so you can verify they exist
+console.log('Events loaded:', EVENTS);
+console.log('Today is:', isoOf(today.getFullYear(), today.getMonth(), today.getDate()));
 </script>
 </body>
-  </html>
+</html>
