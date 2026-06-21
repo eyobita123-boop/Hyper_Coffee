@@ -14,15 +14,22 @@
 </head>
 <body>
 
-<!-- ===== HEADER (updated) ===== -->
+<!-- ===== HEADER (curved Amharic, no line) ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand">
-      <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
-      <span>
-        Hyper Coffee
-        <span class="brand-sub">መገኛችን</span>
-      </span>
+    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
+        <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
+      </div>
+      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
+        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+          <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+        </text>
+        <defs>
+          <path id="brandCurve" d="M20,20 Q70,8 120,20"/>
+        </defs>
+      </svg>
     </a>
     <nav class="nav-links">
       <a href="/#about">About</a>
@@ -30,6 +37,7 @@
       <a href="/training">Training</a>
       <a href="/events">Events</a>
       <a href="/journal">Journal</a>
+      <a href="/#contact">Contact</a>
       <a href="/order" class="active">Order</a>
       <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
     </nav>
@@ -42,9 +50,11 @@
   <a href="/training">Training</a>
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
+  <a href="/#contact">Contact</a>
   <a href="/order" style="color:var(--terracotta);">Order online</a>
 </div>
 
+<!-- ===== PAGE CONTENT ===== -->
 <section style="padding:7.5rem 1.5rem 2rem; max-width:1240px; margin:0 auto;">
   <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Pickup in 15–20 minutes</span></div>
   <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">Order online</h1>
@@ -57,7 +67,6 @@
     <!-- categories injected by JS -->
   </div>
 
-  <!-- Inline checkout summary for desktop -->
   <aside style="position:relative;">
     <div style="background:#fff; border-radius:20px; border:1px solid var(--line); padding:1.75rem; position:sticky; top:96px;">
       <h3 class="h-display" style="font-size:1.4rem; color:var(--roast); margin:0 0 1rem;">Your order</h3>
@@ -67,7 +76,6 @@
   </aside>
 </section>
 
-<!-- ===== CHECKOUT ===== -->
 <section id="checkout" class="bg-cream-deep" style="padding:5rem 0;">
   <div class="wrap" style="max-width:640px;">
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Last step</span></div>
@@ -88,13 +96,23 @@
   </div>
 </section>
 
-<!-- ===== FOOTER (updated) ===== -->
+<!-- ===== FOOTER (curved Amharic, no line) ===== -->
 <footer class="site-footer">
   <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
-      <div class="brand" style="color:var(--cream);">
-        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
-        Hyper Coffee
+      <div class="brand" style="color:var(--cream); display:flex; flex-direction:column; align-items:flex-start; gap:0; text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:0.65rem;">
+          <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
+          <span style="font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--cream);">Hyper Coffee</span>
+        </div>
+        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0 0 8px;">
+          <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
+            <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+          </text>
+          <defs>
+            <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
+          </defs>
+        </svg>
       </div>
       <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
     </div>
@@ -102,6 +120,7 @@
       <div>
         <p class="h-eyebrow" style="color:var(--gold); margin-bottom:0.75rem;">Explore</p>
         <a href="/order" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Order online</a>
+        <a href="/training" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Training</a>
         <a href="/journal" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Journal</a>
         <a href="/events" style="display:block; margin-bottom:0.5rem; font-size:0.9rem;">Events</a>
       </div>
@@ -115,6 +134,7 @@
   <div class="wrap" style="padding:1.5rem; border-top:1px solid rgba(247,239,227,0.12); font-size:0.8rem; opacity:0.6;">&copy; 2026 Hyper Coffee. All rights reserved.</div>
 </footer>
 
+<!-- ===== CART DRAWER ===== -->
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
 <div id="cart-drawer" class="cart-drawer">
   <div style="padding:1.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
@@ -261,4 +281,4 @@ renderRowControls();
 renderSummary();
 </script>
 </body>
-        </html>
+</html>
