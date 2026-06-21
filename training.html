@@ -1,162 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupping & Barista Training | Hyper Coffee</title>
-  <meta name="description" content="Professional cupping and barista skill trainings at Hyper Coffee, Addis Ababa. Learn coffee production, roasting, latte art, and more." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="assets/style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2B1810">
-  <style>
-    /* ----- Training page specific styles ----- */
-    .curriculum-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .curriculum-item {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-    .curriculum-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px -12px rgba(43,24,16,0.15);
-    }
-    .curriculum-item i {
-      font-size: 1.6rem;
-      color: var(--terracotta);
-      flex: 0 0 2rem;
-      margin-top: 0.2rem;
-    }
-    .curriculum-item h3 {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin: 0 0 0.3rem;
-      color: var(--roast);
-    }
-    .curriculum-item p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: var(--roast-soft);
-      line-height: 1.4;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cupping & Barista Training | Hyper Coffee</title>
+<meta name="description" content="Professional cupping and barista skill trainings at Hyper Coffee, Addis Ababa. Learn coffee production, roasting, latte art, and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="assets/style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2B1810">
+<style>
+  /* ----- Training page specific styles ----- */
+  .curriculum-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .curriculum-item {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .curriculum-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -12px rgba(43,24,16,0.15);
+  }
+  .curriculum-item i {
+    font-size: 1.6rem;
+    color: var(--terracotta);
+    flex: 0 0 2rem;
+    margin-top: 0.2rem;
+  }
+  .curriculum-item h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 0 0.3rem;
+    color: var(--roast);
+  }
+  .curriculum-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--roast-soft);
+    line-height: 1.4;
+  }
+  @media (max-width: 640px) {
+    .curriculum-grid { grid-template-columns: 1fr; }
+  }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .gallery-item {
-      aspect-ratio: 16 / 9;
-      background: var(--cream-deep);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--roast-soft);
-      font-size: 0.85rem;
-      position: relative;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .gallery-item .placeholder-icon {
-      font-size: 2rem;
-      opacity: 0.3;
-    }
-    .gallery-add {
-      border: 2px dashed var(--terracotta);
-      background: transparent;
-      cursor: pointer;
-      transition: background 0.25s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--terracotta);
-      font-weight: 500;
-    }
-    .gallery-add:hover {
-      background: rgba(196, 98, 45, 0.06);
-    }
-    .gallery-add i {
-      font-size: 2.2rem;
-    }
+  /* ----- Gallery styles ----- */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  .gallery-item {
+    aspect-ratio: 16 / 9;
+    background: var(--cream-deep);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px -12px rgba(0,0,0,0.25);
+    z-index: 2;
+  }
+  .gallery-item img,
+  .gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .gallery-item .play-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    color: #fff;
+    font-size: 3.2rem;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+    text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  .gallery-item:hover .play-icon { opacity: 1; }
+  .gallery-item .play-icon i {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  }
+  .gallery-add {
+    border: 2px dashed var(--terracotta);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .gallery-add:hover {
+    background: rgba(196,98,45,0.08);
+    transform: scale(1.02);
+  }
+  .gallery-add i { font-size: 2.4rem; }
 
-    /* Registration form */
-    .training-form {
-      background: #fff;
-      border-radius: 24px;
-      padding: 2.5rem;
-      border: 1px solid var(--line);
-    }
-    .training-form .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .training-form .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .training-form label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--roast);
-    }
-    .training-form input,
-    .training-form select,
-    .training-form textarea {
-      padding: 0.9rem 1.1rem;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      font-family: var(--sans);
-      font-size: 0.95rem;
-      background: var(--cream);
-      transition: border-color 0.25s;
-    }
-    .training-form input:focus,
-    .training-form select:focus,
-    .training-form textarea:focus {
-      border-color: var(--terracotta);
-      outline: none;
-      background: #fff;
-    }
-
-    @media (max-width: 640px) {
-      .curriculum-grid { grid-template-columns: 1fr; }
-      .training-form .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+  /* Modal */
+  .gallery-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.92);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .gallery-modal.open { display: flex; }
+  .gallery-modal #modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  }
+  .gallery-modal #modal-content img,
+  .gallery-modal #modal-content video,
+  .gallery-modal #modal-content iframe {
+    display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border: none;
+  }
+  .gallery-modal .modal-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    line-height: 1;
+  }
+  .gallery-modal .modal-close:hover { opacity: 1; }
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.75rem; }
+    .gallery-item .play-icon { font-size: 2rem; }
+    .gallery-modal #modal-content { max-width: 98vw; max-height: 70vh; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ===== HEADER (updated with Training link) ===== -->
+<!-- ===== HEADER (curved Amharic, no line) ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand">
-      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark">
-      <span>
-        Hyper Coffee
-        <span class="brand-sub">መገኛችን</span>
-      </span>
+    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
+        <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
+      </div>
+      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
+        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+          <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+        </text>
+        <defs>
+          <path id="brandCurve" d="M20,20 Q70,8 120,20"/>
+        </defs>
+      </svg>
     </a>
     <nav class="nav-links">
       <a href="/#about">About</a>
@@ -164,6 +197,7 @@
       <a href="/training" class="active">Training</a>
       <a href="/events">Events</a>
       <a href="/journal">Journal</a>
+      <a href="/#contact">Contact</a>
       <a href="/order" class="btn btn-primary btn-sm">Order online</a>
       <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
     </nav>
@@ -176,6 +210,7 @@
   <a href="/training">Training</a>
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
+  <a href="/#contact">Contact</a>
   <a href="/order" style="color:var(--terracotta);">Order online →</a>
 </div>
 
@@ -218,12 +253,35 @@
       <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.6rem); color:var(--roast);">Gallery</h2>
       <p style="color:var(--roast-soft); margin-bottom:2rem;">Photos and videos from our recent sessions – a glimpse into the experience.</p>
     </div>
-    <div class="gallery-grid" data-reveal>
-      <!-- Placeholder items – replace src with your own images -->
-      <div class="gallery-item"><img src="assets/images/training01.jpg" style="width: 100%; height:275px; object-fit:cover; alt="Training session 1"></div>
-      <div class="gallery-item"><img src="assets/images/training 3.jpg" style="width: 100%; height:215px; object-fit:cover; alt="Training session 2"></div>
-      <div class="gallery-item"><img src="assets/images/training2.jpg" style="width: 100%; height:auto; object-fit:cover; alt="Training session 3"></div>
-      <div class="gallery-item"><img src="assets/images/training5.jpg" style="height:250px; object-fit:cover; alt="Training session 3"></div>
+
+    <div class="gallery-grid" data-reveal id="training-gallery">
+      <!-- Placeholder images (replace with your own) -->
+      <div class="gallery-item" data-type="image" data-src="assets/images/gallery2.jpg">
+        <img src="assets/images/training01.jpg" alt="Coffee cupping session" loading="lazy">
+      </div>
+      <div class="gallery-item" data-type="image" data-src="assets/images/gallery2.jpg">
+        <img src="assets/images/training2.jpg" alt="Barista training" loading="lazy">
+      </div>
+      <div class="gallery-item" data-type="image" data-src="assets/images/gallery2.jpg">
+        <img src="assets/images/training 3.jpg" alt="Latte art practice" loading="lazy">
+      </div>
+
+      <!-- Video placeholder (local) -->
+      <div class="gallery-item video-item" data-type="video" data-src="assets/videos/coffee-cupping.mp4" data-poster="assets/images/video-poster.jpg">
+        <video muted playsinline preload="metadata" poster="assets/images/video-poster.jpg">
+          <source src="assets/images/gallery3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+      </div>
+
+      <!-- YouTube embed example -->
+      <div class="gallery-item video-embed" data-type="youtube" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="YouTube video" loading="lazy">
+        <div class="play-icon"><i class="fab fa-youtube"></i></div>
+      </div>
+
+  
     </div>
   </div>
 </section>
@@ -235,37 +293,34 @@
     <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.6rem); color:var(--roast);">Register for the training</h2>
     <p style="color:var(--roast-soft); margin-bottom:2rem;">Fill in the details below. We’ll confirm your seat and send you all the necessary information.</p>
   </div>
-
-  <form class="training-form" action="https://formspree.io/f/xeeddjzw" method="POST" data-reveal>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="t-name">Full name *</label>
-        <input type="text" id="t-name" name="name" required placeholder="e.g. Jhon Jones">
+  <form class="training-form" action="https://formspree.io/f/xeeddjzw" method="POST" data-reveal style="background:#fff; border-radius:24px; padding:2.5rem; border:1px solid var(--line);">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Full name *</label>
+        <input type="text" name="name" required placeholder="e.g. Esayas Afework" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
-      <div class="form-group">
-        <label for="t-email">Email address *</label>
-        <input type="email" id="t-email" name="email" required placeholder="you@example.com">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="t-phone">Phone number *</label>
-        <input type="tel" id="t-phone" name="phone" required placeholder="+251 9XX XXX XXX">
-      </div>
-      <div class="form-group">
-        <label for="t-date">Preferred start date</label>
-        <input type="date" id="t-date" name="preferred_date">
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Email address *</label>
+        <input type="email" name="email" required placeholder="you@example.com" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
     </div>
-    <div class="form-group">
-      <label for="t-message">Additional notes</label>
-      <textarea id="t-message" name="message" rows="3" placeholder="Any special requests or questions…"></textarea>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1rem;">
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Phone number *</label>
+        <input type="tel" name="phone" required placeholder="+251 9XX XXX XXX" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Preferred start date</label>
+        <input type="date" name="preferred_date" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:1rem;">
+      <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Additional notes</label>
+      <textarea name="message" rows="3" placeholder="Any special requests or questions…" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); resize:vertical;"></textarea>
     </div>
     <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:0.5rem;">Submit registration</button>
     <p style="font-size:0.78rem; color:var(--roast-soft); margin-top:0.5rem;">We’ll contact you within 24 hours to finalise your enrolment. <br> You’ll also receive a WhatsApp confirmation.</p>
   </form>
-
-  <!-- Contact info from brochure -->
   <div style="margin-top:3rem; padding:1.5rem; background:#fff; border-radius:20px; border:1px solid var(--line); text-align:center;" data-reveal>
     <p style="margin:0; font-weight:600;">For immediate assistance, contact our training coordinator:</p>
     <p style="margin:0.5rem 0 0; font-family:var(--mono); color:var(--terracotta);">
@@ -275,13 +330,23 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER (curved Amharic, no line) ===== -->
 <footer class="site-footer">
   <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
-      <div class="brand" style="color:var(--cream);">
-        <img src="https://i.imgur.com/oDSV0HM.png" alt="Hyper Coffee" class="brand-mark">
-        Hyper Coffee
+      <div class="brand" style="color:var(--cream); display:flex; flex-direction:column; align-items:flex-start; gap:0; text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:0.65rem;">
+          <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
+          <span style="font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--cream);">Hyper Coffee</span>
+        </div>
+        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0 0 8px;">
+          <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
+            <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+          </text>
+          <defs>
+            <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
+          </defs>
+        </svg>
       </div>
       <p style="margin-top:0.75rem; max-width:22rem; font-size:0.9rem; opacity:0.75;">Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
     </div>
@@ -314,6 +379,146 @@
   <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
 </div>
 
+<!-- ===== MODAL (Lightbox) ===== -->
+<div id="gallery-modal" class="gallery-modal">
+  <button id="modal-close" class="modal-close">&times;</button>
+  <div id="modal-content"></div>
+</div>
+
 <script src="assets/site.js"></script>
+<script>
+  // ============================================================
+  //  GALLERY INTERACTION (Images, Videos, YouTube)
+  // ============================================================
+  (function() {
+    const modal = document.getElementById('gallery-modal');
+    const modalContent = document.getElementById('modal-content');
+    const closeBtn = document.getElementById('modal-close');
+
+    function createVideoElement(src, poster) {
+      const video = document.createElement('video');
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.poster = poster || '';
+      const source = document.createElement('source');
+      source.src = src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      return video;
+    }
+
+    function openModal(contentEl) {
+      modalContent.innerHTML = '';
+      modalContent.appendChild(contentEl);
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const video = modalContent.querySelector('video');
+      if (video) video.pause();
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modalContent.innerHTML = '';
+    }
+
+    // Click on gallery items (excluding the add button)
+    document.querySelectorAll('.gallery-item:not(.gallery-add)').forEach(item => {
+      item.addEventListener('click', function() {
+        const type = this.dataset.type;
+        const src = this.dataset.src;
+        const poster = this.dataset.poster || '';
+        let el = null;
+
+        if (type === 'image') {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = this.querySelector('img')?.alt || 'Gallery image';
+          el = img;
+        } else if (type === 'video') {
+          el = createVideoElement(src, poster);
+        } else if (type === 'youtube') {
+          const iframe = document.createElement('iframe');
+          const url = new URL(src);
+          url.searchParams.set('autoplay', '1');
+          url.searchParams.set('rel', '0');
+          iframe.src = url.toString();
+          iframe.allow = 'autoplay; encrypted-media';
+          iframe.allowFullscreen = true;
+          iframe.style.width = '100%';
+          iframe.style.aspectRatio = '16/9';
+          el = iframe;
+        }
+
+        if (el) openModal(el);
+      });
+    });
+
+    // Close modal events
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (modal) modal.addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+
+  // ============================================================
+  //  "ADD IMAGE/VIDEO" BUTTON (client-side preview)
+  // ============================================================
+  (function() {
+    const addBtn = document.getElementById('gallery-add-btn');
+    const fileInput = document.getElementById('file-input');
+    const gallery = document.getElementById('training-gallery');
+
+    if (addBtn && fileInput) {
+      addBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', function(e) {
+        const files = Array.from(this.files);
+        files.forEach(file => {
+          const url = URL.createObjectURL(file);
+          const isVideo = file.type.startsWith('video/');
+          const div = document.createElement('div');
+          div.className = 'gallery-item';
+          div.dataset.type = isVideo ? 'video' : 'image';
+          div.dataset.src = url;
+          if (isVideo) {
+            div.dataset.poster = '';
+            const video = document.createElement('video');
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = 'metadata';
+            video.src = url;
+            div.appendChild(video);
+            const icon = document.createElement('div');
+            icon.className = 'play-icon';
+            icon.innerHTML = '<i class="fas fa-play-circle"></i>';
+            div.appendChild(icon);
+          } else {
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = 'Uploaded image';
+            div.appendChild(img);
+          }
+          // Insert before the add button
+          gallery.insertBefore(div, addBtn);
+
+          // Re-bind click event for the new item
+          div.addEventListener('click', function() {
+            const evt = new MouseEvent('click', { bubbles: true });
+            this.dispatchEvent(evt);
+          });
+        });
+        this.value = ''; // reset so same file can be re-added
+      });
+    }
+  })();
+</script>
 </body>
-  </html>
+      </html>
