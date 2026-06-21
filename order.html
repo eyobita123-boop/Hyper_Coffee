@@ -11,19 +11,290 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2B1810">
+
+<style>
+  /* ===== MODERN CARD STYLES FOR ORDER PAGE ===== */
+
+  /* ----- Menu cards ----- */
+  .menu-card-modern {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid rgba(43, 24, 16, 0.06);
+    box-shadow: 0 2px 8px rgba(43, 24, 16, 0.04),
+                0 1px 3px rgba(43, 24, 16, 0.02);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle gradient accent on hover */
+  .menu-card-modern::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212, 165, 55, 0.04), rgba(196, 98, 45, 0.03));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    border-radius: 20px;
+  }
+
+  .menu-card-modern:hover::before {
+    opacity: 1;
+  }
+
+  .menu-card-modern:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 16px 40px -12px rgba(43, 24, 16, 0.18),
+                0 4px 16px -8px rgba(43, 24, 16, 0.06);
+    border-color: rgba(212, 165, 55, 0.2);
+  }
+
+  /* Product info inside card */
+  .menu-card-modern .product-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .menu-card-modern .product-name {
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    font-size: 1.05rem;
+    color: var(--roast);
+    transition: color 0.3s;
+  }
+
+  .menu-card-modern:hover .product-name {
+    color: var(--terracotta);
+  }
+
+  .menu-card-modern .product-desc {
+    font-size: 0.85rem;
+    color: var(--roast-soft);
+    margin: 0 0 0.4rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+  .menu-card-modern:hover .product-desc {
+    opacity: 1;
+  }
+
+  .menu-card-modern .product-price {
+    font-family: var(--mono);
+    color: var(--terracotta);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    background: rgba(196, 98, 45, 0.06);
+    padding: 0.15rem 0.8rem;
+    border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .menu-card-modern:hover .product-price {
+    background: rgba(196, 98, 45, 0.12);
+    color: var(--terracotta-deep);
+  }
+
+  /* ----- Quantity controls inside cards ----- */
+  .menu-card-modern .row-control {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .qty-pill-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    background: var(--cream-deep);
+    border-radius: 999px;
+    padding: 0.2rem 0.3rem;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .menu-card-modern:hover .qty-pill-modern {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(43, 24, 16, 0.08);
+  }
+
+  .qty-pill-modern button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    color: var(--roast);
+  }
+
+  .qty-pill-modern button:hover {
+    transform: scale(1.08);
+    background: var(--terracotta);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(196, 98, 45, 0.3);
+  }
+
+  .qty-pill-modern button:active {
+    transform: scale(0.92);
+  }
+
+  .qty-pill-modern span {
+    min-width: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--roast);
+  }
+
+  /* Add button */
+  .add-btn-modern {
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--terracotta);
+    background: transparent;
+    color: var(--terracotta);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: var(--sans);
+  }
+
+  .add-btn-modern:hover {
+    background: var(--terracotta);
+    color: #fff;
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px -8px rgba(196, 98, 45, 0.4);
+  }
+
+  .add-btn-modern:active {
+    transform: scale(0.95);
+  }
+
+  /* ----- Category headers ----- */
+  .category-header {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--roast);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .category-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--line), transparent);
+  }
+
+  /* ----- Checkout summary card (glass-morphism) ----- */
+  .summary-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(43, 24, 16, 0.08),
+                0 2px 8px rgba(43, 24, 16, 0.04);
+    padding: 1.75rem;
+    position: sticky;
+    top: 96px;
+    transition: box-shadow 0.4s, transform 0.4s;
+  }
+
+  .summary-card:hover {
+    box-shadow: 0 16px 48px -12px rgba(43, 24, 16, 0.16);
+  }
+
+  .summary-card .summary-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--roast);
+    margin: 0 0 1rem;
+  }
+
+  .summary-card .empty-state {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: var(--roast-soft);
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+
+  /* ----- Responsive ----- */
+  @media (max-width: 640px) {
+    .menu-card-modern {
+      padding: 1rem 1.25rem;
+      flex-wrap: wrap;
+    }
+    .menu-card-modern .product-name {
+      font-size: 0.95rem;
+    }
+    .menu-card-modern .product-desc {
+      font-size: 0.8rem;
+    }
+    .menu-card-modern .row-control {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.25rem;
+    }
+    .summary-card {
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+    .category-header {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 960px) {
+    #order-layout {
+      grid-template-columns: 1fr 360px !important;
+      align-items: flex-start;
+    }
+  }
+
+  /* Small animation for adding items */
+  @keyframes cardPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+  }
+
+  .menu-card-modern.added {
+    animation: cardPulse 0.4s ease;
+  }
+</style>
 </head>
 <body>
 
-<!-- ===== HEADER (curved Amharic, no line) ===== -->
+<!-- ===== HEADER (universal with accent button) ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
-      <div style="display:flex; align-items:center; gap:0.65rem;">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
-        <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
+    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
+      <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:clamp(3rem, 8vw, 5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
+        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem, 2.4vw, 1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">Hyper Coffee</span>
       </div>
-      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
-        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
+        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
@@ -38,10 +309,17 @@
       <a href="/events">Events</a>
       <a href="/journal">Journal</a>
       <a href="/#contact">Contact</a>
-      <a href="/order" class="active">Order</a>
-      <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
+      <a href="/order" class="btn btn-accent btn-sm" style="font-family:var(--sans);">
+        <i class="fas fa-coffee" style="font-size:0.85rem;"></i> Order online
+      </a>
+      <button class="nav-cart" data-open-cart aria-label="Open cart">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="cart-badge" style="display:none;">0</span>
+      </button>
     </nav>
-    <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button id="menu-btn" class="menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 <div id="mobile-panel" class="mobile-panel">
@@ -51,7 +329,7 @@
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
   <a href="/#contact">Contact</a>
-  <a href="/order" style="color:var(--terracotta);">Order online</a>
+  <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
 <!-- ===== PAGE CONTENT ===== -->
@@ -63,28 +341,29 @@
 
 <section style="max-width:1240px; margin:0 auto; padding:0 1.5rem 6rem; display:grid; grid-template-columns:1fr; gap:1.5rem;" id="order-layout">
 
-  <div id="menu-list" style="display:flex; flex-direction:column; gap:2.5rem;">
-    <!-- categories injected by JS -->
-  </div>
+  <!-- ===== MENU LIST (injected by JS) ===== -->
+  <div id="menu-list" style="display:flex; flex-direction:column; gap:2.5rem;"></div>
 
+  <!-- ===== CHECKOUT SUMMARY (glass card) ===== -->
   <aside style="position:relative;">
-    <div style="background:#fff; border-radius:20px; border:1px solid var(--line); padding:1.75rem; position:sticky; top:96px;">
-      <h3 class="h-display" style="font-size:1.4rem; color:var(--roast); margin:0 0 1rem;">Your order</h3>
-      <div id="summary-body"><div class="empty-state" style="padding:1.5rem 0;">Nothing yet — add something from the menu.</div></div>
+    <div class="summary-card">
+      <h3 class="summary-title">Your order</h3>
+      <div id="summary-body"><div class="empty-state">Nothing yet — add something from the menu.</div></div>
       <div id="summary-footer" style="margin-top:1rem;"></div>
     </div>
   </aside>
 </section>
 
+<!-- ===== CHECKOUT FORM ===== -->
 <section id="checkout" class="bg-cream-deep" style="padding:5rem 0;">
   <div class="wrap" style="max-width:640px;">
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Last step</span></div>
     <h2 class="h-display" style="font-size:clamp(1.8rem,4vw,2.4rem); color:var(--roast); margin-bottom:1.5rem;">Pickup details</h2>
-    <form id="checkout-form" style="background:#fff; border-radius:20px; padding:2rem; border:1px solid var(--line); display:flex; flex-direction:column; gap:1rem;">
+    <form id="checkout-form" style="background:#fff; border-radius:24px; padding:2rem; border:1px solid var(--line); display:flex; flex-direction:column; gap:1rem; box-shadow:0 4px 24px rgba(43,24,16,0.06);">
       <div id="checkout-order-recap" style="font-family:var(--mono); font-size:0.85rem; color:var(--roast-soft); padding-bottom:1rem; border-bottom:1px solid var(--line);"></div>
-      <input type="text" id="ck-name" required placeholder="Your name" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem;">
-      <input type="tel" id="ck-phone" required placeholder="Phone number" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem;">
-      <select id="ck-time" required style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:#fff;">
+      <input type="text" id="ck-name" required placeholder="Your name" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+      <input type="tel" id="ck-phone" required placeholder="Phone number" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+      <select id="ck-time" required style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
         <option value="">Pickup time</option>
         <option>As soon as possible</option>
         <option>In 30 minutes</option>
@@ -96,7 +375,7 @@
   </div>
 </section>
 
-<!-- ===== FOOTER (curved Amharic, no line) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
@@ -147,6 +426,9 @@
 
 <script src="assets/site.js"></script>
 <script>
+// ============================================================
+//  MENU DATA
+// ============================================================
 const MENU = [
   { category: "Coffee", items: [
     { id:"yirgacheffe", name:"Ethiopian Yirgacheffe", desc:"Floral, citrus, light roast pour-over.", price:120 },
@@ -165,18 +447,26 @@ const MENU = [
   ]},
 ];
 
+function findItem(id){
+  for(const cat of MENU){ const f = cat.items.find(i=>i.id===id); if(f) return f; }
+  return null;
+}
+
+// ============================================================
+//  BUILD MENU UI
+// ============================================================
 function buildMenu(){
   const list = document.getElementById('menu-list');
   list.innerHTML = MENU.map(cat => `
     <div>
-      <h2 class="h-display" style="font-size:1.5rem; color:var(--roast); margin-bottom:1rem;">${cat.category}</h2>
+      <div class="category-header">${cat.category}</div>
       <div style="display:flex; flex-direction:column; gap:0.75rem;">
         ${cat.items.map(item => `
-          <div class="card" style="display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.1rem 1.4rem;" data-item-row="${item.id}">
-            <div style="flex:1;">
-              <p style="font-weight:600; margin:0 0 0.2rem;">${item.name}</p>
-              <p style="font-size:0.85rem; color:var(--roast-soft); margin:0 0 0.4rem;">${item.desc}</p>
-              <span class="price-tag" style="font-size:0.92rem;">${item.price} ETB</span>
+          <div class="menu-card-modern" data-item-row="${item.id}">
+            <div class="product-info">
+              <p class="product-name">${item.name}</p>
+              <p class="product-desc">${item.desc}</p>
+              <span class="product-price">${item.price} ETB</span>
             </div>
             <div class="row-control"></div>
           </div>
@@ -186,11 +476,9 @@ function buildMenu(){
   `).join('');
 }
 
-function findItem(id){
-  for(const cat of MENU){ const f = cat.items.find(i=>i.id===id); if(f) return f; }
-  return null;
-}
-
+// ============================================================
+//  RENDER QUANTITY CONTROLS
+// ============================================================
 async function renderRowControls(){
   await Cart.load();
   const state = Cart.getState();
@@ -200,56 +488,105 @@ async function renderRowControls(){
     const control = row.querySelector('.row-control');
     if(inCart){
       control.innerHTML = `
-        <div class="qty-pill">
+        <div class="qty-pill-modern">
           <button data-dec="${id}" aria-label="Decrease quantity">−</button>
-          <span style="min-width:1rem; text-align:center;">${inCart.qty}</span>
+          <span>${inCart.qty}</span>
           <button data-inc="${id}" aria-label="Increase quantity">+</button>
         </div>`;
     } else {
-      control.innerHTML = `<button class="btn btn-outline btn-sm add-btn" data-add="${id}">Add</button>`;
+      control.innerHTML = `<button class="add-btn-modern" data-add="${id}">Add</button>`;
     }
   });
-  document.querySelectorAll('[data-add]').forEach(b => b.onclick = async () => {
-    const item = findItem(b.dataset.add);
-    await Cart.add({id:item.id, name:item.name, price:item.price});
-    showToast(`${item.name} added`);
-    renderRowControls(); renderSummary();
-    if(window._cartDrawerRender) window._cartDrawerRender();
+
+  // Add button handlers
+  document.querySelectorAll('[data-add]').forEach(b => {
+    b.onclick = async (e) => {
+      const item = findItem(b.dataset.add);
+      await Cart.add({id:item.id, name:item.name, price:item.price});
+      showToast(`${item.name} added`);
+      const card = b.closest('.menu-card-modern');
+      card.classList.add('added');
+      setTimeout(() => card.classList.remove('added'), 400);
+      renderRowControls();
+      renderSummary();
+      if(window._cartDrawerRender) window._cartDrawerRender();
+    };
   });
-  document.querySelectorAll('[data-inc]').forEach(b => b.onclick = async () => {
-    const item = state.items.find(i=>i.id===b.dataset.inc);
-    await Cart.setQty(item.id, item.qty+1);
-    renderRowControls(); renderSummary();
-    if(window._cartDrawerRender) window._cartDrawerRender();
+
+  document.querySelectorAll('[data-inc]').forEach(b => {
+    b.onclick = async () => {
+      const item = state.items.find(i=>i.id===b.dataset.inc);
+      await Cart.setQty(item.id, item.qty+1);
+      renderRowControls();
+      renderSummary();
+      if(window._cartDrawerRender) window._cartDrawerRender();
+    };
   });
-  document.querySelectorAll('[data-dec]').forEach(b => b.onclick = async () => {
-    const item = state.items.find(i=>i.id===b.dataset.dec);
-    await Cart.setQty(item.id, item.qty-1);
-    renderRowControls(); renderSummary();
-    if(window._cartDrawerRender) window._cartDrawerRender();
+
+  document.querySelectorAll('[data-dec]').forEach(b => {
+    b.onclick = async () => {
+      const item = state.items.find(i=>i.id===b.dataset.dec);
+      if(item.qty <= 1){
+        await Cart.setQty(item.id, 0);
+      } else {
+        await Cart.setQty(item.id, item.qty-1);
+      }
+      renderRowControls();
+      renderSummary();
+      if(window._cartDrawerRender) window._cartDrawerRender();
+    };
   });
 }
 
+// ============================================================
+//  RENDER SUMMARY
+// ============================================================
 async function renderSummary(){
   await Cart.load();
   const items = Cart.getState().items;
   const body = document.getElementById('summary-body');
   const footer = document.getElementById('summary-footer');
   const recap = document.getElementById('checkout-order-recap');
+
   if(!items.length){
-    body.innerHTML = '<div class="empty-state" style="padding:1.5rem 0;">Nothing yet — add something from the menu.</div>';
+    body.innerHTML = '<div class="empty-state">Nothing yet — add something from the menu.</div>';
     footer.innerHTML = '';
     recap.innerHTML = 'Your cart is empty.';
     document.getElementById('ck-submit').disabled = true;
     return;
   }
+
   document.getElementById('ck-submit').disabled = false;
-  const rows = items.map(i => `<div style="display:flex; justify-content:space-between; font-size:0.88rem; padding:0.4rem 0;"><span>${i.qty}× ${i.name}</span><span class="price-tag" style="font-size:0.85rem;">${i.price*i.qty} ETB</span></div>`).join('');
+
+  const rows = items.map(i => `
+    <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--line);">
+      <span><span style="font-weight:600;">${i.qty}×</span> ${i.name}</span>
+      <span class="price-tag" style="font-size:0.85rem;">${i.price*i.qty} ETB</span>
+    </div>
+  `).join('');
+
   body.innerHTML = rows;
-  footer.innerHTML = `<div style="display:flex; justify-content:space-between; padding-top:0.75rem; border-top:1px solid var(--line); font-weight:600;"><span>Total</span><span class="price-tag" style="font-size:1.2rem;">${Cart.total()} ETB</span></div><a href="/order#checkout" class="btn btn-primary" style="width:100%; margin-top:1rem;">Checkout</a>`;
-  recap.innerHTML = rows + `<div style="display:flex; justify-content:space-between; padding-top:0.5rem; font-weight:600; color:var(--roast);"><span>Total</span><span>${Cart.total()} ETB</span></div>`;
+  footer.innerHTML = `
+    <div style="display:flex; justify-content:space-between; padding-top:0.75rem; margin-top:0.25rem; border-top:2px solid var(--line); font-weight:600;">
+      <span style="font-size:1rem;">Total</span>
+      <span class="price-tag" style="font-size:1.3rem; color:var(--roast);">${Cart.total()} ETB</span>
+    </div>
+    <a href="/order#checkout" class="btn btn-accent" style="width:100%; margin-top:1.25rem; text-align:center; font-size:0.95rem;">
+      Proceed to checkout <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i>
+    </a>
+  `;
+
+  recap.innerHTML = rows + `
+    <div style="display:flex; justify-content:space-between; padding-top:0.75rem; font-weight:600; color:var(--roast); border-top:2px solid var(--line); margin-top:0.5rem;">
+      <span>Total</span>
+      <span>${Cart.total()} ETB</span>
+    </div>
+  `;
 }
 
+// ============================================================
+//  CHECKOUT FORM
+// ============================================================
 document.getElementById('checkout-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const name = document.getElementById('ck-name').value.trim();
@@ -258,27 +595,31 @@ document.getElementById('checkout-form').addEventListener('submit', async (e) =>
   if (!name || !phone || !time) return;
   const items = Cart.getState().items;
   if (!items.length) return;
-  
+
   let msg = `*New Order from ${name}*\n\n`;
   items.forEach(i => msg += `- ${i.qty}× ${i.name}  ${i.price*i.qty} ETB\n`);
   msg += `\n*Total:* ${Cart.total()} ETB\n`;
   msg += `*Pickup time:* ${time}\n`;
   msg += `*Phone:* ${phone}`;
-  
+
   const encoded = encodeURIComponent(msg);
   const waUrl = `https://wa.me/251940887089?text=${encoded}`;
-  
+
   await Cart.clear();
   showToast(`Order sent, ${name.split(' ')[0]}! Redirecting to WhatsApp…`, 3000);
-  renderRowControls(); renderSummary();
+  renderRowControls();
+  renderSummary();
   if(window._cartDrawerRender) window._cartDrawerRender();
-  
+
   setTimeout(() => window.open(waUrl, '_blank'), 400);
 });
 
+// ============================================================
+//  INIT
+// ============================================================
 buildMenu();
 renderRowControls();
 renderSummary();
 </script>
 </body>
-</html>
+  </html>
