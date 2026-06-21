@@ -11,9 +11,8 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2B1810">
-
 <style>
-  /* ----- FORCE VISIBILITY ON EVENT CARDS ----- */
+  /* Force visibility for event cards */
   #event-list .event-card {
     background: #ffffff !important;
     border: 1px solid rgba(43,24,16,0.12) !important;
@@ -21,13 +20,11 @@
     padding: 1.25rem !important;
     display: flex !important;
     gap: 1rem !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
   }
   #event-list .event-card .event-title {
     font-weight: 700 !important;
     margin: 0 0 0.2rem !important;
     color: #2B1810 !important;
-    font-size: 1rem !important;
   }
   #event-list .event-card .event-time {
     font-family: 'JetBrains Mono', monospace !important;
@@ -39,47 +36,15 @@
     font-size: 0.88rem !important;
     color: #4A2E20 !important;
     margin: 0 !important;
-    line-height: 1.4 !important;
   }
-  #event-list .empty-state {
-    color: #4A2E20 !important;
-    text-align: center !important;
-    padding: 2rem !important;
-    opacity: 0.7 !important;
-  }
-  .event-date-chip {
-    flex: 0 0 56px !important;
-    height: 56px !important;
-    background: #2B1810 !important;
+  .event-date-chip .num, .event-date-chip .mon {
     color: #F7EFE3 !important;
-    border-radius: 12px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-family: 'JetBrains Mono', monospace !important;
-  }
-  .event-date-chip .num {
-    font-size: 1.3rem !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    color: #F7EFE3 !important;
-  }
-  .event-date-chip .mon {
-    font-size: 0.62rem !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    opacity: 0.8 !important;
-    color: #F7EFE3 !important;
-  }
-  #event-list-label {
-    color: #C4622D !important;
   }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ===== HEADER (curved Amharic, no line) ===== -->
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
@@ -87,13 +52,12 @@
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
         <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
       </div>
-      <svg width="130" height="26" viewBox="0 0 130 26" style="display:block; margin:-2px auto 0;">
-        <path d="M8,16 Q65,2 122,16" stroke="var(--terracotta)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.7"/>
-        <text font-family="'Fraunces', serif" font-size="9" fill="var(--terracotta)" font-weight="500" letter-spacing="2">
-          <textPath href="#headerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
+        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+          <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
-          <path id="headerCurve" d="M15,20 Q65,10 115,20"/>
+          <path id="brandCurve" d="M20,20 Q70,8 120,20"/>
         </defs>
       </svg>
     </a>
@@ -103,6 +67,7 @@
       <a href="/training">Training</a>
       <a href="/events" class="active">Events</a>
       <a href="/journal">Journal</a>
+      <a href="/#contact">Contact</a>
       <a href="/order" class="btn btn-primary btn-sm">Order online</a>
       <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
     </nav>
@@ -115,20 +80,17 @@
   <a href="/training">Training</a>
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
+  <a href="/#contact">Contact</a>
   <a href="/order" style="color:var(--terracotta);">Order online →</a>
 </div>
 
-<!-- ===== HERO ===== -->
 <section style="padding:7.5rem 1.5rem 3rem; max-width:1240px; margin:0 auto;">
   <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">What's on</span></div>
   <h1 class="h-display" style="font-size:clamp(2.2rem,5vw,3.4rem); color:var(--roast);">Events</h1>
   <p class="body-lg" style="color:var(--roast-soft); max-width:36rem; margin-top:0.75rem;">Cuppings, ceremonies, and the occasional live set — all hosted in the café.</p>
 </section>
 
-<!-- ===== CALENDAR + EVENT LIST ===== -->
 <section class="wrap" style="max-width:1240px; padding-bottom:3rem; display:grid; grid-template-columns:1fr; gap:2rem;" id="events-layout">
-
-  <!-- Calendar -->
   <div data-reveal style="background:#fff; border-radius:22px; border:1px solid var(--line); padding:1.75rem;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
       <button id="cal-prev" aria-label="Previous month" class="btn btn-outline btn-sm" style="padding:0.5rem 0.9rem;"><i class="fas fa-chevron-left"></i></button>
@@ -140,15 +102,13 @@
     </div>
     <div id="cal-grid" style="display:grid; grid-template-columns:repeat(7,1fr); gap:4px;"></div>
   </div>
-
-  <!-- Event list -->
   <div>
     <h3 class="h-eyebrow" style="margin-bottom:1rem; color:var(--terracotta) !important;" id="event-list-label">Upcoming</h3>
     <div id="event-list" style="display:flex; flex-direction:column; gap:1rem;"></div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER (curved Amharic, no line) ===== -->
 <footer class="site-footer">
   <div class="wrap footer-grid" style="padding:3.5rem 1.5rem 2rem; display:grid; grid-template-columns:1fr; gap:2.5rem;">
     <div>
@@ -158,12 +118,11 @@
           <span style="font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--cream);">Hyper Coffee</span>
         </div>
         <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0 0 8px;">
-          <path d="M8,18 Q70,2 132,18" stroke="var(--gold)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <text font-family="'Fraunces', serif" font-size="10" fill="var(--gold)" font-weight="500" letter-spacing="2">
-            <textPath href="#curveFooter" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+          <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
+            <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
           </text>
           <defs>
-            <path id="curveFooter" d="M15,22 Q70,12 125,22"/>
+            <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
           </defs>
         </svg>
       </div>
@@ -199,9 +158,6 @@
 
 <script src="assets/site.js"></script>
 <script>
-// ============================================================
-//  EVENTS DATA — Edit this to add/remove events
-// ============================================================
 const EVENTS = {
   "2026-06-21": { title:"TEST EVENT — Today", time:"All day", desc:"If you can see this, the events page is working!" },
   "2026-07-04": { title:"Cupping & Ceremony", time:"10:00 AM", desc:"Guided tasting + full traditional buna ceremony with our head roaster. Free, limited seats." },
@@ -211,9 +167,6 @@ const EVENTS = {
   "2026-08-01": { title:"Cupping & Ceremony", time:"10:00 AM", desc:"Our monthly guided tasting and buna ceremony." },
 };
 
-// ============================================================
-//  CALENDAR ENGINE — Do not edit below
-// ============================================================
 let viewDate = new Date(2026, 5, 20);
 const today = new Date(2026, 5, 20);
 
@@ -236,7 +189,6 @@ function renderCalendar(){
     html += `<div class="cal-day ${hasEvent?'has-event':''} ${isToday?'today':''}" data-iso="${iso}" tabindex="0" role="button">${d}${hasEvent?'<span class="dot"></span>':''}</div>`;
   }
   grid.innerHTML = html;
-  
   grid.querySelectorAll('.cal-day.has-event').forEach(el => {
     el.addEventListener('click', () => renderEventList(el.dataset.iso));
     el.addEventListener('keydown', (e) => { if(e.key==='Enter') renderEventList(el.dataset.iso); });
@@ -246,9 +198,7 @@ function renderCalendar(){
 function renderEventList(filterIso){
   const label = document.getElementById('event-list-label');
   const list = document.getElementById('event-list');
-  
   let entries = Object.entries(EVENTS).sort((a,b)=> a[0] < b[0] ? -1 : 1);
-  
   if(filterIso){
     entries = entries.filter(([iso]) => iso === filterIso);
     const d = new Date(filterIso + 'T00:00:00');
@@ -258,12 +208,10 @@ function renderEventList(filterIso){
     entries = entries.filter(([iso]) => iso >= todayIso);
     label.textContent = 'Upcoming';
   }
-  
   if(!entries.length){
     list.innerHTML = '<div class="empty-state">✨ No events on this day.</div>';
     return;
   }
-  
   list.innerHTML = entries.map(([iso, ev]) => {
     const d = new Date(iso+'T00:00:00');
     return `
@@ -286,10 +234,7 @@ document.getElementById('cal-next').addEventListener('click', () => { viewDate.s
 
 renderCalendar();
 renderEventList(null);
-
-// Debug: log events to console so you can verify they exist
 console.log('Events loaded:', EVENTS);
-console.log('Today is:', isoOf(today.getFullYear(), today.getMonth(), today.getDate()));
 </script>
 </body>
-</html>
+  </html>
