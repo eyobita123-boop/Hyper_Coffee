@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ----- Training page specific styles (enhanced) ----- */
+    /* ----- Training page specific styles ----- */
     .curriculum-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -58,7 +58,7 @@
       .curriculum-grid { grid-template-columns: 1fr; }
     }
 
-    /* ----- Registration form (refined) ----- */
+    /* ----- Registration form ----- */
     .training-form input:focus,
     .training-form textarea:focus,
     .training-form select:focus {
@@ -66,11 +66,180 @@
       box-shadow: 0 0 0 3px var(--terracotta-glow) !important;
       background: #fff !important;
     }
+
+    /* ----- Masonry gallery (stable) ----- */
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 1.25rem;
+      max-width: 1240px;
+      margin: 0 auto;
+      transition: none;
+    }
+
+    .masonry-grid .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .masonry-grid .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .masonry-grid .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .masonry-grid .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .masonry-grid .gallery-item .play-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.2);
+      color: #fff;
+      font-size: 3rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+    }
+    .masonry-grid .gallery-item:hover .play-icon {
+      opacity: 1;
+    }
+
+    .masonry-grid .gallery-add {
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+      border: 2px dashed var(--terracotta);
+      background: transparent;
+      border-radius: 16px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--terracotta);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 3rem 1rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+      min-height: 180px;
+    }
+    .masonry-grid .gallery-add:hover {
+      background: rgba(196, 98, 45, 0.06);
+      transform: scale(1.02);
+    }
+    .masonry-grid .gallery-add i {
+      font-size: 2.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .masonry-grid { column-count: 2; column-gap: 0.75rem; }
+      .masonry-grid .gallery-item,
+      .masonry-grid .gallery-add { margin-bottom: 0.75rem; }
+    }
+    @media (max-width: 480px) {
+      .masonry-grid { column-count: 1; max-width: 420px; }
+    }
+
+    /* ----- Lightbox modal (video fixed) ----- */
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+    .gallery-modal.open { display: flex; }
+
+    .gallery-modal #modal-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      cursor: default;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    .gallery-modal #modal-content img,
+    .gallery-modal #modal-content video,
+    .gallery-modal #modal-content iframe {
+      display: block;
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border: none;
+      object-fit: contain;
+    }
+
+    /* Force video to take proper size */
+    .gallery-modal #modal-content video {
+      width: 100%;
+      height: 100%;
+      max-height: 90vh;
+      background: #000;
+    }
+
+    .gallery-modal .modal-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 3rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      z-index: 1000;
+      line-height: 1;
+    }
+    .gallery-modal .modal-close:hover { opacity: 1; }
+
+    @media (max-width: 640px) {
+      .gallery-modal #modal-content { max-width: 98vw; max-height: 70vh; }
+    }
+
+    /* Fix masonry reflow after modal close */
+    .masonry-grid.reflow {
+      opacity: 0.999;
+      transform: scale(1);
+    }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER (premium with Amharic) ===== -->
+<!-- ===== HEADER (premium) ===== -->
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
@@ -81,7 +250,7 @@
           Hyper Coffee
         </span>
       </div>
-      <!-- Amharic signature (preserved) -->
+      <!-- Amharic -->
       <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" 
            viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
         <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" 
@@ -142,6 +311,7 @@
     <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.6rem); color:var(--roast);">Comprehensive coffee education</h2>
   </div>
   <div class="curriculum-grid" data-reveal>
+    <!-- items here -->
     <div class="curriculum-item"><i class="fas fa-seedling"></i><div><h3>Production & Processing</h3><p>From cherry to green bean – understanding the journey.</p></div></div>
     <div class="curriculum-item"><i class="fas fa-chart-line"></i><div><h3>Value Chain & Marketing</h3><p>How coffee moves from farm to cup, and how to position it.</p></div></div>
     <div class="curriculum-item"><i class="fas fa-search"></i><div><h3>Green Coffee Evaluation</h3><p>Grading, cupping, and quality assessment techniques.</p></div></div>
@@ -154,7 +324,7 @@
   </div>
 </section>
 
-<!-- ===== MASONRY GALLERY ===== -->
+<!-- ===== MASONRY GALLERY (STABLE) ===== -->
 <section class="bg-cream-deep" style="padding:5rem 0;">
   <div class="wrap" style="max-width:1240px;">
     <div data-reveal>
@@ -163,38 +333,44 @@
       <p style="color:var(--roast-soft); margin-bottom:2rem;">Photos and videos from our recent sessions – a glimpse into the experience.</p>
     </div>
 
-    <!-- Masonry Grid -->
     <div class="masonry-grid" data-reveal id="training-gallery">
-      <!-- Image 1 -->
+      <!-- Images -->
       <div class="gallery-item" data-type="image" data-src="assets/images/training01.jpg">
-        <img src="assets/images/training01.jpg" alt="Coffee cupping session" loading="lazy">
+        <img src="assets/images/training01.jpg" alt="Coffee cupping" loading="lazy">
       </div>
-      <!-- Image 2 -->
       <div class="gallery-item" data-type="image" data-src="assets/images/training2.jpg">
         <img src="assets/images/training2.jpg" alt="Barista training" loading="lazy">
       </div>
-      <!-- Image 3 -->
       <div class="gallery-item" data-type="image" data-src="assets/images/training 3.jpg">
-        <img src="assets/images/training 3.jpg" alt="Latte art practice" loading="lazy">
+        <img src="assets/images/training 3.jpg" alt="Latte art" loading="lazy">
       </div>
 
       <!-- Video (local) -->
-      <div class="gallery-item video-item" data-type="video" data-src="assets/images/gallery3.mp4" data-poster="assets/images/training5.jpg">
+      <div class="gallery-item video-item" data-type="video" data-src="assets/videos/coffee-cupping.mp4" data-poster="assets/images/training5.jpg">
         <video muted playsinline preload="metadata" poster="assets/images/training5.jpg">
-          <source src="assets/images/gallery3.mp4" type="video/mp4">
+          <source src="assets/videos/coffee-cupping.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
       </div>
 
-      <!-- YouTube embed (fixed) -->
+      <!-- YouTube -->
       <div class="gallery-item video-embed" data-type="youtube" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0">
-        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="YouTube video" loading="lazy">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="YouTube" loading="lazy">
         <div class="play-icon"><i class="fab fa-youtube"></i></div>
       </div>
+
+      <!-- Add button -->
+      <div class="gallery-add" id="gallery-add-btn">
+        <i class="fas fa-plus"></i>
+        <span>Add image / video</span>
+        <input type="file" accept="image/*,video/*" multiple style="display:none;" id="file-input">
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== REGISTRATION FORM ===== -->
+<!-- ===== REGISTRATION ===== -->
 <section id="register" class="wrap" style="max-width:860px; padding:5rem 1.5rem;">
   <div data-reveal>
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Secure your spot</span></div>
@@ -205,50 +381,48 @@
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
         <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Full name *</label>
-        <input type="text" name="name" required placeholder="e.g. Esayas Afework" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+        <input type="text" name="name" required placeholder="e.g. Esayas Afework" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
         <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Email address *</label>
-        <input type="email" name="email" required placeholder="you@example.com" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+        <input type="email" name="email" required placeholder="you@example.com" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1rem;">
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
         <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Phone number *</label>
-        <input type="tel" name="phone" required placeholder="+251 9XX XXX XXX" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+        <input type="tel" name="phone" required placeholder="+251 9XX XXX XXX" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
         <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Preferred start date</label>
-        <input type="date" name="preferred_date" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); transition:border-color 0.3s, box-shadow 0.3s;">
+        <input type="date" name="preferred_date" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream);">
       </div>
     </div>
     <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:1rem;">
       <label style="font-weight:600; font-size:0.9rem; color:var(--roast);">Additional notes</label>
-      <textarea name="message" rows="3" placeholder="Any special requests or questions…" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); resize:vertical; transition:border-color 0.3s, box-shadow 0.3s;"></textarea>
+      <textarea name="message" rows="3" placeholder="Any special requests…" style="padding:0.9rem 1.1rem; border-radius:12px; border:1px solid var(--line); font-family:var(--sans); font-size:0.95rem; background:var(--cream); resize:vertical;"></textarea>
     </div>
     <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:0.5rem;">Submit registration</button>
-    <p style="font-size:0.78rem; color:var(--roast-soft); margin-top:0.5rem;">We’ll contact you within 24 hours to finalise your enrolment. <br> You’ll also receive a WhatsApp confirmation.</p>
+    <p style="font-size:0.78rem; color:var(--roast-soft); margin-top:0.5rem;">We’ll contact you within 24 hours. You’ll also receive a WhatsApp confirmation.</p>
   </form>
   <div style="margin-top:3rem; padding:1.5rem; background:#fff; border-radius:20px; border:1px solid var(--line); text-align:center; box-shadow:var(--shadow-sm);" data-reveal>
     <p style="margin:0; font-weight:600;">For immediate assistance, contact our training coordinator:</p>
     <p style="margin:0.5rem 0 0; font-family:var(--mono); color:var(--terracotta);">
       <i class="fas fa-phone"></i> Esayas Afework – 0935 622 010
     </p>
-    <p style="margin:0.2rem 0 0; font-size:0.85rem; color:var(--roast-soft);">or register via Telegram: <a href="https://t.me/esayasafework" target="_blank" style="color:var(--terracotta); text-decoration:underline;">@esayasafework</a></p>
+    <p style="margin:0.2rem 0 0; font-size:0.85rem; color:var(--roast-soft);">or via Telegram: <a href="https://t.me/esayasafework" target="_blank" style="color:var(--terracotta); text-decoration:underline;">@esayasafework</a></p>
   </div>
 </section>
 
-<!-- ===== ENHANCED FOOTER (with Amharic) ===== -->
+<!-- ===== ENHANCED FOOTER ===== -->
 <footer class="footer-enhanced">
   <div class="wrap">
     <div class="footer-grid">
-      <!-- Brand + Social -->
       <div class="footer-brand">
         <div class="brand-row">
           <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:44px; height:44px;">
           <span class="brand-name">Hyper Coffee</span>
         </div>
-        <!-- Amharic signature in footer (preserved) -->
         <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0;">
           <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
             <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
@@ -266,8 +440,6 @@
           <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-
-      <!-- Quick Links -->
       <div class="footer-links">
         <h4>Explore</h4>
         <a href="/order">Order online</a>
@@ -277,8 +449,6 @@
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
       </div>
-
-      <!-- Newsletter -->
       <div class="footer-newsletter">
         <h4>Stay caffeinated</h4>
         <p>Subscribe for updates on new roasts, events, and brewing tips.</p>
@@ -287,8 +457,6 @@
           <button type="submit" class="btn-subscribe">Subscribe</button>
         </form>
       </div>
-
-      <!-- Location + Map -->
       <div>
         <div class="footer-links">
           <h4>Visit us</h4>
@@ -315,7 +483,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>&copy; 2026 Hyper Coffee. All rights reserved.</span>
       <span>Built with <i class="fas fa-heart" style="color:var(--terracotta);"></i> in Addis Ababa</span>
@@ -334,7 +501,7 @@
   <div id="cart-drawer-footer" style="padding:1.5rem; border-top:1px solid var(--line);"></div>
 </div>
 
-<!-- ===== MODAL (Lightbox) ===== -->
+<!-- ===== LIGHTBOX MODAL ===== -->
 <div id="gallery-modal" class="gallery-modal">
   <button id="modal-close" class="modal-close">&times;</button>
   <div id="modal-content"></div>
@@ -343,12 +510,13 @@
 <script src="assets/site.js"></script>
 <script>
   // ============================================================
-  //  GALLERY INTERACTION (Images, Videos, YouTube)
+  //  GALLERY INTERACTION (Images, Videos, YouTube) – FIXED
   // ============================================================
   (function() {
     const modal = document.getElementById('gallery-modal');
     const modalContent = document.getElementById('modal-content');
     const closeBtn = document.getElementById('modal-close');
+    const galleryGrid = document.getElementById('training-gallery');
 
     function createVideoElement(src, poster) {
       const video = document.createElement('video');
@@ -356,10 +524,18 @@
       video.autoplay = true;
       video.playsInline = true;
       video.poster = poster || '';
+      // Ensure video takes full space
+      video.style.width = '100%';
+      video.style.height = 'auto';
+      video.style.maxHeight = '90vh';
+      video.style.objectFit = 'contain';
+      video.style.background = '#000';
       const source = document.createElement('source');
       source.src = src;
       source.type = 'video/mp4';
       video.appendChild(source);
+      // Fallback text
+      video.innerHTML += 'Your browser does not support the video tag.';
       return video;
     }
 
@@ -371,21 +547,27 @@
     }
 
     function closeModal() {
+      // Pause any video
       const video = modalContent.querySelector('video');
       if (video) video.pause();
       modal.classList.remove('open');
       document.body.style.overflow = '';
       modalContent.innerHTML = '';
+      // Force masonry reflow to fix stacking
+      if (galleryGrid) {
+        galleryGrid.classList.add('reflow');
+        requestAnimationFrame(() => {
+          galleryGrid.classList.remove('reflow');
+        });
+      }
     }
 
     // Click on gallery items (excluding the add button)
     document.querySelectorAll('.masonry-grid .gallery-item:not(.gallery-add)').forEach(item => {
       item.addEventListener('click', function(e) {
-        // Prevent if clicking on a video play button that might bubble
         if (e.target.closest('.play-icon')) return;
-        
         const type = this.dataset.type;
-        const src = this.dataset.src;
+        let src = this.dataset.src;
         const poster = this.dataset.poster || '';
         let el = null;
 
@@ -393,15 +575,18 @@
           const img = document.createElement('img');
           img.src = src;
           img.alt = this.querySelector('img')?.alt || 'Gallery image';
+          img.style.width = '100%';
+          img.style.height = 'auto';
           el = img;
         } else if (type === 'video') {
           el = createVideoElement(src, poster);
         } else if (type === 'youtube') {
           const iframe = document.createElement('iframe');
-          const url = new URL(src);
-          url.searchParams.set('autoplay', '1');
-          url.searchParams.set('rel', '0');
-          iframe.src = url.toString();
+          // Ensure autoplay is set
+          if (!src.includes('autoplay=1')) {
+            src += (src.includes('?') ? '&' : '?') + 'autoplay=1&rel=0';
+          }
+          iframe.src = src;
           iframe.allow = 'autoplay; encrypted-media';
           iframe.allowFullscreen = true;
           iframe.style.width = '100%';
@@ -475,10 +660,10 @@
             this.dispatchEvent(evt);
           });
         });
-        this.value = ''; // reset so same file can be re-added
+        this.value = '';
       });
     }
   })();
 </script>
 </body>
-                                                                                             </html>
+                                                   </html>
