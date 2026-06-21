@@ -336,21 +336,61 @@
 </section>
 
 <!-- ===== GALLERY ===== -->
+<!-- ===== GALLERY (Masonry) ===== -->
 <section id="gallery" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap">
-    <div data-reveal class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Inside the café</span></div>
+    <div data-reveal class="eyebrow-line" style="justify-content:center;">
+      <span class="rule"></span>
+      <span class="h-eyebrow">Inside the café</span>
+    </div>
     <h2 data-reveal class="h-display" style="text-align:center; font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-bottom:2.5rem;">Gallery</h2>
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1rem;" class="gallery-grid">
-      <a href="#img1" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/gallery2.jpg" alt="Coffee being poured" style="width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img2" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/hyperlogo.png" alt="Café interior" style="width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img3" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/gallery2.jpg" alt="Latte art" style="width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
-      <a href="#img4" data-reveal style="border-radius:14px; overflow:hidden;"><img src="assets/images/hyperlogo.png" alt="Coffee beans" style="width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"></a>
+
+    <!-- Masonry Grid -->
+    <div class="masonry-grid" data-reveal>
+      <!-- Item 1 -->
+      <a href="#img1" class="gallery-item">
+        <img src="assets/images/gallery2.jpg" alt="Coffee being poured" loading="lazy">
+      </a>
+      <!-- Item 2 -->
+      <a href="#img2" class="gallery-item">
+        <img src="assets/images/hyperlogo.png" alt="Café interior" loading="lazy">
+      </a>
+      <!-- Item 3 -->
+      <a href="#img3" class="gallery-item">
+        <img src="assets/images/gallery2.jpg" alt="Latte art" loading="lazy">
+      </a>
+      <!-- Item 4 -->
+      <a href="#img4" class="gallery-item">
+        <img src="assets/images/hyperlogo.png" alt="Coffee beans" loading="lazy">
+      </a>
+      <!-- Item 5 (extra for masonry flow) -->
+      <a href="#img1" class="gallery-item">
+        <img src="assets/images/gallery2.jpg" alt="Barista at work" loading="lazy">
+      </a>
+      <!-- Item 6 -->
+      <a href="#img2" class="gallery-item">
+        <img src="assets/images/hyperlogo.png" alt="Coffee tasting" loading="lazy">
+      </a>
     </div>
   </div>
-  <div id="img1" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/gallery2.jpg" alt=""></div>
-  <div id="img2" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/hyperlogo.png" alt=""></div>
-  <div id="img3" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/gallery2.jpg" alt=""></div>
-  <div id="img4" class="lightbox"><a href="#gallery" style="position:absolute; inset:0;"></a><img src="assets/images/hyperlogo.png" alt=""></div>
+
+  <!-- Lightboxes -->
+  <div id="img1" class="lightbox">
+    <a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a>
+    <img src="assets/images/gallery2.jpg" alt="Coffee being poured" style="position:relative; z-index:2;">
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a>
+    <img src="assets/images/hyperlogo.png" alt="Café interior" style="position:relative; z-index:2;">
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a>
+    <img src="assets/images/gallery2.jpg" alt="Latte art" style="position:relative; z-index:2;">
+  </div>
+  <div id="img4" class="lightbox">
+    <a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a>
+    <img src="assets/images/hyperlogo.png" alt="Coffee beans" style="position:relative; z-index:2;">
+  </div>
 </section>
 
 <!-- ===== TRAINING TEASER ===== -->
