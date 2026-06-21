@@ -75,17 +75,25 @@
 </head>
 <body>
 
-<!-- ===== HEADER (curved Amharic, no line) ===== -->
+<<!-- ===== HEADER with transparency, blur, and accent button ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none;">
-      <div style="display:flex; align-items:center; gap:0.65rem;">
+    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
+
+      <!-- Logo + text row -->
+      <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" 
-     style="width:clamp(3.5rem, 10vw, 7rem); height:auto; flex-shrink:0; margin-top:4px;">
-        <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
+             style="width:clamp(3rem, 8vw, 5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
+        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem, 2.4vw, 1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">
+          Hyper Coffee
+        </span>
       </div>
-      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
-        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+
+      <!-- Curved Amharic signature -->
+      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" 
+           viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
+        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" 
+              fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
@@ -93,17 +101,26 @@
         </defs>
       </svg>
     </a>
+
+    <!-- NAVIGATION with ACCENT BUTTON -->
     <nav class="nav-links">
       <a href="/#about">About</a>
       <a href="/#menu">Menu</a>
       <a href="/training">Training</a>
-      <a href="/events" class="active">Events</a>
+      <a href="/events">Events</a>
       <a href="/journal">Journal</a>
       <a href="/#contact">Contact</a>
-      <a href="/order" class="btn btn-primary btn-sm">Order online</a>
-      <button class="nav-cart" data-open-cart aria-label="Open cart"><i class="fas fa-bag-shopping"></i><span class="cart-badge" style="display:none;">0</span></button>
+      <a href="/order" class="btn btn-accent btn-sm" style="font-family:var(--sans);">
+        <i class="fas fa-coffee" style="font-size:0.85rem;"></i> Order online
+      </a>
+      <button class="nav-cart" data-open-cart aria-label="Open cart">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="cart-badge" style="display:none;">0</span>
+      </button>
     </nav>
-    <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button id="menu-btn" class="menu-btn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 <div id="mobile-panel" class="mobile-panel">
@@ -113,7 +130,7 @@
   <a href="/events">Events</a>
   <a href="/journal">Journal</a>
   <a href="/#contact">Contact</a>
-  <a href="/order"style="color:var(--terracotta);">Order online→</a>
+  <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
 <!-- ===== HERO ===== -->
