@@ -836,3 +836,137 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.75rem !important;
   }
                               }
+/* ============================================
+   MASONRY GALLERY (Pinterest-style)
+   ============================================ */
+
+.masonry-grid {
+  column-count: 3;
+  column-gap: 1.25rem;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.masonry-grid .gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(43, 24, 16, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.masonry-grid .gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px -12px rgba(43, 24, 16, 0.18);
+}
+
+.masonry-grid .gallery-item img {
+  width: 100%;
+  height: auto; /* Natural height – masonry effect */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.masonry-grid .gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+/* Play icon overlay for videos */
+.masonry-grid .gallery-item .play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 3.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+.masonry-grid .gallery-item:hover .play-icon {
+  opacity: 1;
+}
+.masonry-grid .gallery-item .play-icon i {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+/* Add button in masonry */
+.masonry-grid .gallery-add {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  border: 2px dashed var(--terracotta);
+  background: transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--terracotta);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 3rem 1rem;
+  transition: background 0.25s, transform 0.25s;
+  min-height: 180px;
+}
+.masonry-grid .gallery-add:hover {
+  background: rgba(196, 98, 45, 0.06);
+  transform: scale(1.02);
+}
+.masonry-grid .gallery-add i {
+  font-size: 2.4rem;
+}
+
+/* Responsive masonry */
+@media (max-width: 900px) {
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 0.75rem;
+  }
+  .masonry-grid .gallery-item,
+  .masonry-grid .gallery-add {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-grid {
+    column-count: 1;
+    column-gap: 0;
+    max-width: 420px;
+  }
+  .masonry-grid .gallery-item,
+  .masonry-grid .gallery-add {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Lightbox overlay (already exists, keeping it consistent) */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox:target {
+  display: flex;
+}
+.lightbox img,
+.lightbox video {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+   }
