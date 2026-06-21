@@ -12,7 +12,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2B1810">
 <style>
-  /* ---------- Additional hero-specific styles ---------- */
+  /* ---------- Hero split-screen ---------- */
   .hero-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,6 +48,14 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
+  .hero-left .btn-outline {
+    border-color: rgba(247, 239, 227, 0.3);
+    color: #f7efe3;
+  }
+  .hero-left .btn-outline:hover {
+    background: #f7efe3;
+    color: #1c1410;
+  }
   .hero-right {
     position: relative;
     overflow: hidden;
@@ -57,38 +65,12 @@
     justify-content: center;
   }
   @media (max-width: 768px) {
-    .hero-split {
-      grid-template-columns: 1fr;
-      padding-top: 76px;
-    }
-    .hero-left {
-      padding: 3rem 1.5rem;
-      text-align: center;
-      align-items: center;
-    }
+    .hero-split { grid-template-columns: 1fr; padding-top: 76px; }
+    .hero-left { padding: 3rem 1.5rem; text-align: center; align-items: center; }
     .hero-left p { max-width: 100%; }
     .hero-left .btn-group { justify-content: center; }
     .hero-right { min-height: 50vh; }
   }
-  
-  /* ---------- Curved signature ---------- */
-  .brand-curve-text {
-    font-family: 'Fraunces', serif;
-    fill: var(--terracotta);
-    font-weight: 0;
-    letter-spacing: 2px;
-  }
-  .brand-curve-line {
-    stroke: var(--terracotta);
-    stroke-width: 1.2;
-    fill: none;
-    stroke-linecap: round;
-    opacity: 0;
-  }
-  .footer .brand-curve-text { fill: var(--gold); }
-  .footer .brand-curve-line { stroke: var(--gold); }
-  .location .brand-curve-text { fill: var(--terracotta); font-size: 14px; font-weight: 600; letter-spacing: 2.5px; }
-  .location .brand-curve-line { stroke: var(--terracotta); stroke-width: 2; opacity: 0.8; }
 </style>
 </head>
 <body>
@@ -101,13 +83,13 @@
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
         <span style="font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--roast);">Hyper Coffee</span>
       </div>
-      <svg width="130" height="26" viewBox="0 0 130 26" style="display:block; margin:-2px auto 0;">
-        <path d="M8,16 Q65,2 122,16" class="brand-curve-line"/>
-        <text class="brand-curve-text" font-size="9">
-          <textPath href="#headerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+      <!-- Curved Amharic signature (no decorative line) -->
+      <svg width="140" height="28" viewBox="0 0 140 28" style="display:block; margin:-2px auto 0;">
+        <text font-family="'Fraunces', serif" font-size="11" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+          <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs>
-          <path id="headerCurve" d="M15,20 Q65,10 115,20"/>
+          <path id="brandCurve" d="M20,20 Q70,8 120,20"/>
         </defs>
       </svg>
     </a>
@@ -385,18 +367,15 @@
     <div>
       <div data-reveal style="text-align:center; margin-bottom:2rem;">
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:4.5rem; height:auto; margin:0 auto 0.5rem; display:block;">
-        
         <!-- Curved Amharic signature (location version) -->
-        <svg width="180" height="40" viewBox="0 0 180 40" style="display:block; margin:0 auto 0.25rem;">
-          <path d="M10,24 Q90,4 170,24" stroke="var(--terracotta)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
-          <text font-family="'Fraunces', serif" font-size="14" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
-            <textPath href="#curveLocation" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+        <svg width="200" height="45" viewBox="0 0 200 45" style="display:block; margin:0 auto 0.25rem;">
+          <text font-family="'Fraunces', serif" font-size="16" fill="var(--terracotta)" font-weight="600" letter-spacing="3">
+            <textPath href="#locationCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
           </text>
           <defs>
-            <path id="curveLocation" d="M20,30 Q90,16 160,30"/>
+            <path id="locationCurve" d="M30,32 Q100,12 170,32"/>
           </defs>
         </svg>
-        
         <h2 class="h-display" style="font-size:clamp(1.8rem,4vw,2.6rem); color:var(--roast); margin:0.5rem 0 0;">Find us</h2>
       </div>
       <div data-reveal>
@@ -435,14 +414,13 @@
           <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:42px; height:42px;">
           <span style="font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--cream);">Hyper Coffee</span>
         </div>
-        <!-- Curved Amharic (footer version - gold) -->
+        <!-- Curved Amharic (footer version) -->
         <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0 0 8px;">
-          <path d="M8,18 Q70,2 132,18" stroke="var(--gold)" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
-          <text font-family="'Fraunces', serif" font-size="10" fill="var(--gold)" font-weight="500" letter-spacing="2">
-            <textPath href="#curveFooter" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
+          <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
+            <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
           </text>
           <defs>
-            <path id="curveFooter" d="M15,22 Q70,12 125,22"/>
+            <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
           </defs>
         </svg>
       </div>
@@ -479,4 +457,4 @@
 
 <script src="assets/site.js"></script>
 </body>
-  </html>
+    </html>
