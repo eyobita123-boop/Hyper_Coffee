@@ -711,9 +711,49 @@ a { color: inherit; text-decoration: none; }
   .hide-on-small { display: none !important; }
 }
 
-/* ---------- Mobile brand adjustments ---------- */
-@media (max-width: 640px) {
-  .brand .brand-name { font-size: 1rem; }
-  .brand .brand-curve-svg { width: 100px; }
-  .site-header .brand-mark { width: 32px !important; height: 32px !important; }
+/* ---------- Mobile Header Overhaul (Clean fix) ---------- */
+@media (max-width: 880px) {
+  /* Fix wrap alignment */
+  .site-header .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Hide horizontal nav links on mobile to prevent squishing */
+  .nav-links {
+    display: none !important;
+  }
+  
+  /* Ensure hamburger is visible */
+  .menu-btn {
+    display: flex !important;
+    flex-direction: column;
+    z-index: 61;
+  }
+
+  /* Switch logo layout to horizontal row */
+  .brand {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+  }
+
+  /* Scale down the huge logo */
+  .brand-mark {
+    width: 2.8rem !important; 
+    height: auto !important;
+    margin-top: 0 !important;
+  }
+
+  /* Reduce font size of 'Hyper Coffee' text */
+  .brand span {
+    font-size: 1rem !important;
+  }
+
+  /* Reduce Amharic SVG width */
+  .brand svg {
+    width: 100px !important;
+    margin: 0 !important;
+  }
    }
