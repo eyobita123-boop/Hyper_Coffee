@@ -13,7 +13,6 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ===== SAME AS BEFORE (hero styles) ===== */
     #hero-unified {
       position: relative;
       width: 100%;
@@ -42,7 +41,7 @@
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: radial-gradient(ellipse at center, rgba(14, 10, 7, 0.15) 0%, rgba(14, 10, 7, 0.7) 100%);
+      background: radial-gradient(ellipse at center, rgba(14,10,7,0.15) 0%, rgba(14,10,7,0.7) 100%);
       pointer-events: none;
     }
     .hero-watermark {
@@ -53,7 +52,7 @@
       z-index: 2;
       font-family: 'Fraunces', serif;
       font-size: clamp(7rem, 18vw, 22rem);
-      color: rgba(247, 239, 227, 0.08);
+      color: rgba(247,239,227,0.08);
       font-weight: 700;
       letter-spacing: 0.08em;
       pointer-events: none;
@@ -77,23 +76,23 @@
       width: 100%;
       text-align: center;
       padding: 3rem 4rem;
-      background: rgba(14, 10, 7, 0.3);
+      background: rgba(14,10,7,0.3);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-radius: 32px;
-      border: 1px solid rgba(247, 239, 227, 0.06);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(247,239,227,0.06);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
       pointer-events: auto;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
     }
     .hero-content-card:hover { transform: scale(1.01); }
     .hero-logo {
       width: clamp(320px, 60vw, 750px);
       height: auto;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.15));
+      filter: drop-shadow(0 0 80px rgba(212,165,55,0.4)) drop-shadow(0 0 160px rgba(212,165,55,0.15));
       animation: floatLogoSpin 5s ease-in-out infinite;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), filter 0.4s cubic-bezier(0.16,1,0.3,1);
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -102,16 +101,16 @@
     }
     .hero-logo:hover {
       transform: scale(1.06);
-      filter: drop-shadow(0 0 120px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 200px rgba(212, 165, 55, 0.3));
+      filter: drop-shadow(0 0 120px rgba(212,165,55,0.6)) drop-shadow(0 0 200px rgba(212,165,55,0.3));
     }
     .logo-glow {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%,-50%);
       width: 180%;
       height: 180%;
-      background: radial-gradient(ellipse at center, rgba(212, 165, 55, 0.2), rgba(212, 165, 55, 0.02) 60%, transparent 80%);
+      background: radial-gradient(ellipse at center, rgba(212,165,55,0.2), rgba(212,165,55,0.02) 60%, transparent 80%);
       border-radius: 50%;
       animation: pulseGlow 4s ease-in-out infinite;
       pointer-events: none;
@@ -146,7 +145,7 @@
       color: #F2E9DC;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
       letter-spacing: -0.02em;
       position: relative;
       z-index: 2;
@@ -157,7 +156,7 @@
       color: #C9BBA4;
       max-width: 600px;
       margin: 0 auto 2rem;
-      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
       position: relative;
       z-index: 2;
     }
@@ -173,75 +172,68 @@
       background: linear-gradient(135deg, var(--terracotta), var(--gold));
       color: #1C1410;
       font-weight: 700;
-      box-shadow: 0 6px 24px rgba(196, 98, 45, 0.3);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      box-shadow: 0 6px 24px rgba(196,98,45,0.3);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
     }
     .hero-buttons .btn-primary:hover {
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.5);
+      box-shadow: 0 12px 40px rgba(196,98,45,0.5);
     }
     .hero-buttons .btn-ghost {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1.5px solid rgba(247, 239, 227, 0.2);
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(247,239,227,0.2);
       color: #F2E9DC;
       backdrop-filter: blur(4px);
       transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     }
     .hero-buttons .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.14);
+      background: rgba(255,255,255,0.14);
       transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     }
     @keyframes floatLogoSpin {
-      0% { transform: translateY(0px) rotate(0deg); }
+      0% { transform: translateY(0) rotate(0); }
       33% { transform: translateY(-30px) rotate(3deg); }
       66% { transform: translateY(12px) rotate(-3deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(0) rotate(0); }
     }
     @keyframes pulseGlow {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+      0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.8; }
     }
-    @media (max-width: 768px) {
-      #hero-unified { padding-top: 76px; min-height: 100vh; }
-      #three-container { min-height: 100vh; }
-      .hero-content-card { padding: 2rem 1.5rem; border-radius: 24px; background: rgba(14, 10, 7, 0.5); backdrop-filter: blur(16px); }
-      .hero-logo { width: clamp(200px, 45vw, 350px); }
-      .hero-title { font-size: clamp(1.8rem, 6vw, 2.8rem); }
-      .hero-description { font-size: 0.9rem; padding: 0 0.5rem; }
-      .hero-watermark { font-size: clamp(4rem, 12vw, 9rem); }
+    @media (max-width:768px) {
+      #hero-unified { padding-top:76px; min-height:100vh; }
+      #three-container { min-height:100vh; }
+      .hero-content-card { padding:2rem 1.5rem; border-radius:24px; background:rgba(14,10,7,0.5); backdrop-filter:blur(16px); }
+      .hero-logo { width:clamp(200px,45vw,350px); }
+      .hero-title { font-size:clamp(1.8rem,6vw,2.8rem); }
+      .hero-description { font-size:0.9rem; padding:0 0.5rem; }
+      .hero-watermark { font-size:clamp(4rem,12vw,9rem); }
     }
-    @media (max-width: 480px) {
-      .hero-content-card { padding: 1.5rem 1rem; border-radius: 16px; }
-      .hero-logo { width: clamp(150px, 40vw, 220px); }
-      .hero-title { font-size: 1.6rem; }
-      .hero-buttons .btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
-      .hero-watermark { font-size: clamp(3rem, 10vw, 6rem); }
+    @media (max-width:480px) {
+      .hero-content-card { padding:1.5rem 1rem; border-radius:16px; }
+      .hero-logo { width:clamp(150px,40vw,220px); }
+      .hero-title { font-size:1.6rem; }
+      .hero-buttons .btn { padding:0.6rem 1.2rem; font-size:0.85rem; }
+      .hero-watermark { font-size:clamp(3rem,10vw,6rem); }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER (unchanged) ===== -->
+<!-- ===== HEADER ===== -->
 <header class="site-header">
   <div class="wrap">
     <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
-      <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark"
-             style="width:clamp(3rem, 8vw, 5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
-        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem, 2.4vw, 1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">
-          Hyper Coffee
-        </span>
+      <div style="display:flex; align-items:center; gap:clamp(0.4rem,1vw,0.8rem);">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:clamp(3rem,8vw,5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
+        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem,2.4vw,1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">Hyper Coffee</span>
       </div>
-      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;"
-           viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
-        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)"
-              fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+      <svg style="display:block; margin:2px auto 0; width:clamp(100px,18vw,150px); height:auto; max-width:100%;" viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
+        <text font-family="'Fraunces', serif" font-size="clamp(9px,1.6vw,12px)" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
-        <defs>
-          <path id="brandCurve" d="M20,20 Q70,8 120,20"/>
-        </defs>
+        <defs><path id="brandCurve" d="M20,20 Q70,8 120,20"/></defs>
       </svg>
     </a>
     <nav class="nav-links">
@@ -259,9 +251,7 @@
         <span class="cart-badge" style="display:none;">0</span>
       </button>
     </nav>
-    <button id="menu-btn" class="menu-btn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button id="menu-btn" class="menu-btn" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div id="mobile-panel" class="mobile-panel">
@@ -274,16 +264,14 @@
   <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
-<!-- ============================================================
-     HERO – ULTRA MAGICAL
-     ============================================================ -->
+<!-- ===== HERO – ULTRA MAGICAL ===== -->
 <section id="hero-unified">
   <div id="three-container"></div>
   <div class="hero-dark-overlay"></div>
   <div class="hero-watermark" aria-hidden="true">መገኛችን</div>
   <div class="hero-overlay">
     <div class="hero-content-card">
-      <div style="position: relative;">
+      <div style="position:relative;">
         <div class="logo-glow"></div>
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
       </div>
@@ -299,7 +287,7 @@
 </section>
 
 <!-- ============================================================
-     THREE.JS – ULTRA MAGICAL (Galaxy, Aurora, Ring, Sparkles)
+     THREE.JS – ULTRA MAGICAL
      ============================================================ -->
 <script type="importmap">
 {
@@ -347,8 +335,7 @@ container.appendChild(renderer.domElement);
 //  POST-PROCESSING
 // ============================================================
 const composer = new EffectComposer(renderer);
-const renderPass = new RenderPass(scene, camera);
-composer.addPass(renderPass);
+composer.addPass(new RenderPass(scene, camera));
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), 0.35, 0.4, 0.05);
 composer.addPass(bloomPass);
 
@@ -379,101 +366,161 @@ pointLight.position.set(0, 1, 4);
 scene.add(pointLight);
 
 // ============================================================
-//  BEANS (50) – same as before
+//  BEANS (50)
 // ============================================================
-function createBeanGeometry() { /* ... same ... */ }
+function createBeanGeometry() {
+  const pts = [];
+  const seg = 16;
+  for (let i=0; i<=seg; i++) {
+    const t = i/seg, a = t*Math.PI, r = Math.sin(a)*0.6;
+    pts.push(new THREE.Vector3(Math.cos(a)*r*0.9, Math.sin(a)*1.0, Math.sin(a)*r*0.5));
+  }
+  const geo = new THREE.LatheGeometry(pts.map(p=>new THREE.Vector2(p.x,p.y)), 12);
+  const pos = geo.attributes.position;
+  for (let i=0; i<pos.count; i++) {
+    const x=pos.getX(i), y=pos.getY(i), z=pos.getZ(i);
+    const d=Math.sqrt(x*x+z*z);
+    if (d>0.1 && y>-0.3 && y<0.6) {
+      const f=1+0.15*(1-Math.abs(y)/0.8)*Math.sin(x*8);
+      pos.setXYZ(i, x*f, y, z*f);
+    }
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
 const beanGeo = createBeanGeometry();
-const beanMats = [/* ... */];
+const beanMats = [
+  new THREE.MeshStandardMaterial({ color:0x3E2723, roughness:0.85, metalness:0.05, envMapIntensity:0.3 }),
+  new THREE.MeshStandardMaterial({ color:0x4E342E, roughness:0.8, metalness:0.05, envMapIntensity:0.3 }),
+  new THREE.MeshStandardMaterial({ color:0x2E1B15, roughness:0.9, metalness:0.02, envMapIntensity:0.3 })
+];
 const beans = [], beanGroup = new THREE.Group();
-// ... (copy the bean code from previous version to save space here, but we'll assume it's identical)
-// For brevity in this answer, we'll keep it minimal, but in the actual full file we include everything.
+for (let i=0; i<50; i++) {
+  const mat = beanMats[i%3];
+  const mesh = new THREE.Mesh(beanGeo.clone(), mat);
+  const theta = Math.random()*Math.PI*2, phi = Math.random()*Math.PI*2, rad = 3+Math.random()*6;
+  mesh.position.set(Math.cos(theta)*Math.sin(phi)*rad, (Math.random()-0.5)*3.5, Math.sin(theta)*Math.sin(phi)*rad);
+  const s=0.4+Math.random()*0.6;
+  mesh.scale.set(s, s*(0.8+Math.random()*0.4), s*(0.7+Math.random()*0.3));
+  mesh.rotation.set(Math.random()*6, Math.random()*6, Math.random()*6);
+  mesh.castShadow = mesh.receiveShadow = true;
+  mesh.userData = { floatSpeed:0.3+Math.random()*0.5, floatAmp:0.05+Math.random()*0.1, rotSpeed:0.2+Math.random()*0.4, phase:Math.random()*6, origPos:mesh.position.clone() };
+  beanGroup.add(mesh);
+  beans.push(mesh);
+}
+scene.add(beanGroup);
 
 // ============================================================
-//  FLOWERS (50) – same as before
+//  FLOWERS (50)
 // ============================================================
-// ... (same as previous)
+function createPetalGeometry() {
+  const shape = new THREE.Shape();
+  shape.moveTo(0,0);
+  shape.bezierCurveTo(0.08,0.3,0.3,0.5,0.5,0.5);
+  shape.bezierCurveTo(0.7,0.5,0.9,0.3,1.0,0);
+  shape.bezierCurveTo(0.9,-0.3,0.7,-0.5,0.5,-0.5);
+  shape.bezierCurveTo(0.3,-0.5,0.08,-0.3,0,0);
+  const geo = new THREE.ExtrudeGeometry(shape, { depth:0.04, bevelEnabled:true, bevelThickness:0.02, bevelSize:0.02, bevelSegments:4 });
+  geo.translate(0,0,-0.02);
+  geo.rotateX(Math.PI/2);
+  return geo;
+}
+const petalGeo = createPetalGeometry();
+const petalMats = [
+  new THREE.MeshStandardMaterial({ color:0xF5F0E8, roughness:0.6, metalness:0.0, side:THREE.DoubleSide }),
+  new THREE.MeshStandardMaterial({ color:0xEDE5D8, roughness:0.6, metalness:0.0, side:THREE.DoubleSide }),
+  new THREE.MeshStandardMaterial({ color:0xFAF5EC, roughness:0.5, metalness:0.0, side:THREE.DoubleSide })
+];
+const centerMat = new THREE.MeshStandardMaterial({ color:0xF5C842, roughness:0.4, metalness:0.1, emissive:0xF5C842, emissiveIntensity:0.15 });
+const flowers = [], flowerGroup = new THREE.Group();
+for (let i=0; i<50; i++) {
+  const g = new THREE.Group();
+  const mat = petalMats[i%3];
+  const n = 5+Math.floor(Math.random()*3);
+  const ps = 0.2+Math.random()*0.25;
+  for (let j=0; j<n; j++) {
+    const p = new THREE.Mesh(petalGeo.clone(), mat);
+    const a = (j/n)*Math.PI*2 + Math.random()*0.1;
+    p.rotation.z = a;
+    p.rotation.x = 0.2+Math.random()*0.15;
+    p.position.set(Math.cos(a)*0.15, Math.sin(a)*0.15, 0);
+    p.scale.set(ps,ps,ps);
+    p.castShadow = p.receiveShadow = true;
+    g.add(p);
+  }
+  const c = new THREE.Mesh(new THREE.SphereGeometry(0.08,8,8), centerMat);
+  c.scale.set(1,0.7,1);
+  g.add(c);
+  const theta = Math.random()*Math.PI*2, phi = Math.random()*Math.PI*2, rad = 3+Math.random()*6;
+  g.position.set(Math.cos(theta)*Math.sin(phi)*rad, (Math.random()-0.5)*3, Math.sin(theta)*Math.sin(phi)*rad);
+  const s=0.6+Math.random()*0.6;
+  g.scale.set(s,s,s);
+  g.rotation.set(Math.random()*0.5, Math.random()*6, Math.random()*0.5);
+  g.castShadow = g.receiveShadow = true;
+  g.userData = { floatSpeed:0.2+Math.random()*0.4, floatAmp:0.04+Math.random()*0.08, swaySpeed:0.3+Math.random()*0.4, swayAmp:0.02+Math.random()*0.04, phase:Math.random()*6, rotSpeed:0.05+Math.random()*0.1, origPos:g.position.clone(), origRot:g.rotation.clone() };
+  flowerGroup.add(g);
+  flowers.push(g);
+}
+scene.add(flowerGroup);
 
 // ============================================================
-//  STARS (200 – GALAXY)
+//  GALAXY (200 stars)
 // ============================================================
 const galaxyCount = 200;
 const galaxyGeo = new THREE.BufferGeometry();
-const galaxyPos = new Float32Array(galaxyCount * 3);
-const galaxyColors = new Float32Array(galaxyCount * 3);
+const galaxyPos = new Float32Array(galaxyCount*3);
+const galaxyColors = new Float32Array(galaxyCount*3);
 const galaxySizes = new Float32Array(galaxyCount);
-for (let i = 0; i < galaxyCount; i++) {
-  const radius = 5 + Math.random() * 10;
-  const theta = Math.random() * Math.PI * 2;
-  const phi = Math.acos(2 * Math.random() - 1);
-  galaxyPos[i*3] = Math.sin(phi) * Math.cos(theta) * radius;
-  galaxyPos[i*3+1] = (Math.random() - 0.5) * 6;
-  galaxyPos[i*3+2] = Math.sin(phi) * Math.sin(theta) * radius;
-  const gold = 0.6 + Math.random() * 0.4;
+for (let i=0; i<galaxyCount; i++) {
+  const r = 5+Math.random()*10;
+  const theta = Math.random()*Math.PI*2, phi = Math.acos(2*Math.random()-1);
+  galaxyPos[i*3] = Math.sin(phi)*Math.cos(theta)*r;
+  galaxyPos[i*3+1] = (Math.random()-0.5)*6;
+  galaxyPos[i*3+2] = Math.sin(phi)*Math.sin(theta)*r;
   galaxyColors[i*3] = 1.0;
-  galaxyColors[i*3+1] = 0.8 + Math.random() * 0.2;
-  galaxyColors[i*3+2] = 0.3 + Math.random() * 0.2;
-  galaxySizes[i] = 0.02 + Math.random() * 0.06;
+  galaxyColors[i*3+1] = 0.8+Math.random()*0.2;
+  galaxyColors[i*3+2] = 0.3+Math.random()*0.2;
+  galaxySizes[i] = 0.02+Math.random()*0.06;
 }
-galaxyGeo.setAttribute('position', new THREE.BufferAttribute(galaxyPos, 3));
-galaxyGeo.setAttribute('color', new THREE.BufferAttribute(galaxyColors, 3));
-galaxyGeo.setAttribute('size', new THREE.BufferAttribute(galaxySizes, 1));
-const galaxyMat = new THREE.PointsMaterial({
-  size: 0.08,
-  vertexColors: true,
-  transparent: true,
-  opacity: 0.6,
-  blending: THREE.AdditiveBlending,
-  depthWrite: false,
-  sizeAttenuation: true,
-});
+galaxyGeo.setAttribute('position', new THREE.BufferAttribute(galaxyPos,3));
+galaxyGeo.setAttribute('color', new THREE.BufferAttribute(galaxyColors,3));
+galaxyGeo.setAttribute('size', new THREE.BufferAttribute(galaxySizes,1));
+const galaxyMat = new THREE.PointsMaterial({ size:0.08, vertexColors:true, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:true });
 const galaxy = new THREE.Points(galaxyGeo, galaxyMat);
 scene.add(galaxy);
 
 // ============================================================
-//  AURORA BOREALIS (using a plane with animated texture)
+//  AURORA
 // ============================================================
 const canvas = document.createElement('canvas');
-canvas.width = 512;
-canvas.height = 128;
+canvas.width = 512; canvas.height = 128;
 const ctx = canvas.getContext('2d');
 const auroraTexture = new THREE.CanvasTexture(canvas);
-const auroraMat = new THREE.MeshBasicMaterial({
-  map: auroraTexture,
-  transparent: true,
-  opacity: 0.15,
-  blending: THREE.AdditiveBlending,
-  depthWrite: false,
-  side: THREE.DoubleSide,
-});
-const auroraGeo = new THREE.PlaneGeometry(20, 6);
-const aurora = new THREE.Mesh(auroraGeo, auroraMat);
-aurora.position.set(0, 2, -8);
+const auroraMat = new THREE.MeshBasicMaterial({ map:auroraTexture, transparent:true, opacity:0.15, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide });
+const aurora = new THREE.Mesh(new THREE.PlaneGeometry(20,6), auroraMat);
+aurora.position.set(0,2,-8);
 aurora.rotation.x = -0.3;
 scene.add(aurora);
-
 function updateAurora(t) {
-  const w = canvas.width, h = canvas.height;
-  ctx.clearRect(0, 0, w, h);
-  const grad = ctx.createLinearGradient(0, 0, w, 0);
-  const hue1 = 0.05 + 0.03 * Math.sin(t * 0.02);
-  const hue2 = 0.12 + 0.03 * Math.cos(t * 0.025 + 1);
-  const hue3 = 0.08 + 0.04 * Math.sin(t * 0.03 + 2);
-  grad.addColorStop(0, `hsla(${hue1*360}, 80%, 50%, 0.6)`);
-  grad.addColorStop(0.3, `hsla(${hue2*360}, 70%, 60%, 0.5)`);
-  grad.addColorStop(0.7, `hsla(${hue3*360}, 75%, 55%, 0.4)`);
-  grad.addColorStop(1, `hsla(${hue1*360 + 0.1}, 80%, 50%, 0)`);
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, w, h);
-  // Add waves
-  for (let i = 0; i < 5; i++) {
+  const w=512, h=128;
+  ctx.clearRect(0,0,w,h);
+  const h1=0.05+0.03*Math.sin(t*0.02), h2=0.12+0.03*Math.cos(t*0.025+1), h3=0.08+0.04*Math.sin(t*0.03+2);
+  const g = ctx.createLinearGradient(0,0,w,0);
+  g.addColorStop(0, `hsla(${h1*360},80%,50%,0.6)`);
+  g.addColorStop(0.3, `hsla(${h2*360},70%,60%,0.5)`);
+  g.addColorStop(0.7, `hsla(${h3*360},75%,55%,0.4)`);
+  g.addColorStop(1, `hsla(${(h1+0.1)*360},80%,50%,0)`);
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,w,h);
+  for (let i=0; i<5; i++) {
     ctx.beginPath();
-    const y = h * (0.3 + 0.4 * (i / 5));
-    ctx.moveTo(0, y);
-    for (let x = 0; x < w; x += 2) {
-      const wave = Math.sin(x * 0.02 + t * 0.01 + i * 0.5) * 8;
-      ctx.lineTo(x, y + wave);
+    const y = h*(0.3+0.4*(i/5));
+    ctx.moveTo(0,y);
+    for (let x=0; x<w; x+=2) {
+      const wave = Math.sin(x*0.02 + t*0.01 + i*0.5)*8;
+      ctx.lineTo(x, y+wave);
     }
-    ctx.strokeStyle = `hsla(${(hue1+0.05)*360}, 70%, 70%, 0.2)`;
+    ctx.strokeStyle = `hsla(${(h1+0.05)*360},70%,70%,0.2)`;
     ctx.lineWidth = 2;
     ctx.stroke();
   }
@@ -481,75 +528,146 @@ function updateAurora(t) {
 }
 
 // ============================================================
-//  GOLDEN RING (orbiting particles)
+//  GOLDEN RING
 // ============================================================
 const ringCount = 120;
 const ringGeo = new THREE.BufferGeometry();
-const ringPos = new Float32Array(ringCount * 3);
-for (let i = 0; i < ringCount; i++) {
-  const angle = (i / ringCount) * Math.PI * 2;
-  const radius = 1.8;
-  ringPos[i*3] = Math.cos(angle) * radius;
-  ringPos[i*3+1] = Math.sin(angle) * radius * 0.15; // slight vertical offset
-  ringPos[i*3+2] = Math.sin(angle) * radius * 0.8;
+const ringPos = new Float32Array(ringCount*3);
+for (let i=0; i<ringCount; i++) {
+  const a = (i/ringCount)*Math.PI*2;
+  ringPos[i*3] = Math.cos(a)*1.8;
+  ringPos[i*3+1] = Math.sin(a)*1.8*0.15;
+  ringPos[i*3+2] = Math.sin(a)*1.8*0.8;
 }
-ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPos, 3));
-const ringMat = new THREE.PointsMaterial({
-  size: 0.04,
-  color: 0xF5C842,
-  transparent: true,
-  opacity: 0.4,
-  blending: THREE.AdditiveBlending,
-  depthWrite: false,
-});
+ringGeo.setAttribute('position', new THREE.BufferAttribute(ringPos,3));
+const ringMat = new THREE.PointsMaterial({ size:0.04, color:0xF5C842, transparent:true, opacity:0.4, blending:THREE.AdditiveBlending, depthWrite:false });
 const ring = new THREE.Points(ringGeo, ringMat);
-ring.position.set(0, 0.2, 0);
+ring.position.set(0,0.2,0);
 scene.add(ring);
 
 // ============================================================
-//  SPARKLE DUST (150 particles)
+//  SPARKLE DUST
 // ============================================================
 const sparkleCount = 150;
 const sparkleGeo = new THREE.BufferGeometry();
-const sparklePos = new Float32Array(sparkleCount * 3);
+const sparklePos = new Float32Array(sparkleCount*3);
 const sparkleSizes = new Float32Array(sparkleCount);
 const sparkleData = [];
-for (let i = 0; i < sparkleCount; i++) {
-  const radius = 1.5 + Math.random() * 5;
-  const theta = Math.random() * Math.PI * 2;
-  sparklePos[i*3] = Math.cos(theta) * radius;
-  sparklePos[i*3+1] = (Math.random() - 0.5) * 3 + 0.5;
-  sparklePos[i*3+2] = Math.sin(theta) * radius;
-  sparkleSizes[i] = 0.02 + Math.random() * 0.04;
-  sparkleData.push({
-    speed: 0.2 + Math.random() * 0.4,
-    phase: Math.random() * 6,
-    origPos: new THREE.Vector3(sparklePos[i*3], sparklePos[i*3+1], sparklePos[i*3+2]),
-  });
+for (let i=0; i<sparkleCount; i++) {
+  const r = 1.5+Math.random()*5, a=Math.random()*Math.PI*2;
+  sparklePos[i*3] = Math.cos(a)*r;
+  sparklePos[i*3+1] = (Math.random()-0.5)*3 + 0.5;
+  sparklePos[i*3+2] = Math.sin(a)*r;
+  sparkleSizes[i] = 0.02+Math.random()*0.04;
+  sparkleData.push({ speed:0.2+Math.random()*0.4, phase:Math.random()*6, origPos:new THREE.Vector3(sparklePos[i*3], sparklePos[i*3+1], sparklePos[i*3+2]) });
 }
-sparkleGeo.setAttribute('position', new THREE.BufferAttribute(sparklePos, 3));
-sparkleGeo.setAttribute('size', new THREE.BufferAttribute(sparkleSizes, 1));
-const sparkleMat = new THREE.PointsMaterial({
-  size: 0.05,
-  color: 0xFFE0A0,
-  transparent: true,
-  opacity: 0.6,
-  blending: THREE.AdditiveBlending,
-  depthWrite: false,
-  sizeAttenuation: true,
-});
+sparkleGeo.setAttribute('position', new THREE.BufferAttribute(sparklePos,3));
+sparkleGeo.setAttribute('size', new THREE.BufferAttribute(sparkleSizes,1));
+const sparkleMat = new THREE.PointsMaterial({ size:0.05, color:0xFFE0A0, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:true });
 const sparkles = new THREE.Points(sparkleGeo, sparkleMat);
-sparkles.position.set(0, 0.2, 0);
+sparkles.position.set(0,0.2,0);
 scene.add(sparkles);
 
 // ============================================================
-//  ADD FIREFLIES (60) and PETALS (80) – same logic as before but more
+//  FIREFLIES (60)
 // ============================================================
-// ... (we'll incorporate the firefly and petal code from previous version,
-//      just increase counts to 60 and 80 respectively)
+const ffCount = 60;
+const ffGeo = new THREE.BufferGeometry();
+const ffPos = new Float32Array(ffCount*3);
+const ffSizes = new Float32Array(ffCount);
+const ffData = [];
+for (let i=0; i<ffCount; i++) {
+  const r = 1.5+Math.random()*7, a=Math.random()*Math.PI*2;
+  ffPos[i*3] = Math.cos(a)*r;
+  ffPos[i*3+1] = (Math.random()-0.5)*5 + 0.5;
+  ffPos[i*3+2] = Math.sin(a)*r;
+  ffSizes[i] = 0.06+Math.random()*0.08;
+  ffData.push({ speed:0.3+Math.random()*0.5, phase:Math.random()*6, origPos:new THREE.Vector3(ffPos[i*3], ffPos[i*3+1], ffPos[i*3+2]) });
+}
+ffGeo.setAttribute('position', new THREE.BufferAttribute(ffPos,3));
+ffGeo.setAttribute('size', new THREE.BufferAttribute(ffSizes,1));
+const ffCanvas = document.createElement('canvas');
+ffCanvas.width=64; ffCanvas.height=64;
+const fCtx = ffCanvas.getContext('2d');
+const grad = fCtx.createRadialGradient(32,32,0,32,32,32);
+grad.addColorStop(0,'rgba(255,220,150,1)');
+grad.addColorStop(0.2,'rgba(255,200,100,0.8)');
+grad.addColorStop(0.5,'rgba(255,180,80,0.3)');
+grad.addColorStop(1,'rgba(255,180,80,0)');
+fCtx.fillStyle = grad;
+fCtx.fillRect(0,0,64,64);
+const ffTexture = new THREE.CanvasTexture(ffCanvas);
+const ffMat = new THREE.PointsMaterial({ size:0.25, map:ffTexture, transparent:true, blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:true, opacity:0.9 });
+const fireflies = new THREE.Points(ffGeo, ffMat);
+scene.add(fireflies);
 
 // ============================================================
-//  MOUSE PARALLAX & RESIZE
+//  PETALS (80)
+// ============================================================
+function createPetalShape() {
+  const s = new THREE.Shape();
+  s.moveTo(0,0);
+  s.bezierCurveTo(0.03,0.15,0.15,0.25,0.25,0.22);
+  s.bezierCurveTo(0.35,0.19,0.35,0.05,0.25,0);
+  s.bezierCurveTo(0.15,-0.05,0.03,-0.15,0,0);
+  return s;
+}
+const petalShape = createPetalShape();
+const petalExtrudeSettings = { depth:0.01, bevelEnabled:true, bevelThickness:0.005, bevelSize:0.005, bevelSegments:2 };
+const petalGeo2 = new THREE.ExtrudeGeometry(petalShape, petalExtrudeSettings);
+petalGeo2.translate(0,0,-0.005);
+const petalMat2 = [
+  new THREE.MeshStandardMaterial({ color:0xFFD6C0, roughness:0.7, metalness:0.0, side:THREE.DoubleSide, transparent:true, opacity:0.8 }),
+  new THREE.MeshStandardMaterial({ color:0xFFE0D0, roughness:0.7, metalness:0.0, side:THREE.DoubleSide, transparent:true, opacity:0.7 }),
+  new THREE.MeshStandardMaterial({ color:0xF5D0C0, roughness:0.7, metalness:0.0, side:THREE.DoubleSide, transparent:true, opacity:0.6 })
+];
+const petals = [];
+const petalGroup = new THREE.Group();
+for (let i=0; i<80; i++) {
+  const mat = petalMat2[i%3];
+  const mesh = new THREE.Mesh(petalGeo2.clone(), mat);
+  const a = Math.random()*Math.PI*2, r = 2+Math.random()*8;
+  mesh.position.set(Math.cos(a)*r, (Math.random()-0.5)*6+1, Math.sin(a)*r);
+  const s=0.3+Math.random()*0.6;
+  mesh.scale.set(s,s,s);
+  mesh.rotation.set(Math.random()*6, Math.random()*6, Math.random()*6);
+  mesh.castShadow = true;
+  mesh.userData = { floatSpeed:0.2+Math.random()*0.4, floatAmp:0.08+Math.random()*0.12, rotSpeed:0.3+Math.random()*0.5, driftSpeed:0.003+Math.random()*0.008, phase:Math.random()*6, origPos:mesh.position.clone() };
+  petalGroup.add(mesh);
+  petals.push(mesh);
+}
+scene.add(petalGroup);
+
+// ============================================================
+//  SNOW (800)
+// ============================================================
+const snowCount = 800;
+const snowGeo = new THREE.BufferGeometry();
+const snowPos = new Float32Array(snowCount*3);
+const snowVel = [];
+for (let i=0; i<snowCount; i++) {
+  snowPos[i*3] = (Math.random()-0.5)*35;
+  snowPos[i*3+1] = Math.random()*20;
+  snowPos[i*3+2] = (Math.random()-0.5)*25;
+  snowVel.push({ y:0.005+Math.random()*0.025, x:(Math.random()-0.5)*0.015, z:(Math.random()-0.5)*0.015 });
+}
+snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos,3));
+const sCanvas = document.createElement('canvas');
+sCanvas.width=32; sCanvas.height=32;
+const sCtx = sCanvas.getContext('2d');
+const sGrad = sCtx.createRadialGradient(16,16,0,16,16,16);
+sGrad.addColorStop(0,'rgba(255,255,255,1)');
+sGrad.addColorStop(0.5,'rgba(255,255,255,0.6)');
+sGrad.addColorStop(1,'rgba(255,255,255,0)');
+sCtx.fillStyle = sGrad;
+sCtx.fillRect(0,0,32,32);
+const snowTexture = new THREE.CanvasTexture(sCanvas);
+const snowMat = new THREE.PointsMaterial({ size:0.18, map:snowTexture, transparent:true, opacity:0.6, blending:THREE.AdditiveBlending, depthWrite:false, sizeAttenuation:true });
+const snowParticles = new THREE.Points(snowGeo, snowMat);
+scene.add(snowParticles);
+
+// ============================================================
+//  MOUSE PARALLAX
 // ============================================================
 let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
 document.addEventListener('mousemove', (e) => {
@@ -569,6 +687,9 @@ container.addEventListener('touchmove', (e) => {
   }
 }, { passive: true });
 
+// ============================================================
+//  RESIZE
+// ============================================================
 function resize() {
   const w = container.clientWidth;
   const h = container.clientHeight || window.innerHeight;
@@ -580,29 +701,29 @@ function resize() {
 window.addEventListener('resize', resize);
 
 // ============================================================
-//  ANIMATION LOOP (includes all new features)
+//  ANIMATION LOOP
 // ============================================================
 const clock = new THREE.Clock();
 
 function animate() {
   const t = clock.getElapsedTime();
 
-  // --- Aurora update ---
+  // Aurora
   updateAurora(t);
 
-  // --- Rotate galaxy ---
+  // Galaxy rotation
   galaxy.rotation.y = t * 0.005;
   galaxy.rotation.x = Math.sin(t * 0.003) * 0.1;
 
-  // --- Rotate ring ---
+  // Ring
   ring.rotation.y = t * 0.2;
   ring.rotation.x = Math.sin(t * 0.1) * 0.1;
   ring.material.opacity = 0.3 + 0.2 * Math.sin(t * 0.5);
 
-  // --- Sparkle dust ---
+  // Sparkle dust
   const spPos = sparkles.geometry.attributes.position;
   const spArray = spPos.array;
-  for (let i = 0; i < sparkleCount; i++) {
+  for (let i=0; i<sparkleCount; i++) {
     const sd = sparkleData[i];
     spArray[i*3] = sd.origPos.x + Math.sin(t * sd.speed + sd.phase) * 0.5;
     spArray[i*3+1] = sd.origPos.y + Math.sin(t * sd.speed * 0.8 + sd.phase * 1.2) * 0.3;
@@ -613,29 +734,99 @@ function animate() {
   spPos.needsUpdate = true;
   sparkles.geometry.attributes.size.needsUpdate = true;
 
-  // --- Mouse / auto rotation ---
+  // Fireflies
+  const ffPosAttr = fireflies.geometry.attributes.position;
+  const ffArray = ffPosAttr.array;
+  const ffSizeAttr = fireflies.geometry.attributes.size;
+  for (let i=0; i<ffCount; i++) {
+    const fd = ffData[i];
+    const floatY = Math.sin(t * fd.speed + fd.phase) * 0.3;
+    ffArray[i*3] = fd.origPos.x + Math.sin(t * fd.speed * 0.7 + fd.phase) * 1.2;
+    ffArray[i*3+1] = fd.origPos.y + floatY + Math.sin(t * fd.speed * 0.5 + fd.phase * 1.2) * 0.4;
+    ffArray[i*3+2] = fd.origPos.z + Math.cos(t * fd.speed * 0.7 + fd.phase * 0.8) * 1.2;
+    const pulse = 0.5 + 0.5 * Math.sin(t * fd.speed * 1.5 + fd.phase);
+    ffSizes[i] = (0.06 + (i % 4) * 0.02) * (0.3 + 0.7 * pulse);
+  }
+  ffPosAttr.needsUpdate = true;
+  ffSizeAttr.needsUpdate = true;
+
+  // Petals
+  petals.forEach((p) => {
+    const ud = p.userData;
+    const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
+    p.position.y = ud.origPos.y + floatOffset;
+    p.rotation.x += ud.rotSpeed * 0.005;
+    p.rotation.z += ud.rotSpeed * 0.007;
+    p.rotation.y += ud.rotSpeed * 0.003;
+    const dx = Math.sin(t * 0.2 + ud.phase) * ud.driftSpeed;
+    const dz = Math.cos(t * 0.2 + ud.phase) * ud.driftSpeed;
+    p.position.x += dx;
+    p.position.z += dz;
+    if (Math.abs(p.position.x) > 12) p.position.x = -12;
+    if (Math.abs(p.position.z) > 10) p.position.z = -10;
+  });
+
+  // Snow
+  const snowPosAttr = snowParticles.geometry.attributes.position;
+  const snowArray = snowPosAttr.array;
+  for (let i=0; i<snowCount; i++) {
+    snowArray[i*3] += snowVel[i].x + Math.sin(t * 0.5 + i) * 0.001;
+    snowArray[i*3+1] -= snowVel[i].y;
+    snowArray[i*3+2] += snowVel[i].z + Math.cos(t * 0.5 + i) * 0.001;
+    if (snowArray[i*3+1] < -5) {
+      snowArray[i*3+1] = 15 + Math.random() * 5;
+      snowArray[i*3] = (Math.random() - 0.5) * 35;
+      snowArray[i*3+2] = (Math.random() - 0.5) * 25;
+    }
+  }
+  snowPosAttr.needsUpdate = true;
+
+  // Beans
+  beans.forEach((bean) => {
+    const ud = bean.userData;
+    const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
+    bean.position.y = ud.origPos.y + floatOffset;
+    bean.rotation.x += ud.rotSpeed * 0.01;
+    bean.rotation.z += ud.rotSpeed * 0.008;
+  });
+
+  // Flowers
+  flowers.forEach((flower) => {
+    const ud = flower.userData;
+    const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
+    flower.position.y = ud.origPos.y + floatOffset;
+    const sway = Math.sin(t * ud.swaySpeed + ud.phase) * ud.swayAmp;
+    flower.rotation.x = ud.origRot.x + sway;
+    flower.rotation.z = ud.origRot.z + sway * 0.5;
+    flower.rotation.y += ud.rotSpeed * 0.005;
+  });
+
+  // Mouse / auto rotation
   targetRotX += (mouseX - targetRotX) * 0.03;
   targetRotY += (mouseY - targetRotY) * 0.03;
   const autoRot = t * 0.015;
-
-  // --- Update beans, flowers, fireflies, petals, snowfall (same as before) ---
-  // We'll reuse the previous code for those, just with higher counts.
-
-  // --- Apply rotation to all groups ---
   const rotY = targetRotX * 0.8 + autoRot;
   const rotX = targetRotY * 0.5;
+
   beanGroup.rotation.y = rotY;
   beanGroup.rotation.x = rotX;
   flowerGroup.rotation.y = rotY * 0.9;
   flowerGroup.rotation.x = rotX * 0.8;
   petalGroup.rotation.y = rotY * 0.4;
   petalGroup.rotation.x = rotX * 0.2;
-  // (other groups as needed)
 
-  // --- Point light orbit ---
+  // Point light orbit
   pointLight.position.x = Math.sin(t * 0.12) * 4;
   pointLight.position.z = Math.cos(t * 0.12) * 4;
   pointLight.position.y = 1 + Math.sin(t * 0.1) * 0.5;
+
+  // Dynamic light colour shift
+  const hue = 0.08 + Math.sin(t * 0.06) * 0.04;
+  const col = new THREE.Color().setHSL(hue, 0.6, 0.7);
+  dirLight.color.lerp(col, 0.01);
+  const hue2 = 0.10 + Math.sin(t * 0.05 + 0.5) * 0.03;
+  const col2 = new THREE.Color().setHSL(hue2, 0.7, 0.5);
+  fillLight.color.lerp(col2, 0.01);
 
   composer.render();
   requestAnimationFrame(animate);
@@ -643,19 +834,16 @@ function animate() {
 
 animate();
 setTimeout(resize, 100);
-
 console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 </script>
-  
-<!-- ===== REST OF PAGE (About, Three Rounds, Menu, Gallery, etc.) ===== -->
+
+<!-- ===== REST OF PAGE ===== -->
 <!-- ===== ABOUT ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Our story</span></div>
     <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-bottom:1.25rem;">From Yirgacheffe to your table</h2>
-    <p class="body-lg" style="color:var(--roast-soft);">
-      We work directly with smallholder growers in Yirgacheffe and Sidamo, roasting in small batches a few times a week. Our baristas are trained in both the espresso bar and the traditional ceremony — because we think a city café can hold both.
-    </p>
+    <p class="body-lg" style="color:var(--roast-soft);">We work directly with smallholder growers in Yirgacheffe and Sidamo, roasting in small batches a few times a week. Our baristas are trained in both the espresso bar and the traditional ceremony — because we think a city café can hold both.</p>
   </div>
 </section>
 
@@ -697,59 +885,26 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
     <a href="/order" class="btn btn-outline btn-sm">Order these online <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
   </div>
   <div style="display:grid; grid-template-columns:1fr; gap:1.5rem;" class="menu-grid">
-    <div class="menu-card" data-reveal>
-      <span class="tag">light roast</span>
-      <h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Ethiopian Yirgacheffe</h3>
-      <p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Floral, citrus-forward, brewed pour-over.</p>
-      <span class="price-tag">120 ETB</span>
-    </div>
-    <div class="menu-card" data-reveal>
-      <span class="tag" style="background:var(--terracotta);">bold</span>
-      <h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Sidamo Espresso</h3>
-      <p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Chocolatey double shot, our house standard.</p>
-      <span class="price-tag">100 ETB</span>
-    </div>
-    <div class="menu-card" data-reveal>
-      <span class="tag" style="background:var(--gold); color:var(--roast);">daily bake</span>
-      <h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Fresh Pastries</h3>
-      <p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Croissants, muffins and cake, baked each morning.</p>
-      <span class="price-tag">from 80 ETB</span>
-    </div>
+    <div class="menu-card" data-reveal><span class="tag">light roast</span><h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Ethiopian Yirgacheffe</h3><p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Floral, citrus-forward, brewed pour-over.</p><span class="price-tag">120 ETB</span></div>
+    <div class="menu-card" data-reveal><span class="tag" style="background:var(--terracotta);">bold</span><h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Sidamo Espresso</h3><p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Chocolatey double shot, our house standard.</p><span class="price-tag">100 ETB</span></div>
+    <div class="menu-card" data-reveal><span class="tag" style="background:var(--gold); color:var(--roast);">daily bake</span><h3 class="h-display" style="font-size:1.3rem; margin:0 0 0.4rem; color:var(--roast);">Fresh Pastries</h3><p style="font-size:0.92rem; color:var(--roast-soft); margin:0 0 1rem;">Croissants, muffins and cake, baked each morning.</p><span class="price-tag">from 80 ETB</span></div>
   </div>
 </section>
 
 <!-- ===== MASONRY GALLERY ===== -->
 <section id="gallery" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap">
-    <div data-reveal class="eyebrow-line" style="justify-content:center;">
-      <span class="rule"></span>
-      <span class="h-eyebrow">Inside the café</span>
-    </div>
+    <div data-reveal class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Inside the café</span></div>
     <h2 data-reveal class="h-display" style="text-align:center; font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-bottom:2.5rem;">Gallery</h2>
-
     <div class="masonry-grid" data-reveal>
-      <a href="#img1" class="gallery-item">
-        <img src="assets/images/gallery2.jpg" alt="Coffee being poured" loading="lazy">
-      </a>
-      <a href="#img2" class="gallery-item">
-        <img src="assets/images/hyperlogo.png" alt="Café interior" loading="lazy">
-      </a>
-      <a href="#img3" class="gallery-item">
-        <img src="assets/images/gallery2.jpg" alt="Latte art" loading="lazy">
-      </a>
-      <a href="#img4" class="gallery-item">
-        <img src="assets/images/hyperlogo.png" alt="Coffee beans" loading="lazy">
-      </a>
-      <a href="#img1" class="gallery-item">
-        <img src="assets/images/gallery2.jpg" alt="Barista at work" loading="lazy">
-      </a>
-      <a href="#img2" class="gallery-item">
-        <img src="assets/images/hyperlogo.png" alt="Coffee tasting" loading="lazy">
-      </a>
+      <a href="#img1" class="gallery-item"><img src="assets/images/gallery2.jpg" alt="Coffee being poured" loading="lazy"></a>
+      <a href="#img2" class="gallery-item"><img src="assets/images/hyperlogo.png" alt="Café interior" loading="lazy"></a>
+      <a href="#img3" class="gallery-item"><img src="assets/images/gallery2.jpg" alt="Latte art" loading="lazy"></a>
+      <a href="#img4" class="gallery-item"><img src="assets/images/hyperlogo.png" alt="Coffee beans" loading="lazy"></a>
+      <a href="#img1" class="gallery-item"><img src="assets/images/gallery2.jpg" alt="Barista at work" loading="lazy"></a>
+      <a href="#img2" class="gallery-item"><img src="assets/images/hyperlogo.png" alt="Coffee tasting" loading="lazy"></a>
     </div>
   </div>
-
-  <!-- Lightboxes -->
   <div id="img1" class="lightbox"><a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a><img src="assets/images/gallery2.jpg" alt="Coffee being poured" style="position:relative; z-index:2;"></div>
   <div id="img2" class="lightbox"><a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a><img src="assets/images/hyperlogo.png" alt="Café interior" style="position:relative; z-index:2;"></div>
   <div id="img3" class="lightbox"><a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a><img src="assets/images/gallery2.jpg" alt="Latte art" style="position:relative; z-index:2;"></div>
@@ -759,10 +914,7 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 <!-- ===== TRAINING TEASER ===== -->
 <section class="bg-roast" style="padding:5rem 0; color:var(--cream);">
   <div class="wrap" style="text-align:center; max-width:760px;">
-    <div class="eyebrow-line" style="justify-content:center;">
-      <span class="rule" style="background:var(--gold);"></span>
-      <span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span>
-    </div>
+    <div class="eyebrow-line" style="justify-content:center;"><span class="rule" style="background:var(--gold);"></span><span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span></div>
     <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem);">Cupping & Barista Training</h2>
     <p style="color:var(--cream-deep); margin-bottom:2rem;">Master coffee production, roasting, latte art, and more. Hands‑on sessions led by industry professionals.</p>
     <a href="/training" class="btn btn-primary">Explore training</a>
@@ -772,11 +924,7 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 <!-- ===== UPCOMING EVENT TEASER ===== -->
 <section class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="background:#fff; border-radius:24px; padding:2.5rem; display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:center; border:1px solid var(--line);">
-    <div style="max-width:30rem;">
-      <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Coming up</span></div>
-      <h3 class="h-display" style="font-size:1.7rem; color:var(--roast);">Cupping & Ceremony — every first Saturday</h3>
-      <p style="color:var(--roast-soft); margin-top:0.5rem;">Join our head roaster for a guided tasting and a full traditional buna ceremony. Free, limited seats.</p>
-    </div>
+    <div style="max-width:30rem;"><div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Coming up</span></div><h3 class="h-display" style="font-size:1.7rem; color:var(--roast);">Cupping & Ceremony — every first Saturday</h3><p style="color:var(--roast-soft); margin-top:0.5rem;">Join our head roaster for a guided tasting and a full traditional buna ceremony. Free, limited seats.</p></div>
     <a href="/events" class="btn btn-primary">See all events</a>
   </div>
 </section>
@@ -785,67 +933,19 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 <section class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap" style="max-width:1240px;">
     <div data-reveal style="text-align:center; margin-bottom:3rem;">
-      <div class="eyebrow-line" style="justify-content:center;">
-        <span class="rule"></span>
-        <span class="h-eyebrow">What our customers say</span>
-      </div>
-      <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-top:0.5rem;">
-        Loved by coffee lovers
-      </h2>
+      <div class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">What our customers say</span></div>
+      <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-top:0.5rem;">Loved by coffee lovers</h2>
       <div style="display:flex; align-items:center; justify-content:center; gap:0.75rem; margin-top:1rem;">
-        <div style="color:var(--gold); font-size:1.4rem; letter-spacing:2px;">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
+        <div style="color:var(--gold); font-size:1.4rem; letter-spacing:2px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <span style="font-family:var(--mono); font-size:1.1rem; font-weight:600; color:var(--roast);">4.9</span>
         <span style="color:var(--roast-soft); font-size:0.9rem;">(120+ reviews)</span>
       </div>
     </div>
-
     <div class="reviews-grid">
-      <div class="review-card" data-reveal>
-        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"The best coffee in Addis! The Yirgacheffe pour-over is absolutely incredible – floral, bright, and perfectly brewed."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:var(--terracotta);">SM</div>
-          <div>
-            <div class="review-name">Sara M.</div>
-            <div class="review-role">Regular customer</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card" data-reveal>
-        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"I had the traditional buna ceremony here and it was truly authentic. The staff explained every step with so much passion."</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:var(--gold);">DK</div>
-          <div>
-            <div class="review-name">Dawit K.</div>
-            <div class="review-role">Coffee enthusiast</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card" data-reveal>
-        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"The barista training was world-class. I went from knowing nothing to pulling perfect shots in just two days. Highly recommend!"</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:var(--sage);">EA</div>
-          <div>
-            <div class="review-name">Esayas A.</div>
-            <div class="review-role">Training graduate</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card" data-reveal>
-        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="review-text">"My go-to spot for coffee in Bole. Great atmosphere, friendly staff, and the pastries are incredible – especially the himbasha!"</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:var(--terracotta-deep);">LT</div>
-          <div>
-            <div class="review-name">Liya T.</div>
-            <div class="review-role">Loyal customer</div>
-          </div>
-        </div>
-      </div>
+      <div class="review-card" data-reveal><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-text">"The best coffee in Addis! The Yirgacheffe pour-over is absolutely incredible – floral, bright, and perfectly brewed."</p><div class="review-author"><div class="review-avatar" style="background:var(--terracotta);">SM</div><div><div class="review-name">Sara M.</div><div class="review-role">Regular customer</div></div></div></div>
+      <div class="review-card" data-reveal><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-text">"I had the traditional buna ceremony here and it was truly authentic. The staff explained every step with so much passion."</p><div class="review-author"><div class="review-avatar" style="background:var(--gold);">DK</div><div><div class="review-name">Dawit K.</div><div class="review-role">Coffee enthusiast</div></div></div></div>
+      <div class="review-card" data-reveal><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-text">"The barista training was world-class. I went from knowing nothing to pulling perfect shots in just two days. Highly recommend!"</p><div class="review-author"><div class="review-avatar" style="background:var(--sage);">EA</div><div><div class="review-name">Esayas A.</div><div class="review-role">Training graduate</div></div></div></div>
+      <div class="review-card" data-reveal><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="review-text">"My go-to spot for coffee in Bole. Great atmosphere, friendly staff, and the pastries are incredible – especially the himbasha!"</p><div class="review-author"><div class="review-avatar" style="background:var(--terracotta-deep);">LT</div><div><div class="review-name">Liya T.</div><div class="review-role">Loyal customer</div></div></div></div>
     </div>
   </div>
 </section>
@@ -870,18 +970,8 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand-row">
-          <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:44px; height:44px;">
-          <span class="brand-name">Hyper Coffee</span>
-        </div>
-        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0;">
-          <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
-            <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
-          </text>
-          <defs>
-            <path id="footerCurve" d="M20,22 Q70,8 120,22"/>
-          </defs>
-        </svg>
+        <div class="brand-row"><img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:44px; height:44px;"><span class="brand-name">Hyper Coffee</span></div>
+        <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0;"><text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5"><textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath></text><defs><path id="footerCurve" d="M20,22 Q70,8 120,22"/></defs></svg>
         <p>Specialty Ethiopian coffee, roasted in small batches in Bole, Addis Ababa.</p>
         <div class="footer-social">
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -891,53 +981,14 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
           <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <a href="/order">Order online</a>
-        <a href="/training">Training</a>
-        <a href="/journal">Journal</a>
-        <a href="/events">Events</a>
-        <a href="/#about">About</a>
-        <a href="/#contact">Contact</a>
-      </div>
-      <div class="footer-newsletter">
-        <h4>Stay caffeinated</h4>
-        <p>Subscribe for updates on new roasts, events, and brewing tips.</p>
-        <form id="newsletter-form" action="https://formspree.io/f/xeeddjzw" method="POST">
-          <input type="email" name="email" placeholder="Your email address" required>
-          <button type="submit" class="btn-subscribe">Subscribe</button>
-        </form>
-      </div>
+      <div class="footer-links"><h4>Explore</h4><a href="/order">Order online</a><a href="/training">Training</a><a href="/journal">Journal</a><a href="/events">Events</a><a href="/#about">About</a><a href="/#contact">Contact</a></div>
+      <div class="footer-newsletter"><h4>Stay caffeinated</h4><p>Subscribe for updates on new roasts, events, and brewing tips.</p><form id="newsletter-form" action="https://formspree.io/f/xeeddjzw" method="POST"><input type="email" name="email" placeholder="Your email address" required><button type="submit" class="btn-subscribe">Subscribe</button></form></div>
       <div>
-        <div class="footer-links">
-          <h4>Visit us</h4>
-          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;">
-            <i class="fas fa-location-dot" style="color:var(--gold); margin-right:0.5rem;"></i>
-            Bole Rwanda, Addis Ababa
-          </p>
-          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;">
-            <i class="fas fa-clock" style="color:var(--gold); margin-right:0.5rem;"></i>
-            Mon–Sat 7AM–9PM · Sun 8AM–6PM
-          </p>
-          <p style="font-size:0.9rem; opacity:0.7; margin-bottom:1rem;">
-            <i class="fas fa-phone" style="color:var(--gold); margin-right:0.5rem;"></i>
-            +251 940 887 089
-          </p>
-        </div>
-        <div class="footer-map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789!2d38.7577!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyNy43IkU!5e0!3m2!1sen!2sus!4v1610000000000"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Hyper Coffee Location Map">
-          </iframe>
-        </div>
+        <div class="footer-links"><h4>Visit us</h4><p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;"><i class="fas fa-location-dot" style="color:var(--gold); margin-right:0.5rem;"></i>Bole Rwanda, Addis Ababa</p><p style="font-size:0.9rem; opacity:0.7; margin-bottom:0.5rem;"><i class="fas fa-clock" style="color:var(--gold); margin-right:0.5rem;"></i>Mon–Sat 7AM–9PM · Sun 8AM–6PM</p><p style="font-size:0.9rem; opacity:0.7; margin-bottom:1rem;"><i class="fas fa-phone" style="color:var(--gold); margin-right:0.5rem;"></i>+251 940 887 089</p></div>
+        <div class="footer-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789!2d38.7577!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyNy43IkU!5e0!3m2!1sen!2sus!4v1610000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hyper Coffee Location Map"></iframe></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Hyper Coffee. All rights reserved.</span>
-      <span>Built with <i class="fas fa-heart" style="color:var(--terracotta);"></i> in Addis Ababa</span>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Hyper Coffee. All rights reserved.</span><span>Built with <i class="fas fa-heart" style="color:var(--terracotta);"></i> in Addis Ababa</span></div>
   </div>
 </footer>
 
@@ -954,4 +1005,4 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 
 <script src="assets/site.js"></script>
 </body>
-                                                                                                          </html>
+        </html>
