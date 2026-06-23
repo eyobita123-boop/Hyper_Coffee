@@ -175,51 +175,223 @@
       margin-top: 0.75rem;
       position: relative;
       z-index: 2;
-    }
-    .logo-overlay .gold-dots span {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.25;
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    .logo-overlay .gold-dots span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
-    .logo-overlay .gold-dots span:nth-child(3) { animation-delay: 0.6s; }
+<style>
+  /* ----- Hero with Three.js ----- */
+  #split-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    padding-top: 76px;
+    background: #0E0A07;
+    overflow: hidden;
+    position: relative;
+  }
 
-    @keyframes pulseGlow {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
-    }
+  .hero-left-revamp {
+    display: flex;
+    align-items: center;
+    padding: 4rem 3rem 4rem 4rem;
+    background: radial-gradient(ellipse at 30% 50%, rgba(58,36,21,0.85), rgba(14,10,7,0.95) 80%);
+    color: #F2E9DC;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-left-revamp .hero-content {
+    max-width: 30rem;
+  }
+  .hero-left-revamp .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-left-revamp .eyebrow .rule {
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(212,165,55,0.3);
+  }
+  .hero-left-revamp .eyebrow .text {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-left-revamp h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 500;
+    font-style: italic;
+    color: #F2E9DC;
+    line-height: 1;
+    margin: 0.5rem 0 1.2rem;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+  .hero-left-revamp p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #C9BBA4;
+    max-width: 28rem;
+    margin: 1.5rem 0 2.25rem;
+  }
+  .hero-left-revamp .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .hero-left-revamp .btn-primary {
+    background: linear-gradient(135deg, var(--terracotta), var(--gold));
+    color: #1C1410;
+    font-weight: 700;
+    box-shadow: 0 6px 24px rgba(196,98,45,0.3);
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+  }
+  .hero-left-revamp .btn-primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(196,98,45,0.5);
+  }
+  .hero-left-revamp .btn-ghost {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(247,239,227,0.2);
+    color: #F2E9DC;
+    backdrop-filter: blur(4px);
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .hero-left-revamp .btn-ghost:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
 
-    @keyframes dotPulse {
-      0%, 100% { transform: scale(1); opacity: 0.2; }
-      50% { transform: scale(1.6); opacity: 0.7; }
-    }
+  /* Three.js container */
+  #three-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 55vh;
+    background: #0E0A07;
+    overflow: hidden;
+  }
+  #three-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      #split-hero {
-        grid-template-columns: 1fr;
-        padding-top: 76px;
-      }
-      .hero-left-revamp {
-        padding: 2.5rem 1.5rem;
-        text-align: center;
-        justify-content: center;
-      }
-      .hero-left-revamp .hero-content { max-width: 100%; }
-      .hero-left-revamp .btn-group { justify-content: center; }
-      #three-container { min-height: 50vh; }
-      .logo-overlay img { width: clamp(100px, 40%, 200px); }
-      .logo-overlay .tagline { font-size: 0.55rem; }
-    }
+  /* ----- ENHANCED LOGO OVERLAY (Bigger, Glowing, Animated) ----- */
+  .logo-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+  }
 
-    @media (max-width: 480px) {
-      #three-container { min-height: 40vh; }
-      .logo-overlay img { width: clamp(80px, 35%, 150px); }
+  .logo-overlay .logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(ellipse at center, rgba(212, 165, 55, 0.35), rgba(212, 165, 55, 0.05) 60%, transparent 80%);
+    border-radius: 50%;
+    animation: pulseGlow 3s ease-in-out infinite;
+    pointer-events: none;
+    filter: blur(20px);
+  }
+
+  .logo-overlay img {
+    position: relative;
+    z-index: 2;
+    width: clamp(220px, 45%, 480px);
+    height: auto;
+    filter: drop-shadow(0 0 60px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 120px rgba(212, 165, 55, 0.2));
+    animation: floatLogo 4s ease-in-out infinite;
+    pointer-events: auto;
+    cursor: default;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .logo-overlay img:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.3));
+  }
+
+  .logo-overlay .tagline {
+    font-family: 'Fraunces', serif;
+    color: rgba(247,239,227,0.35);
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo-overlay .gold-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+  .logo-overlay .gold-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.25;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  .logo-overlay .gold-dots span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
+  .logo-overlay .gold-dots span:nth-child(3) { animation-delay: 0.6s; }
+
+  /* ----- Keyframe Animations ----- */
+  @keyframes floatLogo {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-18px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.6); opacity: 0.7; }
+  }
+
+  /* ----- Responsive ----- */
+  @media (max-width: 768px) {
+    #split-hero {
+      grid-template-columns: 1fr;
+      padding-top: 76px;
     }
-  </style>
+    .hero-left-revamp {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      justify-content: center;
+    }
+    .hero-left-revamp .hero-content { max-width: 100%; }
+    .hero-left-revamp .btn-group { justify-content: center; }
+    #three-container { min-height: 50vh; }
+    .logo-overlay img { width: clamp(150px, 45%, 280px); }
+    .logo-overlay .tagline { font-size: 0.55rem; }
+  }
+
+  @media (max-width: 480px) {
+    #three-container { min-height: 40vh; }
+    .logo-overlay img { width: clamp(120px, 40%, 200px); }
+  }
+    </style>
 </head>
 <body>
 
