@@ -14,7 +14,7 @@
 
   <style>
     /* ============================================================
-       UNIFIED HERO — Full-Screen 3D Background + Overlay
+       CINEMATIC UNIFIED HERO
        ============================================================ */
 
     /* ----- Hero Container ----- */
@@ -54,21 +54,23 @@
       pointer-events: none;
     }
 
-    /* ----- Amharic Watermark (decorative) ----- */
+    /* ----- Amharic Watermark (Centered, More Visible) ----- */
     .hero-watermark {
       position: absolute;
-      bottom: 10%;
-      right: 8%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 2;
       font-family: 'Fraunces', serif;
-      font-size: clamp(4rem, 12vw, 12rem);
-      color: rgba(247, 239, 227, 0.03);
+      font-size: clamp(6rem, 15vw, 18rem);
+      color: rgba(247, 239, 227, 0.06);
       font-weight: 700;
       letter-spacing: 0.1em;
       pointer-events: none;
       user-select: none;
       line-height: 1;
-      transform: rotate(-6deg);
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* ----- Overlay Content (Glass Card) ----- */
@@ -84,7 +86,7 @@
     }
 
     .hero-content-card {
-      max-width: 900px;
+      max-width: 960px;
       width: 100%;
       text-align: center;
       padding: 3rem 4rem;
@@ -102,13 +104,13 @@
       transform: scale(1.01);
     }
 
-    /* ----- Large Animated Logo ----- */
+    /* ----- Large Animated Logo (More Floating, More Rotating) ----- */
     .hero-logo {
-      width: clamp(260px, 50vw, 600px);
+      width: clamp(320px, 60vw, 750px);
       height: auto;
       margin-bottom: 1.5rem;
       filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.15));
-      animation: floatLogoSpin 6s ease-in-out infinite;
+      animation: floatLogoSpin 5s ease-in-out infinite;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: block;
       margin-left: auto;
@@ -118,6 +120,21 @@
     .hero-logo:hover {
       transform: scale(1.06);
       filter: drop-shadow(0 0 120px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 200px rgba(212, 165, 55, 0.3));
+    }
+
+    /* ----- Softer Pulsating Glow ----- */
+    .logo-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(ellipse at center, rgba(212, 165, 55, 0.25), rgba(212, 165, 55, 0.03) 60%, transparent 80%);
+      border-radius: 50%;
+      animation: pulseGlow 4s ease-in-out infinite;
+      pointer-events: none;
+      filter: blur(20px);
     }
 
     /* ----- Text Group ----- */
@@ -196,9 +213,14 @@
     /* ----- Keyframe Animations ----- */
     @keyframes floatLogoSpin {
       0% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-15px) rotate(1.5deg); }
-      66% { transform: translateY(8px) rotate(-1.5deg); }
+      33% { transform: translateY(-30px) rotate(3deg); }
+      66% { transform: translateY(12px) rotate(-3deg); }
       100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
     }
 
     /* ----- Responsive ----- */
@@ -218,7 +240,7 @@
         -webkit-backdrop-filter: blur(16px);
       }
       .hero-logo {
-        width: clamp(180px, 40vw, 300px);
+        width: clamp(200px, 45vw, 350px);
       }
       .hero-title {
         font-size: clamp(1.8rem, 6vw, 2.8rem);
@@ -228,7 +250,8 @@
         padding: 0 0.5rem;
       }
       .hero-watermark {
-        display: none;
+        font-size: clamp(4rem, 10vw, 8rem);
+        opacity: 0.04;
       }
     }
 
@@ -238,7 +261,7 @@
         border-radius: 16px;
       }
       .hero-logo {
-        width: clamp(140px, 35vw, 200px);
+        width: clamp(150px, 40vw, 220px);
       }
       .hero-title {
         font-size: 1.6rem;
@@ -246,6 +269,10 @@
       .hero-buttons .btn {
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
+      }
+      .hero-watermark {
+        font-size: clamp(3rem, 8vw, 6rem);
+        opacity: 0.03;
       }
     }
   </style>
@@ -305,7 +332,7 @@
 </div>
 
 <!-- ============================================================
-     UNIFIED HERO — Full-Screen 3D + Overlay
+     CINEMATIC UNIFIED HERO
      ============================================================ -->
 <section id="hero-unified">
 
@@ -315,7 +342,7 @@
   <!-- 2. Dark Overlay for Readability -->
   <div class="hero-dark-overlay"></div>
 
-  <!-- 3. Decorative Amharic Watermark -->
+  <!-- 3. Amharic Watermark (Centered, More Visible) -->
   <div class="hero-watermark" aria-hidden="true">መገኛችን</div>
 
   <!-- 4. Overlay Content (Glass Card) -->
@@ -323,7 +350,10 @@
     <div class="hero-content-card">
 
       <!-- Large Animated Logo -->
-      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
+      <div style="position: relative;">
+        <div class="logo-glow"></div>
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
+      </div>
 
       <!-- Text Group -->
       <div class="hero-eyebrow">
@@ -344,7 +374,7 @@
 </section>
 
 <!-- ============================================================
-     THREE.JS — Import Map & Module
+     THREE.JS — Cinematic Upgrade (Snowfall + Enhanced Stars)
      ============================================================ -->
 <script type="importmap">
 {
@@ -371,17 +401,14 @@ const container = document.getElementById('three-container');
 const width = container.clientWidth;
 const height = container.clientHeight || window.innerHeight;
 
-// Scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0E0A07);
-scene.fog = new THREE.Fog(0x0E0A07, 14, 26);
+scene.fog = new THREE.Fog(0x0E0A07, 14, 30);
 
-// Camera
 const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 50);
 camera.position.set(0, 2, 12);
 camera.lookAt(0, 0, 0);
 
-// Renderer
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: false,
@@ -441,7 +468,7 @@ pointLight.position.set(0, 1, 4);
 scene.add(pointLight);
 
 // ============================================================
-//  HELPER: Coffee Bean Geometry
+//  COFFEE BEANS (50)
 // ============================================================
 function createBeanGeometry() {
   const points = [];
@@ -475,32 +502,6 @@ function createBeanGeometry() {
   return geo;
 }
 
-// ============================================================
-//  HELPER: Flower Petal Geometry
-// ============================================================
-function createPetalGeometry() {
-  const shape = new THREE.Shape();
-  shape.moveTo(0, 0);
-  shape.bezierCurveTo(0.08, 0.3, 0.3, 0.5, 0.5, 0.5);
-  shape.bezierCurveTo(0.7, 0.5, 0.9, 0.3, 1.0, 0);
-  shape.bezierCurveTo(0.9, -0.3, 0.7, -0.5, 0.5, -0.5);
-  shape.bezierCurveTo(0.3, -0.5, 0.08, -0.3, 0, 0);
-  const extrudeSettings = {
-    depth: 0.04,
-    bevelEnabled: true,
-    bevelThickness: 0.02,
-    bevelSize: 0.02,
-    bevelSegments: 4
-  };
-  const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-  geo.translate(0, 0, -0.02);
-  geo.rotateX(Math.PI / 2);
-  return geo;
-}
-
-// ============================================================
-//  CREATE BEANS (50)
-// ============================================================
 const beanGeo = createBeanGeometry();
 const beanMats = [
   new THREE.MeshStandardMaterial({ color: 0x3E2723, roughness: 0.85, metalness: 0.05, envMapIntensity: 0.3 }),
@@ -540,8 +541,28 @@ for (let i = 0; i < 50; i++) {
 scene.add(beanGroup);
 
 // ============================================================
-//  CREATE FLOWERS (50)
+//  FLOWERS (50)
 // ============================================================
+function createPetalGeometry() {
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0);
+  shape.bezierCurveTo(0.08, 0.3, 0.3, 0.5, 0.5, 0.5);
+  shape.bezierCurveTo(0.7, 0.5, 0.9, 0.3, 1.0, 0);
+  shape.bezierCurveTo(0.9, -0.3, 0.7, -0.5, 0.5, -0.5);
+  shape.bezierCurveTo(0.3, -0.5, 0.08, -0.3, 0, 0);
+  const extrudeSettings = {
+    depth: 0.04,
+    bevelEnabled: true,
+    bevelThickness: 0.02,
+    bevelSize: 0.02,
+    bevelSegments: 4
+  };
+  const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+  geo.translate(0, 0, -0.02);
+  geo.rotateX(Math.PI / 2);
+  return geo;
+}
+
 const petalGeo = createPetalGeometry();
 const petalMats = [
   new THREE.MeshStandardMaterial({ color: 0xF5F0E8, roughness: 0.6, metalness: 0.0, side: THREE.DoubleSide }),
@@ -610,9 +631,9 @@ for (let i = 0; i < 50; i++) {
 scene.add(flowerGroup);
 
 // ============================================================
-//  CREATE STARS (50)
+//  ENHANCED STARS (100, Brighter, Golden)
 // ============================================================
-const starCount = 50;
+const starCount = 100;
 const starGeo = new THREE.BufferGeometry();
 const starPos = new Float32Array(starCount * 3);
 const starSizes = new Float32Array(starCount);
@@ -621,14 +642,15 @@ const starColors = new Float32Array(starCount * 3);
 for (let i = 0; i < starCount; i++) {
   const theta = Math.random() * Math.PI * 2;
   const phi = Math.acos(2 * Math.random() - 1);
-  const radius = 4 + Math.random() * 8;
+  const radius = 4 + Math.random() * 10;
   starPos[i*3] = Math.sin(phi) * Math.cos(theta) * radius;
-  starPos[i*3+1] = (Math.random() - 0.5) * 4;
+  starPos[i*3+1] = (Math.random() - 0.5) * 5;
   starPos[i*3+2] = Math.sin(phi) * Math.sin(theta) * radius;
-  starSizes[i] = 0.04 + Math.random() * 0.08;
+  starSizes[i] = 0.06 + Math.random() * 0.12;
+  const gold = 0.7 + Math.random() * 0.3;
   starColors[i*3] = 1.0;
   starColors[i*3+1] = 0.85 + Math.random() * 0.15;
-  starColors[i*3+2] = 0.4 + Math.random() * 0.3;
+  starColors[i*3+2] = 0.3 + Math.random() * 0.3;
 }
 
 starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
@@ -636,7 +658,7 @@ starGeo.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
 starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
 
 const starMat = new THREE.PointsMaterial({
-  size: 0.08,
+  size: 0.12,
   vertexColors: true,
   transparent: true,
   opacity: 0.9,
@@ -652,6 +674,52 @@ const starData = [];
 for (let i = 0; i < starCount; i++) {
   starData.push({ speed: 0.3 + Math.random() * 0.7, phase: Math.random() * 6 });
 }
+
+// ============================================================
+//  CINEMATIC SNOWFALL (800 particles)
+// ============================================================
+const snowCount = 800;
+const snowGeo = new THREE.BufferGeometry();
+const snowPos = new Float32Array(snowCount * 3);
+const snowVel = [];
+
+for (let i = 0; i < snowCount; i++) {
+  snowPos[i*3] = (Math.random() - 0.5) * 35;
+  snowPos[i*3+1] = Math.random() * 20;
+  snowPos[i*3+2] = (Math.random() - 0.5) * 25;
+  snowVel.push({
+    y: 0.005 + Math.random() * 0.025,
+    x: (Math.random() - 0.5) * 0.015,
+    z: (Math.random() - 0.5) * 0.015
+  });
+}
+snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos, 3));
+
+// Soft circular texture for snow
+const canvas = document.createElement('canvas');
+canvas.width = 32;
+canvas.height = 32;
+const ctx = canvas.getContext('2d');
+const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+gradient.addColorStop(0, 'rgba(255,255,255,1)');
+gradient.addColorStop(0.5, 'rgba(255,255,255,0.8)');
+gradient.addColorStop(1, 'rgba(255,255,255,0)');
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, 32, 32);
+const snowTexture = new THREE.CanvasTexture(canvas);
+
+const snowMat = new THREE.PointsMaterial({
+  size: 0.18,
+  map: snowTexture,
+  transparent: true,
+  opacity: 0.7,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  sizeAttenuation: true,
+});
+
+const snowParticles = new THREE.Points(snowGeo, snowMat);
+scene.add(snowParticles);
 
 // ============================================================
 //  MOUSE PARALLAX
@@ -728,14 +796,29 @@ function animate() {
     flower.rotation.y += ud.rotSpeed * 0.005;
   });
 
-  // Stars
+  // Stars (twinkling)
   const sizes = stars.geometry.attributes.size;
   for (let i = 0; i < starCount; i++) {
     const sd = starData[i];
     const twinkle = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * sd.speed + sd.phase));
-    sizes.array[i] = (0.04 + (i % 5) * 0.01) * twinkle;
+    sizes.array[i] = (0.06 + (i % 5) * 0.01) * twinkle;
   }
   sizes.needsUpdate = true;
+
+  // Snowfall
+  const snowPosAttr = snowParticles.geometry.attributes.position;
+  const snowPosArray = snowPosAttr.array;
+  for (let i = 0; i < snowCount; i++) {
+    snowPosArray[i*3] += snowVel[i].x + Math.sin(t * 0.5 + i) * 0.001;
+    snowPosArray[i*3+1] -= snowVel[i].y;
+    snowPosArray[i*3+2] += snowVel[i].z + Math.cos(t * 0.5 + i) * 0.001;
+    if (snowPosArray[i*3+1] < -5) {
+      snowPosArray[i*3+1] = 15 + Math.random() * 5;
+      snowPosArray[i*3] = (Math.random() - 0.5) * 35;
+      snowPosArray[i*3+2] = (Math.random() - 0.5) * 25;
+    }
+  }
+  snowPosAttr.needsUpdate = true;
 
   // Group rotation
   const rotY = targetRotX * 0.8 + autoRot;
@@ -758,7 +841,7 @@ function animate() {
 animate();
 setTimeout(resize, 100);
 
-console.log('🔥 Hyper Coffee Unified 3D Hero loaded');
+console.log('🔥 Hyper Coffee Cinematic 3D Hero loaded');
 </script>
 
 <!-- ===== REST OF PAGE (About, Three Rounds, Menu, Gallery, etc.) ===== -->
@@ -1068,4 +1151,4 @@ console.log('🔥 Hyper Coffee Unified 3D Hero loaded');
 
 <script src="assets/site.js"></script>
 </body>
-  </html>
+                                    </html>
