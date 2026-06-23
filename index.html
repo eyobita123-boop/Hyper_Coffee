@@ -13,74 +13,247 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ---------- Hero split-screen ---------- */
-    .hero-split {
+    /* ===== HERO REVAMP STYLES ===== */
+
+    /* ---------- Hero split ---------- */
+    #split-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 100vh;
       padding-top: 76px;
-      background: #1c1410;
-    }
-    .hero-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 3rem 4rem 4rem;
-      background: radial-gradient(ellipse at 30% 50%, #2b1a14, #0f0b09);
-      color: #f7efe3;
-    }
-    .hero-left .eyebrow-line .rule { background: #d4a537; }
-    .hero-left .h-eyebrow { color: #d4a537; }
-    .hero-left h1 {
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      letter-spacing: -0.02em;
-      margin: 0.5rem 0 1rem;
-      line-height: 1;
-    }
-    .hero-left p {
-      max-width: 28rem;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: rgba(247, 239, 227, 0.75);
-      margin-bottom: 2.5rem;
-    }
-    .hero-left .btn-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .hero-left .btn-outline {
-      border-color: rgba(247, 239, 227, 0.3);
-      color: #f7efe3;
-    }
-    .hero-left .btn-outline:hover {
-      background: #f7efe3;
-      color: #1c1410;
-    }
-    .hero-right {
-      position: relative;
+      background: #0E0A07;
       overflow: hidden;
-      background: #1c1410;
+      position: relative;
+    }
+
+    /* ---------- Hero Left ---------- */
+    .hero-left-revamp {
+      display: flex;
+      align-items: center;
+      padding: 4rem 3rem 4rem 4rem;
+      background: radial-gradient(ellipse at 30% 50%, #3A2415, #0E0A07 80%);
+      color: #F2E9DC;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-left-revamp .hero-content {
+      max-width: 30rem;
+    }
+    .hero-left-revamp .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero-left-revamp .eyebrow .rule {
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .hero-left-revamp .eyebrow .text {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero-left-revamp h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 500;
+      font-style: italic;
+      color: #F2E9DC;
+      line-height: 1;
+      margin: 0.5rem 0 1.2rem;
+    }
+    .hero-left-revamp p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #C9BBA4;
+      max-width: 28rem;
+      margin: 1.5rem 0 2.25rem;
+    }
+    .hero-left-revamp .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    /* Buttons with enhanced hover */
+    .hero-left-revamp .btn-primary {
+      background: linear-gradient(135deg, var(--terracotta), var(--gold));
+      color: #1C1410;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(196, 98, 45, 0.3);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .hero-left-revamp .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.4);
+    }
+    .hero-left-revamp .btn-ghost {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(247,239,227,0.2);
+      color: #F2E9DC;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-left-revamp .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    /* ---------- Hero Right ---------- */
+    .hero-right-revamp {
+      position: relative;
+      background: radial-gradient(ellipse at 60% 40%, #2B1A14, #0E0A07 80%);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    @media (max-width: 768px) {
-      .hero-split { grid-template-columns: 1fr; padding-top: 76px; }
-      .hero-left { padding: 3rem 1.5rem; text-align: center; align-items: center; }
-      .hero-left p { max-width: 100%; }
-      .hero-left .btn-group { justify-content: center; }
-      .hero-right { min-height: 50vh; }
+      min-height: 55vh;
+      overflow: hidden;
     }
 
-    /* ---------- Hero-right animations ---------- */
+    /* Steam / smoke effect */
+    .steam-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .steam-particle {
+      position: absolute;
+      bottom: 10%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 50% 30%, rgba(247,239,227,0.08), transparent 70%);
+      border-radius: 50%;
+      filter: blur(20px);
+      animation: steamRise 8s ease-in-out infinite;
+    }
+    .steam-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .steam-particle:nth-child(2) { left: 35%; animation-delay: 2s; width: 160px; height: 160px; }
+    .steam-particle:nth-child(3) { left: 60%; animation-delay: 4s; }
+    .steam-particle:nth-child(4) { left: 85%; animation-delay: 1.5s; width: 140px; height: 140px; }
+
+    @keyframes steamRise {
+      0% { transform: translateY(0) scale(0.8); opacity: 0.3; }
+      30% { opacity: 0.7; }
+      100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+    }
+
+    /* Glow pulse */
+    .glow-pulse {
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(212,165,55,0.12), transparent 70%);
+      animation: pulseGlow 4s ease-in-out infinite;
+      z-index: 1;
+    }
     @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.15); opacity: 1; }
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    /* Gradient border frame */
+    .gradient-frame {
+      position: relative;
+      padding: 3px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--gold), var(--terracotta), var(--gold), var(--terracotta));
+      background-size: 300% 300%;
+      animation: gradientBorder 5s ease-in-out infinite;
+      max-width: 90%;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      z-index: 2;
     }
     @keyframes gradientBorder {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
+    }
+
+    .gradient-frame-inner {
+      background: #0B0807;
+      border-radius: 25px;
+      padding: 2.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      min-width: 280px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Logo hover effect */
+    .brand-logo-hover {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      filter: drop-shadow(0 0 60px rgba(212,165,55,0.08));
+      position: relative;
+      z-index: 4;
+    }
+    .brand-logo-hover:hover {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 100px rgba(212,165,55,0.2));
+    }
+
+    /* Decorative dots with pulse */
+    .dot-pulse {
+      display: flex;
+      gap: 8px;
+      margin-top: 1.25rem;
+      position: relative;
+      z-index: 4;
+    }
+    .dot-pulse span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.3;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    .dot-pulse span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
+    .dot-pulse span:nth-child(3) { animation-delay: 0.6s; }
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.4); opacity: 0.8; }
+    }
+
+    /* Responsive hero */
+    @media (max-width: 768px) {
+      #split-hero {
+        grid-template-columns: 1fr;
+        padding-top: 76px;
+      }
+      .hero-left-revamp {
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        justify-content: center;
+      }
+      .hero-left-revamp .hero-content {
+        max-width: 100%;
+      }
+      .hero-left-revamp .btn-group {
+        justify-content: center;
+      }
+      .hero-right-revamp {
+        min-height: 50vh;
+      }
+      .gradient-frame-inner {
+        min-height: 200px;
+        min-width: 200px;
+        padding: 1.5rem 2rem;
+      }
+      .steam-particle {
+        width: 80px;
+        height: 80px;
+      }
+      .steam-particle:nth-child(2) { width: 100px; height: 100px; }
     }
   </style>
 </head>
@@ -97,7 +270,6 @@
           Hyper Coffee
         </span>
       </div>
-      <!-- Curved Amharic signature -->
       <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" 
            viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
         <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" 
@@ -139,63 +311,56 @@
   <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
-<!-- ===== HERO — split screen ===== -->
-<section style="position:relative; min-height:100vh; padding-top:76px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden;" id="split-hero">
+<!-- ===== REVAMPED HERO ===== -->
+<section id="split-hero">
 
-  <!-- ===== LEFT: Minimalist dark panel ===== -->
-  <div style="background:#0E0A07; color:#F2E9DC; display:flex; align-items:center; padding:3.5rem 1.75rem; position:relative; z-index:2;">
-    <div style="max-width:30rem;" data-reveal>
-      <div class="eyebrow-line"><span class="rule" style="background:var(--gold);"></span><span class="h-eyebrow" style="color:var(--gold);">Bole, Addis Ababa</span></div>
-      <h1 class="h-display" style="font-size:clamp(2.6rem, 6vw, 4.6rem); color:#F2E9DC; font-style:italic; font-weight:500;">
-        The Art of<br>Buna
-      </h1>
-      <p style="font-size:1.05rem; line-height:1.75; color:#C9BBA4; max-width:26rem; margin:1.5rem 0 2.25rem;">
+  <!-- LEFT -->
+  <div class="hero-left-revamp">
+    <div class="hero-content" data-reveal>
+      <div class="eyebrow">
+        <span class="rule"></span>
+        <span class="text">Bole, Addis Ababa</span>
+      </div>
+      <h1>The Art of<br>Buna</h1>
+      <p>
         One pour, raised high above the cup. A thread of coffee meeting crema. This is the moment our entire ceremony is built around.
       </p>
-      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+      <div class="btn-group">
         <a href="order.html" class="btn btn-primary">Order online</a>
         <a href="#menu" class="btn btn-ghost">See the menu</a>
       </div>
     </div>
   </div>
 
-  <!-- ===== RIGHT: Premium Logo with Gradients ===== -->
-  <div style="position:relative; background:linear-gradient(135deg, #0B0807 0%, #2B1A14 40%, #1C1410 70%, #0B0807 100%); min-height:55vh; display:flex; align-items:center; justify-content:center; overflow:hidden;" aria-hidden="true">
+  <!-- RIGHT with Steam/Smoke -->
+  <div class="hero-right-revamp">
 
-    <!-- Warm glow behind everything -->
-    <div style="position:absolute; width:80%; height:80%; background:radial-gradient(ellipse at 50% 45%, rgba(212,165,55,0.10), rgba(196,98,45,0.05) 40%, transparent 70%);"></div>
+    <!-- Steam particles -->
+    <div class="steam-container">
+      <div class="steam-particle"></div>
+      <div class="steam-particle"></div>
+      <div class="steam-particle"></div>
+      <div class="steam-particle"></div>
+    </div>
 
-    <!-- Animated golden pulse glow -->
-    <div style="position:absolute; width:50%; height:50%; background:radial-gradient(ellipse at center, rgba(212,165,55,0.12), transparent 70%); animation:pulseGlow 4s ease-in-out infinite;"></div>
+    <!-- Glow -->
+    <div class="glow-pulse"></div>
 
-    <!-- Decorative rings -->
-    <div style="position:absolute; width:65%; aspect-ratio:1/1; border:1px solid rgba(212,165,55,0.06); border-radius:50%;"></div>
-    <div style="position:absolute; width:80%; aspect-ratio:1/1; border:1px solid rgba(212,165,55,0.03); border-radius:50%;"></div>
-
-    <!-- Gradient border frame -->
-    <div style="position:relative; padding:3px; border-radius:28px; background:linear-gradient(135deg, var(--gold), var(--terracotta), var(--gold), var(--terracotta)); background-size:300% 300%; animation:gradientBorder 5s ease-in-out infinite; max-width:90%; box-shadow:0 30px 80px rgba(0,0,0,0.6);">
-
-      <!-- Dark inner container -->
-      <div style="background:#0B0807; border-radius:25px; padding:2.5rem 3.5rem; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:280px; min-width:280px;">
-
-        <!-- Logo -->
+    <!-- Gradient frame -->
+    <div class="gradient-frame">
+      <div class="gradient-frame-inner">
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" 
              class="brand-logo-hover"
-             style="width:clamp(160px, 40%, 350px); height:auto; filter:drop-shadow(0 0 60px rgba(212,165,55,0.08)); position:relative; z-index:2; transition:transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
-
-        <!-- Gold accent line -->
-        <div style="width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent); margin:1.5rem 0 1rem; position:relative; z-index:2;"></div>
-
-        <!-- Tagline -->
-        <p style="font-family:'Fraunces', serif; color:rgba(247,239,227,0.4); font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; margin:0; position:relative; z-index:2;">
+             style="width:clamp(160px, 40%, 350px); height:auto;">
+        
+        <div style="width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent); margin:1.5rem 0 1rem; z-index:4; position:relative;"></div>
+        
+        <p style="font-family:'Fraunces', serif; color:rgba(247,239,227,0.4); font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; margin:0; z-index:4; position:relative;">
           Specialty Coffee · Addis Ababa
         </p>
-
-        <!-- Decorative dots -->
-        <div style="display:flex; gap:6px; margin-top:1.25rem; position:relative; z-index:2;">
-          <span style="width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:0.25;"></span>
-          <span style="width:5px; height:5px; border-radius:50%; background:var(--terracotta); opacity:0.25;"></span>
-          <span style="width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:0.25;"></span>
+        
+        <div class="dot-pulse">
+          <span></span><span></span><span></span>
         </div>
       </div>
     </div>
@@ -213,7 +378,7 @@
   </div>
 </section>
 
-<!-- ===== THE THREE ROUNDS ===== -->
+<!-- ===== THREE ROUNDS ===== -->
 <section style="background:var(--roast); color:var(--cream); padding:6rem 0;">
   <div class="wrap">
     <div data-reveal style="margin-bottom:3.5rem; max-width:36rem;">
@@ -423,13 +588,11 @@
 <footer class="footer-enhanced">
   <div class="wrap">
     <div class="footer-grid">
-      <!-- Brand + Social -->
       <div class="footer-brand">
         <div class="brand-row">
           <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" style="width:44px; height:44px;">
           <span class="brand-name">Hyper Coffee</span>
         </div>
-        <!-- Amharic signature in footer -->
         <svg width="140" height="30" viewBox="0 0 140 30" style="display:block; margin:2px 0;">
           <text font-family="'Fraunces', serif" font-size="11" fill="var(--gold)" font-weight="500" letter-spacing="2.5">
             <textPath href="#footerCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
@@ -447,8 +610,6 @@
           <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-
-      <!-- Quick Links -->
       <div class="footer-links">
         <h4>Explore</h4>
         <a href="/order">Order online</a>
@@ -458,8 +619,6 @@
         <a href="/#about">About</a>
         <a href="/#contact">Contact</a>
       </div>
-
-      <!-- Newsletter -->
       <div class="footer-newsletter">
         <h4>Stay caffeinated</h4>
         <p>Subscribe for updates on new roasts, events, and brewing tips.</p>
@@ -468,8 +627,6 @@
           <button type="submit" class="btn-subscribe">Subscribe</button>
         </form>
       </div>
-
-      <!-- Location + Map -->
       <div>
         <div class="footer-links">
           <h4>Visit us</h4>
@@ -496,7 +653,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>&copy; 2026 Hyper Coffee. All rights reserved.</span>
       <span>Built with <i class="fas fa-heart" style="color:var(--terracotta);"></i> in Addis Ababa</span>
@@ -516,23 +672,5 @@
 </div>
 
 <script src="assets/site.js"></script>
-
-<script>
-  // Logo hover effect (hero-right)
-  document.addEventListener('DOMContentLoaded', function() {
-    const logo = document.querySelector('.brand-logo-hover');
-    if (logo) {
-      logo.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.04)';
-        this.style.filter = 'drop-shadow(0 0 80px rgba(212,165,55,0.15))';
-      });
-      logo.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-        this.style.filter = 'drop-shadow(0 0 60px rgba(212,165,55,0.08))';
-      });
-    }
-  });
-</script>
-
 </body>
-  </html>
+            </html>
