@@ -13,102 +13,31 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ----- Hero with Three.js ----- */
-    #split-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 100vh;
-      padding-top: 76px;
-      background: #0E0A07;
-      overflow: hidden;
-      position: relative;
-    }
+    /* ============================================================
+       UNIFIED HERO — Full-Screen 3D Background + Overlay
+       ============================================================ */
 
-    .hero-left-revamp {
-      display: flex;
-      align-items: center;
-      padding: 4rem 3rem 4rem 4rem;
-      background: radial-gradient(ellipse at 30% 50%, rgba(58,36,21,0.85), rgba(14,10,7,0.95) 80%);
-      color: #F2E9DC;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-left-revamp .hero-content {
-      max-width: 30rem;
-    }
-    .hero-left-revamp .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-    .hero-left-revamp .eyebrow .rule {
-      width: 28px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px;
-      box-shadow: 0 0 12px rgba(212,165,55,0.3);
-    }
-    .hero-left-revamp .eyebrow .text {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .hero-left-revamp h1 {
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 500;
-      font-style: italic;
-      color: #F2E9DC;
-      line-height: 1;
-      margin: 0.5rem 0 1.2rem;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-    }
-    .hero-left-revamp p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #C9BBA4;
-      max-width: 28rem;
-      margin: 1.5rem 0 2.25rem;
-    }
-    .hero-left-revamp .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .hero-left-revamp .btn-primary {
-      background: linear-gradient(135deg, var(--terracotta), var(--gold));
-      color: #1C1410;
-      font-weight: 700;
-      box-shadow: 0 6px 24px rgba(196,98,45,0.3);
-      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
-    }
-    .hero-left-revamp .btn-primary:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 40px rgba(196,98,45,0.5);
-    }
-    .hero-left-revamp .btn-ghost {
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(247,239,227,0.2);
-      color: #F2E9DC;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .hero-left-revamp .btn-ghost:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-
-    /* Three.js container */
-    #three-container {
+    /* ----- Hero Container ----- */
+    #hero-unified {
       position: relative;
       width: 100%;
-      height: 100%;
-      min-height: 55vh;
-      background: #0E0A07;
+      min-height: 100vh;
+      padding-top: 76px;
       overflow: hidden;
+      background: #0E0A07;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ----- 3D Background ----- */
+    #three-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
     }
     #three-container canvas {
       display: block;
@@ -116,282 +45,210 @@
       height: 100% !important;
     }
 
-    /* ----- LOGO OVERLAY (visible on top of 3D) ----- */
-    .logo-overlay {
+    /* ----- Dark Overlay (for readability) ----- */
+    .hero-dark-overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      pointer-events: none;
-      text-align: center;
-    }
-
-    .logo-overlay .logo-glow {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(ellipse at center, rgba(212,165,55,0.12), transparent 70%);
-      border-radius: 50%;
-      animation: pulseGlow 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .logo-overlay img {
-      position: relative;
+      inset: 0;
       z-index: 2;
-      width: clamp(140px, 35%, 320px);
-      height: auto;
-      filter: drop-shadow(0 0 60px rgba(212,165,55,0.15));
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      pointer-events: auto;
-      cursor: default;
+      background: radial-gradient(ellipse at center, rgba(14, 10, 7, 0.2) 0%, rgba(14, 10, 7, 0.7) 100%);
+      pointer-events: none;
     }
 
-    .logo-overlay img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 100px rgba(212,165,55,0.25));
-    }
-
-    .logo-overlay .tagline {
+    /* ----- Amharic Watermark (decorative) ----- */
+    .hero-watermark {
+      position: absolute;
+      bottom: 10%;
+      right: 8%;
+      z-index: 2;
       font-family: 'Fraunces', serif;
-      color: rgba(247,239,227,0.35);
-      font-size: clamp(0.6rem, 1vw, 0.75rem);
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      margin-top: 0.75rem;
-      position: relative;
-      z-index: 2;
+      font-size: clamp(4rem, 12vw, 12rem);
+      color: rgba(247, 239, 227, 0.03);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      transform: rotate(-6deg);
     }
 
-    .logo-overlay .gold-dots {
+    /* ----- Overlay Content (Glass Card) ----- */
+    .hero-overlay {
+      position: relative;
+      z-index: 3;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-top: 0.75rem;
-      position: relative;
-      z-index: 2;
-<style>
-  /* ----- Hero with Three.js ----- */
-  #split-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-    padding-top: 76px;
-    background: #0E0A07;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .hero-left-revamp {
-    display: flex;
-    align-items: center;
-    padding: 4rem 3rem 4rem 4rem;
-    background: radial-gradient(ellipse at 30% 50%, rgba(58,36,21,0.85), rgba(14,10,7,0.95) 80%);
-    color: #F2E9DC;
-    position: relative;
-    z-index: 2;
-  }
-  .hero-left-revamp .hero-content {
-    max-width: 30rem;
-  }
-  .hero-left-revamp .eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  .hero-left-revamp .eyebrow .rule {
-    width: 28px;
-    height: 2px;
-    background: var(--gold);
-    border-radius: 2px;
-    box-shadow: 0 0 12px rgba(212,165,55,0.3);
-  }
-  .hero-left-revamp .eyebrow .text {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .hero-left-revamp h1 {
-    font-size: clamp(2.8rem, 7vw, 5rem);
-    font-weight: 500;
-    font-style: italic;
-    color: #F2E9DC;
-    line-height: 1;
-    margin: 0.5rem 0 1.2rem;
-    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
-  }
-  .hero-left-revamp p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #C9BBA4;
-    max-width: 28rem;
-    margin: 1.5rem 0 2.25rem;
-  }
-  .hero-left-revamp .btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .hero-left-revamp .btn-primary {
-    background: linear-gradient(135deg, var(--terracotta), var(--gold));
-    color: #1C1410;
-    font-weight: 700;
-    box-shadow: 0 6px 24px rgba(196,98,45,0.3);
-    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
-  }
-  .hero-left-revamp .btn-primary:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 40px rgba(196,98,45,0.5);
-  }
-  .hero-left-revamp .btn-ghost {
-    background: rgba(255,255,255,0.06);
-    border: 1.5px solid rgba(247,239,227,0.2);
-    color: #F2E9DC;
-    backdrop-filter: blur(4px);
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .hero-left-revamp .btn-ghost:hover {
-    background: rgba(255,255,255,0.14);
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-
-  /* Three.js container */
-  #three-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 55vh;
-    background: #0E0A07;
-    overflow: hidden;
-  }
-  #three-container canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  /* ----- ENHANCED LOGO OVERLAY (Bigger, Glowing, Animated) ----- */
-  .logo-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    pointer-events: none;
-    text-align: center;
-    width: 100%;
-  }
-
-  .logo-overlay .logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(ellipse at center, rgba(212, 165, 55, 0.35), rgba(212, 165, 55, 0.05) 60%, transparent 80%);
-    border-radius: 50%;
-    animation: pulseGlow 3s ease-in-out infinite;
-    pointer-events: none;
-    filter: blur(20px);
-  }
-
-  .logo-overlay img {
-    position: relative;
-    z-index: 2;
-    width: clamp(220px, 45%, 480px);
-    height: auto;
-    filter: drop-shadow(0 0 60px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 120px rgba(212, 165, 55, 0.2));
-    animation: floatLogo 4s ease-in-out infinite;
-    pointer-events: auto;
-    cursor: default;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .logo-overlay img:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.3));
-  }
-
-  .logo-overlay .tagline {
-    font-family: 'Fraunces', serif;
-    color: rgba(247,239,227,0.35);
-    font-size: clamp(0.6rem, 1vw, 0.75rem);
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    margin-top: 0.75rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .logo-overlay .gold-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 0.75rem;
-    position: relative;
-    z-index: 2;
-  }
-  .logo-overlay .gold-dots span {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.25;
-    animation: dotPulse 2s ease-in-out infinite;
-  }
-  .logo-overlay .gold-dots span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
-  .logo-overlay .gold-dots span:nth-child(3) { animation-delay: 0.6s; }
-
-  /* ----- Keyframe Animations ----- */
-  @keyframes floatLogo {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-18px); }
-    100% { transform: translateY(0px); }
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-  }
-
-  @keyframes dotPulse {
-    0%, 100% { transform: scale(1); opacity: 0.2; }
-    50% { transform: scale(1.6); opacity: 0.7; }
-  }
-
-  /* ----- Responsive ----- */
-  @media (max-width: 768px) {
-    #split-hero {
-      grid-template-columns: 1fr;
-      padding-top: 76px;
+      width: 100%;
+      padding: 2rem;
+      pointer-events: none;
     }
-    .hero-left-revamp {
-      padding: 2.5rem 1.5rem;
+
+    .hero-content-card {
+      max-width: 900px;
+      width: 100%;
       text-align: center;
+      padding: 3rem 4rem;
+      background: rgba(14, 10, 7, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 32px;
+      border: 1px solid rgba(247, 239, 227, 0.06);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      pointer-events: auto;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-content-card:hover {
+      transform: scale(1.01);
+    }
+
+    /* ----- Large Animated Logo ----- */
+    .hero-logo {
+      width: clamp(260px, 50vw, 600px);
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.15));
+      animation: floatLogoSpin 6s ease-in-out infinite;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 120px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 200px rgba(212, 165, 55, 0.3));
+    }
+
+    /* ----- Text Group ----- */
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      opacity: 0.8;
+    }
+    .hero-eyebrow .rule {
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      margin-right: 0.75rem;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 500;
+      font-style: italic;
+      color: #F2E9DC;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-description {
+      font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+      line-height: 1.8;
+      color: #C9BBA4;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
     }
-    .hero-left-revamp .hero-content { max-width: 100%; }
-    .hero-left-revamp .btn-group { justify-content: center; }
-    #three-container { min-height: 50vh; }
-    .logo-overlay img { width: clamp(150px, 45%, 280px); }
-    .logo-overlay .tagline { font-size: 0.55rem; }
-  }
 
-  @media (max-width: 480px) {
-    #three-container { min-height: 40vh; }
-    .logo-overlay img { width: clamp(120px, 40%, 200px); }
-  }
-    </style>
+    .hero-buttons .btn-primary {
+      background: linear-gradient(135deg, var(--terracotta), var(--gold));
+      color: #1C1410;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(196, 98, 45, 0.3);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .hero-buttons .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.5);
+    }
+
+    .hero-buttons .btn-ghost {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid rgba(247, 239, 227, 0.2);
+      color: #F2E9DC;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-buttons .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ----- Keyframe Animations ----- */
+    @keyframes floatLogoSpin {
+      0% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-15px) rotate(1.5deg); }
+      66% { transform: translateY(8px) rotate(-1.5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* ----- Responsive ----- */
+    @media (max-width: 768px) {
+      #hero-unified {
+        padding-top: 76px;
+        min-height: 100vh;
+      }
+      #three-container {
+        min-height: 100vh;
+      }
+      .hero-content-card {
+        padding: 2rem 1.5rem;
+        border-radius: 24px;
+        background: rgba(14, 10, 7, 0.5);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .hero-logo {
+        width: clamp(180px, 40vw, 300px);
+      }
+      .hero-title {
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+      }
+      .hero-description {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+      }
+      .hero-watermark {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-content-card {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+      }
+      .hero-logo {
+        width: clamp(140px, 35vw, 200px);
+      }
+      .hero-title {
+        font-size: 1.6rem;
+      }
+      .hero-buttons .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -448,41 +305,40 @@
 </div>
 
 <!-- ============================================================
-     HERO — Three.js 3D Scene + Logo Overlay
+     UNIFIED HERO — Full-Screen 3D + Overlay
      ============================================================ -->
-<section id="split-hero">
+<section id="hero-unified">
 
-  <!-- LEFT: Content -->
-  <div class="hero-left-revamp">
-    <div class="hero-content" data-reveal>
-      <div class="eyebrow">
-        <span class="rule"></span>
-        <span class="text">Bole, Addis Ababa</span>
+  <!-- 1. Three.js 3D Background -->
+  <div id="three-container"></div>
+
+  <!-- 2. Dark Overlay for Readability -->
+  <div class="hero-dark-overlay"></div>
+
+  <!-- 3. Decorative Amharic Watermark -->
+  <div class="hero-watermark" aria-hidden="true">መገኛችን</div>
+
+  <!-- 4. Overlay Content (Glass Card) -->
+  <div class="hero-overlay">
+    <div class="hero-content-card">
+
+      <!-- Large Animated Logo -->
+      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
+
+      <!-- Text Group -->
+      <div class="hero-eyebrow">
+        <span class="rule"></span> Bole, Addis Ababa
       </div>
-      <h1>The Art of<br>Buna</h1>
-      <p>
+      <h1 class="hero-title">The Art of Buna</h1>
+      <p class="hero-description">
         One pour, raised high above the cup. A thread of coffee meeting crema. This is the moment our entire ceremony is built around.
       </p>
-      <div class="btn-group">
+      <div class="hero-buttons">
         <a href="order.html" class="btn btn-primary">Order online</a>
         <a href="#menu" class="btn btn-ghost">See the menu</a>
       </div>
+
     </div>
-  </div>
-
-  <!-- RIGHT: Three.js 3D Scene + Logo Overlay -->
-  <div id="three-container" style="position:relative;">
-
-    <!-- Logo Overlay (on top of 3D) -->
-    <div class="logo-overlay">
-      <div class="logo-glow"></div>
-      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee">
-      <div class="gold-dots">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="tagline">Specialty Coffee · Addis Ababa</div>
-    </div>
-
   </div>
 
 </section>
@@ -513,16 +369,16 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 // ============================================================
 const container = document.getElementById('three-container');
 const width = container.clientWidth;
-const height = container.clientHeight || 400;
+const height = container.clientHeight || window.innerHeight;
 
 // Scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0E0A07);
-scene.fog = new THREE.Fog(0x0E0A07, 12, 22);
+scene.fog = new THREE.Fog(0x0E0A07, 14, 26);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 50);
-camera.position.set(0, 2, 10);
+camera.position.set(0, 2, 12);
 camera.lookAt(0, 0, 0);
 
 // Renderer
@@ -557,7 +413,7 @@ composer.addPass(bloomPass);
 // ============================================================
 //  LIGHTING
 // ============================================================
-const ambient = new THREE.AmbientLight(0x443322, 0.3);
+const ambient = new THREE.AmbientLight(0x443322, 0.4);
 scene.add(ambient);
 
 const hemi = new THREE.HemisphereLight(0x87654A, 0x1C1410, 0.6);
@@ -580,8 +436,8 @@ const fillLight = new THREE.DirectionalLight(0xD4A537, 0.4);
 fillLight.position.set(-3, 1, 2);
 scene.add(fillLight);
 
-const pointLight = new THREE.PointLight(0xD4A537, 0.6, 10);
-pointLight.position.set(0, 1, 3);
+const pointLight = new THREE.PointLight(0xD4A537, 0.8, 12);
+pointLight.position.set(0, 1, 4);
 scene.add(pointLight);
 
 // ============================================================
@@ -603,7 +459,6 @@ function createBeanGeometry() {
     points.map(p => new THREE.Vector2(p.x, p.y)),
     12
   );
-  // Add crease
   const pos = geo.attributes.position;
   for (let i = 0; i < pos.count; i++) {
     const x = pos.getX(i);
@@ -647,25 +502,11 @@ function createPetalGeometry() {
 //  CREATE BEANS (50)
 // ============================================================
 const beanGeo = createBeanGeometry();
-const beanMat = new THREE.MeshStandardMaterial({
-  color: 0x3E2723,
-  roughness: 0.85,
-  metalness: 0.05,
-  envMapIntensity: 0.3,
-});
-const beanMat2 = new THREE.MeshStandardMaterial({
-  color: 0x4E342E,
-  roughness: 0.8,
-  metalness: 0.05,
-  envMapIntensity: 0.3,
-});
-const beanMat3 = new THREE.MeshStandardMaterial({
-  color: 0x2E1B15,
-  roughness: 0.9,
-  metalness: 0.02,
-  envMapIntensity: 0.3,
-});
-const beanMats = [beanMat, beanMat2, beanMat3];
+const beanMats = [
+  new THREE.MeshStandardMaterial({ color: 0x3E2723, roughness: 0.85, metalness: 0.05, envMapIntensity: 0.3 }),
+  new THREE.MeshStandardMaterial({ color: 0x4E342E, roughness: 0.8, metalness: 0.05, envMapIntensity: 0.3 }),
+  new THREE.MeshStandardMaterial({ color: 0x2E1B15, roughness: 0.9, metalness: 0.02, envMapIntensity: 0.3 })
+];
 
 const beans = [];
 const beanGroup = new THREE.Group();
@@ -675,11 +516,11 @@ for (let i = 0; i < 50; i++) {
   const mesh = new THREE.Mesh(beanGeo.clone(), mat);
   const theta = Math.random() * Math.PI * 2;
   const phi = Math.random() * Math.PI * 2;
-  const radius = 2 + Math.random() * 5;
+  const radius = 3 + Math.random() * 6;
   mesh.position.set(
     Math.cos(theta) * Math.sin(phi) * radius,
-    (Math.random() - 0.5) * 3,
-    Math.sin(theta) * Math.sin(phi) * radius + 1
+    (Math.random() - 0.5) * 3.5,
+    Math.sin(theta) * Math.sin(phi) * radius
   );
   const scale = 0.4 + Math.random() * 0.6;
   mesh.scale.set(scale, scale * (0.8 + Math.random() * 0.4), scale * (0.7 + Math.random() * 0.3));
@@ -702,26 +543,11 @@ scene.add(beanGroup);
 //  CREATE FLOWERS (50)
 // ============================================================
 const petalGeo = createPetalGeometry();
-const petalMat = new THREE.MeshStandardMaterial({
-  color: 0xF5F0E8,
-  roughness: 0.6,
-  metalness: 0.0,
-  side: THREE.DoubleSide,
-});
-const petalMat2 = new THREE.MeshStandardMaterial({
-  color: 0xEDE5D8,
-  roughness: 0.6,
-  metalness: 0.0,
-  side: THREE.DoubleSide,
-});
-const petalMat3 = new THREE.MeshStandardMaterial({
-  color: 0xFAF5EC,
-  roughness: 0.5,
-  metalness: 0.0,
-  side: THREE.DoubleSide,
-});
-const petalMats = [petalMat, petalMat2, petalMat3];
-
+const petalMats = [
+  new THREE.MeshStandardMaterial({ color: 0xF5F0E8, roughness: 0.6, metalness: 0.0, side: THREE.DoubleSide }),
+  new THREE.MeshStandardMaterial({ color: 0xEDE5D8, roughness: 0.6, metalness: 0.0, side: THREE.DoubleSide }),
+  new THREE.MeshStandardMaterial({ color: 0xFAF5EC, roughness: 0.5, metalness: 0.0, side: THREE.DoubleSide })
+];
 const centerMat = new THREE.MeshStandardMaterial({
   color: 0xF5C842,
   roughness: 0.4,
@@ -744,11 +570,7 @@ for (let i = 0; i < 50; i++) {
     const angle = (j / numPetals) * Math.PI * 2 + Math.random() * 0.1;
     petal.rotation.z = angle;
     petal.rotation.x = 0.2 + Math.random() * 0.15;
-    petal.position.set(
-      Math.cos(angle) * 0.15,
-      Math.sin(angle) * 0.15,
-      0
-    );
+    petal.position.set(Math.cos(angle) * 0.15, Math.sin(angle) * 0.15, 0);
     petal.scale.set(petalScale, petalScale, petalScale);
     petal.castShadow = true;
     petal.receiveShadow = true;
@@ -761,11 +583,11 @@ for (let i = 0; i < 50; i++) {
 
   const theta2 = Math.random() * Math.PI * 2;
   const phi2 = Math.random() * Math.PI * 2;
-  const radius2 = 2.5 + Math.random() * 5;
+  const radius2 = 3 + Math.random() * 6;
   group.position.set(
     Math.cos(theta2) * Math.sin(phi2) * radius2,
-    (Math.random() - 0.5) * 2.5,
-    Math.sin(theta2) * Math.sin(phi2) * radius2 + 1
+    (Math.random() - 0.5) * 3,
+    Math.sin(theta2) * Math.sin(phi2) * radius2
   );
   const s = 0.6 + Math.random() * 0.6;
   group.scale.set(s, s, s);
@@ -788,10 +610,10 @@ for (let i = 0; i < 50; i++) {
 scene.add(flowerGroup);
 
 // ============================================================
-//  CREATE STARS (50) with Bloom
+//  CREATE STARS (50)
 // ============================================================
-const starGeo = new THREE.BufferGeometry();
 const starCount = 50;
+const starGeo = new THREE.BufferGeometry();
 const starPos = new Float32Array(starCount * 3);
 const starSizes = new Float32Array(starCount);
 const starColors = new Float32Array(starCount * 3);
@@ -799,12 +621,11 @@ const starColors = new Float32Array(starCount * 3);
 for (let i = 0; i < starCount; i++) {
   const theta = Math.random() * Math.PI * 2;
   const phi = Math.acos(2 * Math.random() - 1);
-  const radius = 3 + Math.random() * 7;
+  const radius = 4 + Math.random() * 8;
   starPos[i*3] = Math.sin(phi) * Math.cos(theta) * radius;
   starPos[i*3+1] = (Math.random() - 0.5) * 4;
-  starPos[i*3+2] = Math.sin(phi) * Math.sin(theta) * radius + 1;
+  starPos[i*3+2] = Math.sin(phi) * Math.sin(theta) * radius;
   starSizes[i] = 0.04 + Math.random() * 0.08;
-  const gold = 0.7 + Math.random() * 0.3;
   starColors[i*3] = 1.0;
   starColors[i*3+1] = 0.85 + Math.random() * 0.15;
   starColors[i*3+2] = 0.4 + Math.random() * 0.3;
@@ -829,10 +650,7 @@ scene.add(stars);
 
 const starData = [];
 for (let i = 0; i < starCount; i++) {
-  starData.push({
-    speed: 0.3 + Math.random() * 0.7,
-    phase: Math.random() * 6,
-  });
+  starData.push({ speed: 0.3 + Math.random() * 0.7, phase: Math.random() * 6 });
 }
 
 // ============================================================
@@ -845,8 +663,8 @@ document.addEventListener('mousemove', (e) => {
   const rect = container.getBoundingClientRect();
   const x = (e.clientX - rect.left) / rect.width - 0.5;
   const y = (e.clientY - rect.top) / rect.height - 0.5;
-  mouseX = x * 0.3;
-  mouseY = y * 0.2;
+  mouseX = x * 0.4;
+  mouseY = y * 0.3;
 });
 
 container.addEventListener('touchmove', (e) => {
@@ -854,8 +672,8 @@ container.addEventListener('touchmove', (e) => {
     const rect = container.getBoundingClientRect();
     const x = (e.touches[0].clientX - rect.left) / rect.width - 0.5;
     const y = (e.touches[0].clientY - rect.top) / rect.height - 0.5;
-    mouseX = x * 0.3;
-    mouseY = y * 0.2;
+    mouseX = x * 0.4;
+    mouseY = y * 0.3;
   }
 }, { passive: true });
 
@@ -864,7 +682,7 @@ container.addEventListener('touchmove', (e) => {
 // ============================================================
 function resize() {
   const w = container.clientWidth;
-  const h = container.clientHeight || 400;
+  const h = container.clientHeight || window.innerHeight;
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
@@ -881,12 +699,10 @@ const clock = new THREE.Clock();
 function animate() {
   const t = clock.getElapsedTime();
 
-  // Smooth mouse follow
   targetRotX += (mouseX - targetRotX) * 0.03;
   targetRotY += (mouseY - targetRotY) * 0.03;
 
-  // Auto-rotation
-  const autoRot = t * 0.025;
+  const autoRot = t * 0.02;
 
   // Beans
   beans.forEach((bean) => {
@@ -912,7 +728,7 @@ function animate() {
     flower.rotation.y += ud.rotSpeed * 0.005;
   });
 
-  // Stars (twinkling)
+  // Stars
   const sizes = stars.geometry.attributes.size;
   for (let i = 0; i < starCount; i++) {
     const sd = starData[i];
@@ -931,9 +747,8 @@ function animate() {
   stars.rotation.y = rotY * 0.6;
   stars.rotation.x = rotX * 0.4;
 
-  // Point light orbits
-  pointLight.position.x = Math.sin(t * 0.15) * 3;
-  pointLight.position.z = Math.cos(t * 0.15) * 3;
+  pointLight.position.x = Math.sin(t * 0.15) * 4;
+  pointLight.position.z = Math.cos(t * 0.15) * 4;
   pointLight.position.y = 1 + Math.sin(t * 0.1) * 0.5;
 
   composer.render();
@@ -943,10 +758,10 @@ function animate() {
 animate();
 setTimeout(resize, 100);
 
-console.log('🔥 Hyper Coffee 3D Hero loaded with Three.js');
+console.log('🔥 Hyper Coffee Unified 3D Hero loaded');
 </script>
 
-<!-- ===== REST OF PAGE ===== -->
+<!-- ===== REST OF PAGE (About, Three Rounds, Menu, Gallery, etc.) ===== -->
 <!-- ===== ABOUT ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
