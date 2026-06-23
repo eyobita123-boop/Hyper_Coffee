@@ -1675,3 +1675,51 @@ a {
     font-size: 0.7rem !important;
   }
 }
+/* ============================================
+   THREE.JS HERO — Additional Styles
+   ============================================ */
+
+/* Ensure Three.js container fills its space */
+#three-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 55vh;
+  background: #0E0A07;
+  overflow: hidden;
+}
+
+#three-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Fallback for older browsers */
+.no-three-js #three-container {
+  background: radial-gradient(ellipse at 60% 40%, #2B1A14, #0E0A07 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.no-three-js #three-container::after {
+  content: '✨ 3D experience available in modern browsers';
+  color: rgba(247,239,227,0.3);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #three-container {
+    min-height: 50vh;
+  }
+}
+
+/* Prevent overflow on very small screens */
+@media (max-width: 480px) {
+  #three-container {
+    min-height: 40vh;
+  }
+}
