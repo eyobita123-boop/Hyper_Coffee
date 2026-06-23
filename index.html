@@ -13,9 +13,11 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ===== HERO REVAMP STYLES ===== */
+    /* ============================================
+       PREMIUM HERO REVAMP — LUXURY EDITION
+       ============================================ */
 
-    /* ---------- Hero split ---------- */
+    /* ---------- Hero container ---------- */
     #split-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -24,6 +26,7 @@
       background: #0E0A07;
       overflow: hidden;
       position: relative;
+      isolation: isolate;
     }
 
     /* ---------- Hero Left ---------- */
@@ -38,6 +41,8 @@
     }
     .hero-left-revamp .hero-content {
       max-width: 30rem;
+      position: relative;
+      z-index: 3;
     }
     .hero-left-revamp .eyebrow {
       display: flex;
@@ -50,6 +55,7 @@
       height: 2px;
       background: var(--gold);
       border-radius: 2px;
+      box-shadow: 0 0 12px rgba(212,165,55,0.3);
     }
     .hero-left-revamp .eyebrow .text {
       font-family: var(--mono);
@@ -65,6 +71,7 @@
       color: #F2E9DC;
       line-height: 1;
       margin: 0.5rem 0 1.2rem;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
     }
     .hero-left-revamp p {
       font-size: 1.05rem;
@@ -78,7 +85,6 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    /* Buttons with enhanced hover */
     .hero-left-revamp .btn-primary {
       background: linear-gradient(135deg, var(--terracotta), var(--gold));
       color: #1C1410;
@@ -88,7 +94,7 @@
     }
     .hero-left-revamp .btn-primary:hover {
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.4);
+      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.5);
     }
     .hero-left-revamp .btn-ghost {
       background: rgba(255,255,255,0.06);
@@ -98,7 +104,7 @@
       transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     }
     .hero-left-revamp .btn-ghost:hover {
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.14);
       transform: translateY(-4px) scale(1.02);
       box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     }
@@ -114,7 +120,7 @@
       overflow: hidden;
     }
 
-    /* Steam / smoke effect */
+    /* ---------- Steam / Smoke ---------- */
     .steam-container {
       position: absolute;
       inset: 0;
@@ -127,7 +133,7 @@
       bottom: 10%;
       width: 120px;
       height: 120px;
-      background: radial-gradient(circle at 50% 30%, rgba(247,239,227,0.08), transparent 70%);
+      background: radial-gradient(circle at 50% 30%, rgba(247,239,227,0.06), transparent 70%);
       border-radius: 50%;
       filter: blur(20px);
       animation: steamRise 8s ease-in-out infinite;
@@ -136,14 +142,13 @@
     .steam-particle:nth-child(2) { left: 35%; animation-delay: 2s; width: 160px; height: 160px; }
     .steam-particle:nth-child(3) { left: 60%; animation-delay: 4s; }
     .steam-particle:nth-child(4) { left: 85%; animation-delay: 1.5s; width: 140px; height: 140px; }
-
     @keyframes steamRise {
-      0% { transform: translateY(0) scale(0.8); opacity: 0.3; }
-      30% { opacity: 0.7; }
+      0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
+      30% { opacity: 0.6; }
       100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
     }
 
-    /* Glow pulse */
+    /* ---------- Glow Pulse ---------- */
     .glow-pulse {
       position: absolute;
       width: 60%;
@@ -157,7 +162,7 @@
       50% { transform: scale(1.2); opacity: 0.8; }
     }
 
-    /* Gradient border frame */
+    /* ---------- Gradient Frame ---------- */
     .gradient-frame {
       position: relative;
       padding: 3px;
@@ -173,7 +178,6 @@
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-
     .gradient-frame-inner {
       background: #0B0807;
       border-radius: 25px;
@@ -187,11 +191,8 @@
       position: relative;
       z-index: 3;
     }
-
-    /* Logo hover effect */
     .brand-logo-hover {
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       filter: drop-shadow(0 0 60px rgba(212,165,55,0.08));
       position: relative;
       z-index: 4;
@@ -201,7 +202,7 @@
       filter: drop-shadow(0 0 100px rgba(212,165,55,0.2));
     }
 
-    /* Decorative dots with pulse */
+    /* ---------- Decorative Dots ---------- */
     .dot-pulse {
       display: flex;
       gap: 8px;
@@ -221,10 +222,79 @@
     .dot-pulse span:nth-child(3) { animation-delay: 0.6s; }
     @keyframes dotPulse {
       0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.4); opacity: 0.8; }
+      50% { transform: scale(1.6); opacity: 0.8; }
     }
 
-    /* Responsive hero */
+    /* ============================================
+       LUXURY DECORATIONS (Beans, Flowers, Gold)
+       ============================================ */
+
+    .hero-decor {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Coffee Bean */
+    .bean-svg {
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+      animation: floatBean 6s ease-in-out infinite;
+    }
+    .bean-svg:nth-child(odd) { animation-delay: 0.5s; }
+    .bean-svg:nth-child(3n) { animation-duration: 8s; }
+    .bean-svg:nth-child(5n) { animation-duration: 7s; }
+
+    @keyframes floatBean {
+      0% { transform: translateY(0px) rotate(0deg) scale(1); }
+      33% { transform: translateY(-12px) rotate(6deg) scale(1.02); }
+      66% { transform: translateY(8px) rotate(-4deg) scale(0.98); }
+      100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    }
+
+    /* Flower */
+    .flower-svg {
+      filter: drop-shadow(0 4px 15px rgba(255,255,255,0.15));
+      animation: swayFlower 7s ease-in-out infinite;
+    }
+    .flower-svg:nth-child(odd) { animation-delay: 0.8s; }
+    .flower-svg:nth-child(4n) { animation-duration: 9s; }
+
+    @keyframes swayFlower {
+      0% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-6px) rotate(4deg); }
+      100% { transform: translateY(0) rotate(-3deg); }
+    }
+
+    /* Gold Dust */
+    .gold-dust {
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #FFD700, #D4A537);
+      box-shadow: 0 0 20px rgba(212,165,55,0.3);
+      animation: floatGold 5s ease-in-out infinite;
+    }
+    .gold-dust:nth-child(odd) { animation-delay: 0.3s; }
+    .gold-dust:nth-child(3n) { animation-duration: 6s; }
+
+    @keyframes floatGold {
+      0% { transform: translateY(0px) scale(1); opacity: 0.4; }
+      50% { transform: translateY(-20px) scale(1.2); opacity: 0.9; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.4; }
+    }
+
+    /* Responsive Decor */
+    @media (max-width: 768px) {
+      .hero-decor { transform: scale(0.6); }
+      .hero-decor .bean-svg { animation-duration: 8s; }
+      .hero-decor .flower-svg { animation-duration: 10s; }
+      .gold-dust { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-decor { transform: scale(0.4); }
+      .bean-svg:nth-child(n+5) { display: none; }
+      .flower-svg:nth-child(n+3) { display: none; }
+    }
+
+    /* ---------- Hero Responsive ---------- */
     @media (max-width: 768px) {
       #split-hero {
         grid-template-columns: 1fr;
@@ -235,24 +305,15 @@
         text-align: center;
         justify-content: center;
       }
-      .hero-left-revamp .hero-content {
-        max-width: 100%;
-      }
-      .hero-left-revamp .btn-group {
-        justify-content: center;
-      }
-      .hero-right-revamp {
-        min-height: 50vh;
-      }
+      .hero-left-revamp .hero-content { max-width: 100%; }
+      .hero-left-revamp .btn-group { justify-content: center; }
+      .hero-right-revamp { min-height: 50vh; }
       .gradient-frame-inner {
         min-height: 200px;
         min-width: 200px;
         padding: 1.5rem 2rem;
       }
-      .steam-particle {
-        width: 80px;
-        height: 80px;
-      }
+      .steam-particle { width: 80px; height: 80px; }
       .steam-particle:nth-child(2) { width: 100px; height: 100px; }
     }
   </style>
@@ -311,10 +372,12 @@
   <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
-<!-- ===== REVAMPED HERO ===== -->
+<!-- ============================================================
+     HERO — LUXURY EDITION
+     ============================================================ -->
 <section id="split-hero">
 
-  <!-- LEFT -->
+  <!-- ===== LEFT PANEL ===== -->
   <div class="hero-left-revamp">
     <div class="hero-content" data-reveal>
       <div class="eyebrow">
@@ -332,7 +395,7 @@
     </div>
   </div>
 
-  <!-- RIGHT with Steam/Smoke -->
+  <!-- ===== RIGHT PANEL (Logo + Steam) ===== -->
   <div class="hero-right-revamp">
 
     <!-- Steam particles -->
@@ -346,7 +409,7 @@
     <!-- Glow -->
     <div class="glow-pulse"></div>
 
-    <!-- Gradient frame -->
+    <!-- Gradient frame + Logo -->
     <div class="gradient-frame">
       <div class="gradient-frame-inner">
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" 
@@ -365,6 +428,117 @@
       </div>
     </div>
   </div>
+
+  <!-- ==========================================================
+       LUXURY DECORATIONS (Floating Beans, Flowers, Gold Dust)
+       ========================================================== -->
+
+  <!-- Coffee Beans (SVG) -->
+  <div class="hero-decor" style="top:8%; left:2%;">
+    <svg class="bean-svg" width="40" height="50" viewBox="0 0 100 100">
+      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#3E2723" stroke="#4E342E" stroke-width="2"/>
+      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#4E342E" opacity="0.5" transform="rotate(-30 45 30)"/>
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="top:20%; left:15%;">
+    <svg class="bean-svg" width="35" height="45" viewBox="0 0 100 100" style="animation-delay:1.2s;">
+      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#4E342E" stroke="#5D4037" stroke-width="2"/>
+      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#5D4037" opacity="0.5" transform="rotate(-30 45 30)"/>
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="bottom:12%; left:5%;">
+    <svg class="bean-svg" width="50" height="60" viewBox="0 0 100 100" style="animation-duration:8s; animation-delay:0.3s;">
+      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#2E1B15" stroke="#3E2723" stroke-width="2"/>
+      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#4E342E" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#3E2723" opacity="0.5" transform="rotate(-30 45 30)"/>
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="bottom:25%; right:5%;">
+    <svg class="bean-svg" width="45" height="55" viewBox="0 0 100 100" style="animation-delay:2s;">
+      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#3E2723" stroke="#4E342E" stroke-width="2"/>
+      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#4E342E" opacity="0.5" transform="rotate(-30 45 30)"/>
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="top:15%; right:10%;">
+    <svg class="bean-svg" width="30" height="40" viewBox="0 0 100 100" style="animation-duration:7s; animation-delay:0.8s;">
+      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#4E342E" stroke="#5D4037" stroke-width="2"/>
+      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#5D4037" opacity="0.5" transform="rotate(-30 45 30)"/>
+    </svg>
+  </div>
+
+  <!-- Elegant Flowers (SVG) -->
+  <div class="hero-decor" style="top:5%; right:20%;">
+    <svg class="flower-svg" width="30" height="30" viewBox="0 0 100 100" style="animation-delay:0.2s;">
+      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.85">
+        <ellipse cx="50" cy="20" rx="10" ry="25" />
+        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(72 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(144 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(216 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(288 50 50)" />
+      </g>
+      <circle cx="50" cy="50" r="8" fill="#FFD700" />
+      <circle cx="50" cy="50" r="4" fill="#FFE082" />
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="bottom:5%; right:15%;">
+    <svg class="flower-svg" width="35" height="35" viewBox="0 0 100 100" style="animation-delay:1.5s;">
+      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
+        <ellipse cx="50" cy="20" rx="12" ry="28" />
+        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(72 50 50)" />
+        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(144 50 50)" />
+        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(216 50 50)" />
+        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(288 50 50)" />
+      </g>
+      <circle cx="50" cy="50" r="10" fill="#FFD700" />
+      <circle cx="50" cy="50" r="5" fill="#FFE082" />
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="top:30%; left:2%;">
+    <svg class="flower-svg" width="28" height="28" viewBox="0 0 100 100" style="animation-duration:8s; animation-delay:0.6s;">
+      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
+        <ellipse cx="50" cy="20" rx="10" ry="22" />
+        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(72 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(144 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(216 50 50)" />
+        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(288 50 50)" />
+      </g>
+      <circle cx="50" cy="50" r="7" fill="#FFD700" />
+      <circle cx="50" cy="50" r="3.5" fill="#FFE082" />
+    </svg>
+  </div>
+
+  <div class="hero-decor" style="bottom:30%; left:10%;">
+    <svg class="flower-svg" width="25" height="25" viewBox="0 0 100 100" style="animation-delay:2.2s;">
+      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
+        <ellipse cx="50" cy="20" rx="8" ry="20" />
+        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(72 50 50)" />
+        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(144 50 50)" />
+        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(216 50 50)" />
+        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(288 50 50)" />
+      </g>
+      <circle cx="50" cy="50" r="6" fill="#FFD700" />
+      <circle cx="50" cy="50" r="3" fill="#FFE082" />
+    </svg>
+  </div>
+
+  <!-- Gold Dust Particles -->
+  <div class="hero-decor gold-dust" style="width:8px; height:8px; top:12%; left:25%;"></div>
+  <div class="hero-decor gold-dust" style="width:12px; height:12px; top:8%; left:45%; animation-delay:0.5s;"></div>
+  <div class="hero-decor gold-dust" style="width:6px; height:6px; bottom:15%; left:20%; animation-duration:6s;"></div>
+  <div class="hero-decor gold-dust" style="width:10px; height:10px; bottom:20%; right:25%; animation-delay:1s;"></div>
+  <div class="hero-decor gold-dust" style="width:7px; height:7px; top:40%; right:5%; animation-delay:0.8s;"></div>
+  <div class="hero-decor gold-dust" style="width:14px; height:14px; top:25%; left:8%; animation-duration:7s; animation-delay:0.2s;"></div>
+
 </section>
 
 <!-- ===== ABOUT ===== -->
@@ -673,4 +847,4 @@
 
 <script src="assets/site.js"></script>
 </body>
-            </html>
+    </html>
