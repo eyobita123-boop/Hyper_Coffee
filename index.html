@@ -13,11 +13,7 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ============================================
-       PREMIUM HERO REVAMP — LUXURY EDITION
-       ============================================ */
-
-    /* ---------- Hero container ---------- */
+    /* ----- Override hero for Three.js ----- */
     #split-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -26,23 +22,19 @@
       background: #0E0A07;
       overflow: hidden;
       position: relative;
-      isolation: isolate;
     }
 
-    /* ---------- Hero Left ---------- */
     .hero-left-revamp {
       display: flex;
       align-items: center;
       padding: 4rem 3rem 4rem 4rem;
-      background: radial-gradient(ellipse at 30% 50%, #3A2415, #0E0A07 80%);
+      background: radial-gradient(ellipse at 30% 50%, rgba(58,36,21,0.85), rgba(14,10,7,0.95) 80%);
       color: #F2E9DC;
       position: relative;
       z-index: 2;
     }
     .hero-left-revamp .hero-content {
       max-width: 30rem;
-      position: relative;
-      z-index: 3;
     }
     .hero-left-revamp .eyebrow {
       display: flex;
@@ -71,7 +63,7 @@
       color: #F2E9DC;
       line-height: 1;
       margin: 0.5rem 0 1.2rem;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
     }
     .hero-left-revamp p {
       font-size: 1.05rem;
@@ -89,12 +81,12 @@
       background: linear-gradient(135deg, var(--terracotta), var(--gold));
       color: #1C1410;
       font-weight: 700;
-      box-shadow: 0 6px 24px rgba(196, 98, 45, 0.3);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      box-shadow: 0 6px 24px rgba(196,98,45,0.3);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
     }
     .hero-left-revamp .btn-primary:hover {
       transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 40px rgba(196, 98, 45, 0.5);
+      box-shadow: 0 12px 40px rgba(196,98,45,0.5);
     }
     .hero-left-revamp .btn-ghost {
       background: rgba(255,255,255,0.06);
@@ -109,192 +101,22 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     }
 
-    /* ---------- Hero Right ---------- */
-    .hero-right-revamp {
+    /* Three.js canvas container */
+    #three-container {
       position: relative;
-      background: radial-gradient(ellipse at 60% 40%, #2B1A14, #0E0A07 80%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      height: 100%;
       min-height: 55vh;
+      background: #0E0A07;
       overflow: hidden;
     }
-
-    /* ---------- Steam / Smoke ---------- */
-    .steam-container {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .steam-particle {
-      position: absolute;
-      bottom: 10%;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle at 50% 30%, rgba(247,239,227,0.06), transparent 70%);
-      border-radius: 50%;
-      filter: blur(20px);
-      animation: steamRise 8s ease-in-out infinite;
-    }
-    .steam-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .steam-particle:nth-child(2) { left: 35%; animation-delay: 2s; width: 160px; height: 160px; }
-    .steam-particle:nth-child(3) { left: 60%; animation-delay: 4s; }
-    .steam-particle:nth-child(4) { left: 85%; animation-delay: 1.5s; width: 140px; height: 140px; }
-    @keyframes steamRise {
-      0% { transform: translateY(0) scale(0.8); opacity: 0.2; }
-      30% { opacity: 0.6; }
-      100% { transform: translateY(-150px) scale(1.2); opacity: 0; }
+    #three-container canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
     }
 
-    /* ---------- Glow Pulse ---------- */
-    .glow-pulse {
-      position: absolute;
-      width: 60%;
-      height: 60%;
-      background: radial-gradient(ellipse at center, rgba(212,165,55,0.12), transparent 70%);
-      animation: pulseGlow 4s ease-in-out infinite;
-      z-index: 1;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.4; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-
-    /* ---------- Gradient Frame ---------- */
-    .gradient-frame {
-      position: relative;
-      padding: 3px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, var(--gold), var(--terracotta), var(--gold), var(--terracotta));
-      background-size: 300% 300%;
-      animation: gradientBorder 5s ease-in-out infinite;
-      max-width: 90%;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-      z-index: 2;
-    }
-    @keyframes gradientBorder {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .gradient-frame-inner {
-      background: #0B0807;
-      border-radius: 25px;
-      padding: 2.5rem 3.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 280px;
-      min-width: 280px;
-      position: relative;
-      z-index: 3;
-    }
-    .brand-logo-hover {
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      filter: drop-shadow(0 0 60px rgba(212,165,55,0.08));
-      position: relative;
-      z-index: 4;
-    }
-    .brand-logo-hover:hover {
-      transform: scale(1.06);
-      filter: drop-shadow(0 0 100px rgba(212,165,55,0.2));
-    }
-
-    /* ---------- Decorative Dots ---------- */
-    .dot-pulse {
-      display: flex;
-      gap: 8px;
-      margin-top: 1.25rem;
-      position: relative;
-      z-index: 4;
-    }
-    .dot-pulse span {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-      opacity: 0.3;
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    .dot-pulse span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
-    .dot-pulse span:nth-child(3) { animation-delay: 0.6s; }
-    @keyframes dotPulse {
-      0%, 100% { transform: scale(1); opacity: 0.3; }
-      50% { transform: scale(1.6); opacity: 0.8; }
-    }
-
-    /* ============================================
-       LUXURY DECORATIONS (Beans, Flowers, Gold)
-       ============================================ */
-
-    .hero-decor {
-      position: absolute;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* Coffee Bean */
-    .bean-svg {
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
-      animation: floatBean 6s ease-in-out infinite;
-    }
-    .bean-svg:nth-child(odd) { animation-delay: 0.5s; }
-    .bean-svg:nth-child(3n) { animation-duration: 8s; }
-    .bean-svg:nth-child(5n) { animation-duration: 7s; }
-
-    @keyframes floatBean {
-      0% { transform: translateY(0px) rotate(0deg) scale(1); }
-      33% { transform: translateY(-12px) rotate(6deg) scale(1.02); }
-      66% { transform: translateY(8px) rotate(-4deg) scale(0.98); }
-      100% { transform: translateY(0px) rotate(0deg) scale(1); }
-    }
-
-    /* Flower */
-    .flower-svg {
-      filter: drop-shadow(0 4px 15px rgba(255,255,255,0.15));
-      animation: swayFlower 7s ease-in-out infinite;
-    }
-    .flower-svg:nth-child(odd) { animation-delay: 0.8s; }
-    .flower-svg:nth-child(4n) { animation-duration: 9s; }
-
-    @keyframes swayFlower {
-      0% { transform: translateY(0) rotate(-3deg); }
-      50% { transform: translateY(-6px) rotate(4deg); }
-      100% { transform: translateY(0) rotate(-3deg); }
-    }
-
-    /* Gold Dust */
-    .gold-dust {
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #FFD700, #D4A537);
-      box-shadow: 0 0 20px rgba(212,165,55,0.3);
-      animation: floatGold 5s ease-in-out infinite;
-    }
-    .gold-dust:nth-child(odd) { animation-delay: 0.3s; }
-    .gold-dust:nth-child(3n) { animation-duration: 6s; }
-
-    @keyframes floatGold {
-      0% { transform: translateY(0px) scale(1); opacity: 0.4; }
-      50% { transform: translateY(-20px) scale(1.2); opacity: 0.9; }
-      100% { transform: translateY(0px) scale(1); opacity: 0.4; }
-    }
-
-    /* Responsive Decor */
-    @media (max-width: 768px) {
-      .hero-decor { transform: scale(0.6); }
-      .hero-decor .bean-svg { animation-duration: 8s; }
-      .hero-decor .flower-svg { animation-duration: 10s; }
-      .gold-dust { display: none; }
-    }
-    @media (max-width: 480px) {
-      .hero-decor { transform: scale(0.4); }
-      .bean-svg:nth-child(n+5) { display: none; }
-      .flower-svg:nth-child(n+3) { display: none; }
-    }
-
-    /* ---------- Hero Responsive ---------- */
+    /* Responsive */
     @media (max-width: 768px) {
       #split-hero {
         grid-template-columns: 1fr;
@@ -307,14 +129,7 @@
       }
       .hero-left-revamp .hero-content { max-width: 100%; }
       .hero-left-revamp .btn-group { justify-content: center; }
-      .hero-right-revamp { min-height: 50vh; }
-      .gradient-frame-inner {
-        min-height: 200px;
-        min-width: 200px;
-        padding: 1.5rem 2rem;
-      }
-      .steam-particle { width: 80px; height: 80px; }
-      .steam-particle:nth-child(2) { width: 100px; height: 100px; }
+      #three-container { min-height: 50vh; }
     }
   </style>
 </head>
@@ -325,15 +140,15 @@
   <div class="wrap">
     <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%;">
       <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" 
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark"
              style="width:clamp(3rem, 8vw, 5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
         <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem, 2.4vw, 1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">
           Hyper Coffee
         </span>
       </div>
-      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;" 
+      <svg style="display:block; margin:2px auto 0; width:clamp(100px, 18vw, 150px); height:auto; max-width:100%;"
            viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
-        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)" 
+        <text font-family="'Fraunces', serif" font-size="clamp(9px, 1.6vw, 12px)"
               fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
@@ -373,11 +188,11 @@
 </div>
 
 <!-- ============================================================
-     HERO — LUXURY EDITION
+     HERO — with Three.js 3D Scene
      ============================================================ -->
 <section id="split-hero">
 
-  <!-- ===== LEFT PANEL ===== -->
+  <!-- LEFT: Content -->
   <div class="hero-left-revamp">
     <div class="hero-content" data-reveal>
       <div class="eyebrow">
@@ -395,152 +210,487 @@
     </div>
   </div>
 
-  <!-- ===== RIGHT PANEL (Logo + Steam) ===== -->
-  <div class="hero-right-revamp">
-
-    <!-- Steam particles -->
-    <div class="steam-container">
-      <div class="steam-particle"></div>
-      <div class="steam-particle"></div>
-      <div class="steam-particle"></div>
-      <div class="steam-particle"></div>
-    </div>
-
-    <!-- Glow -->
-    <div class="glow-pulse"></div>
-
-    <!-- Gradient frame + Logo -->
-    <div class="gradient-frame">
-      <div class="gradient-frame-inner">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" 
-             class="brand-logo-hover"
-             style="width:clamp(160px, 40%, 350px); height:auto;">
-        
-        <div style="width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent); margin:1.5rem 0 1rem; z-index:4; position:relative;"></div>
-        
-        <p style="font-family:'Fraunces', serif; color:rgba(247,239,227,0.4); font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; margin:0; z-index:4; position:relative;">
-          Specialty Coffee · Addis Ababa
-        </p>
-        
-        <div class="dot-pulse">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================
-       LUXURY DECORATIONS (Floating Beans, Flowers, Gold Dust)
-       ========================================================== -->
-
-  <!-- Coffee Beans (SVG) -->
-  <div class="hero-decor" style="top:8%; left:2%;">
-    <svg class="bean-svg" width="40" height="50" viewBox="0 0 100 100">
-      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#3E2723" stroke="#4E342E" stroke-width="2"/>
-      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#4E342E" opacity="0.5" transform="rotate(-30 45 30)"/>
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="top:20%; left:15%;">
-    <svg class="bean-svg" width="35" height="45" viewBox="0 0 100 100" style="animation-delay:1.2s;">
-      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#4E342E" stroke="#5D4037" stroke-width="2"/>
-      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#5D4037" opacity="0.5" transform="rotate(-30 45 30)"/>
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="bottom:12%; left:5%;">
-    <svg class="bean-svg" width="50" height="60" viewBox="0 0 100 100" style="animation-duration:8s; animation-delay:0.3s;">
-      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#2E1B15" stroke="#3E2723" stroke-width="2"/>
-      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#4E342E" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#3E2723" opacity="0.5" transform="rotate(-30 45 30)"/>
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="bottom:25%; right:5%;">
-    <svg class="bean-svg" width="45" height="55" viewBox="0 0 100 100" style="animation-delay:2s;">
-      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#3E2723" stroke="#4E342E" stroke-width="2"/>
-      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#4E342E" opacity="0.5" transform="rotate(-30 45 30)"/>
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="top:15%; right:10%;">
-    <svg class="bean-svg" width="30" height="40" viewBox="0 0 100 100" style="animation-duration:7s; animation-delay:0.8s;">
-      <path d="M50 10 C20 10, 10 40, 20 70 C30 90, 70 90, 80 70 C90 40, 80 10, 50 10 Z" fill="#4E342E" stroke="#5D4037" stroke-width="2"/>
-      <path d="M50 15 C30 20, 25 45, 30 65" fill="none" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
-      <ellipse cx="45" cy="30" rx="8" ry="4" fill="#5D4037" opacity="0.5" transform="rotate(-30 45 30)"/>
-    </svg>
-  </div>
-
-  <!-- Elegant Flowers (SVG) -->
-  <div class="hero-decor" style="top:5%; right:20%;">
-    <svg class="flower-svg" width="30" height="30" viewBox="0 0 100 100" style="animation-delay:0.2s;">
-      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.85">
-        <ellipse cx="50" cy="20" rx="10" ry="25" />
-        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(72 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(144 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(216 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="25" transform="rotate(288 50 50)" />
-      </g>
-      <circle cx="50" cy="50" r="8" fill="#FFD700" />
-      <circle cx="50" cy="50" r="4" fill="#FFE082" />
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="bottom:5%; right:15%;">
-    <svg class="flower-svg" width="35" height="35" viewBox="0 0 100 100" style="animation-delay:1.5s;">
-      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
-        <ellipse cx="50" cy="20" rx="12" ry="28" />
-        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(72 50 50)" />
-        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(144 50 50)" />
-        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(216 50 50)" />
-        <ellipse cx="50" cy="20" rx="12" ry="28" transform="rotate(288 50 50)" />
-      </g>
-      <circle cx="50" cy="50" r="10" fill="#FFD700" />
-      <circle cx="50" cy="50" r="5" fill="#FFE082" />
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="top:30%; left:2%;">
-    <svg class="flower-svg" width="28" height="28" viewBox="0 0 100 100" style="animation-duration:8s; animation-delay:0.6s;">
-      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
-        <ellipse cx="50" cy="20" rx="10" ry="22" />
-        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(72 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(144 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(216 50 50)" />
-        <ellipse cx="50" cy="20" rx="10" ry="22" transform="rotate(288 50 50)" />
-      </g>
-      <circle cx="50" cy="50" r="7" fill="#FFD700" />
-      <circle cx="50" cy="50" r="3.5" fill="#FFE082" />
-    </svg>
-  </div>
-
-  <div class="hero-decor" style="bottom:30%; left:10%;">
-    <svg class="flower-svg" width="25" height="25" viewBox="0 0 100 100" style="animation-delay:2.2s;">
-      <g stroke="#E8E8E8" stroke-width="1.2" fill="#FFFFFF" opacity="0.8">
-        <ellipse cx="50" cy="20" rx="8" ry="20" />
-        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(72 50 50)" />
-        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(144 50 50)" />
-        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(216 50 50)" />
-        <ellipse cx="50" cy="20" rx="8" ry="20" transform="rotate(288 50 50)" />
-      </g>
-      <circle cx="50" cy="50" r="6" fill="#FFD700" />
-      <circle cx="50" cy="50" r="3" fill="#FFE082" />
-    </svg>
-  </div>
-
-  <!-- Gold Dust Particles -->
-  <div class="hero-decor gold-dust" style="width:8px; height:8px; top:12%; left:25%;"></div>
-  <div class="hero-decor gold-dust" style="width:12px; height:12px; top:8%; left:45%; animation-delay:0.5s;"></div>
-  <div class="hero-decor gold-dust" style="width:6px; height:6px; bottom:15%; left:20%; animation-duration:6s;"></div>
-  <div class="hero-decor gold-dust" style="width:10px; height:10px; bottom:20%; right:25%; animation-delay:1s;"></div>
-  <div class="hero-decor gold-dust" style="width:7px; height:7px; top:40%; right:5%; animation-delay:0.8s;"></div>
-  <div class="hero-decor gold-dust" style="width:14px; height:14px; top:25%; left:8%; animation-duration:7s; animation-delay:0.2s;"></div>
+  <!-- RIGHT: Three.js 3D Scene -->
+  <div id="three-container"></div>
 
 </section>
 
+<!-- ============================================================
+     THREE.JS — Import Map & Module
+     ============================================================ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+// ============================================================
+//  IMPORTS
+// ============================================================
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+
+// ============================================================
+//  SETUP
+// ============================================================
+const container = document.getElementById('three-container');
+const width = container.clientWidth;
+const height = container.clientHeight || 400;
+
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0E0A07);
+scene.fog = new THREE.Fog(0x0E0A07, 12, 22);
+
+// Camera
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 50);
+camera.position.set(0, 2, 10);
+camera.lookAt(0, 0, 0);
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: false,
+  powerPreference: 'high-performance'
+});
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+container.appendChild(renderer.domElement);
+
+// ============================================================
+//  POST-PROCESSING (Bloom)
+// ============================================================
+const composer = new EffectComposer(renderer);
+const renderPass = new RenderPass(scene, camera);
+composer.addPass(renderPass);
+
+const bloomPass = new UnrealBloomPass(
+  new THREE.Vector2(width, height),
+  0.15,  // strength
+  0.3,   // radius
+  0.1    // threshold
+);
+composer.addPass(bloomPass);
+
+// ============================================================
+//  LIGHTING
+// ============================================================
+const ambient = new THREE.AmbientLight(0x443322, 0.3);
+scene.add(ambient);
+
+const hemi = new THREE.HemisphereLight(0x87654A, 0x1C1410, 0.6);
+scene.add(hemi);
+
+const dirLight = new THREE.DirectionalLight(0xFFEECC, 1.8);
+dirLight.position.set(5, 8, 4);
+dirLight.castShadow = true;
+dirLight.shadow.mapSize.width = 1024;
+dirLight.shadow.mapSize.height = 1024;
+dirLight.shadow.camera.near = 0.5;
+dirLight.shadow.camera.far = 20;
+dirLight.shadow.camera.left = -8;
+dirLight.shadow.camera.right = 8;
+dirLight.shadow.camera.top = 8;
+dirLight.shadow.camera.bottom = -8;
+scene.add(dirLight);
+
+const fillLight = new THREE.DirectionalLight(0xD4A537, 0.4);
+fillLight.position.set(-3, 1, 2);
+scene.add(fillLight);
+
+const pointLight = new THREE.PointLight(0xD4A537, 0.6, 10);
+pointLight.position.set(0, 1, 3);
+scene.add(pointLight);
+
+// ============================================================
+//  HELPER: Coffee Bean Geometry
+// ============================================================
+function createBeanGeometry() {
+  const points = [];
+  const segments = 16;
+  for (let i = 0; i <= segments; i++) {
+    const t = i / segments;
+    const angle = t * Math.PI;
+    const r = Math.sin(angle) * 0.6;
+    const x = Math.cos(angle) * r * 0.9;
+    const y = Math.sin(angle) * 1.0;
+    const z = Math.sin(angle) * r * 0.5;
+    points.push(new THREE.Vector3(x, y, z));
+  }
+  const geo = new THREE.LatheGeometry(
+    points.map(p => new THREE.Vector2(p.x, p.y)),
+    12
+  );
+  // Add crease
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i);
+    const y = pos.getY(i);
+    const z = pos.getZ(i);
+    const dist = Math.sqrt(x*x + z*z);
+    if (dist > 0.1 && y > -0.3 && y < 0.6) {
+      const factor = 1 - Math.abs(y) / 0.8;
+      const crease = 1 + 0.15 * factor * Math.sin(x * 8);
+      pos.setXYZ(i, x * crease, y, z * crease);
+    }
+  }
+  geo.computeVertexNormals();
+  return geo;
+}
+
+// ============================================================
+//  HELPER: Flower Petal Geometry
+// ============================================================
+function createPetalGeometry() {
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0);
+  shape.bezierCurveTo(0.08, 0.3, 0.3, 0.5, 0.5, 0.5);
+  shape.bezierCurveTo(0.7, 0.5, 0.9, 0.3, 1.0, 0);
+  shape.bezierCurveTo(0.9, -0.3, 0.7, -0.5, 0.5, -0.5);
+  shape.bezierCurveTo(0.3, -0.5, 0.08, -0.3, 0, 0);
+  const extrudeSettings = {
+    depth: 0.04,
+    bevelEnabled: true,
+    bevelThickness: 0.02,
+    bevelSize: 0.02,
+    bevelSegments: 4
+  };
+  const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+  geo.translate(0, 0, -0.02);
+  geo.rotateX(Math.PI / 2);
+  return geo;
+}
+
+// ============================================================
+//  CREATE BEANS (50)
+// ============================================================
+const beanGeo = createBeanGeometry();
+const beanMat = new THREE.MeshStandardMaterial({
+  color: 0x3E2723,
+  roughness: 0.85,
+  metalness: 0.05,
+  envMapIntensity: 0.3,
+});
+const beanMat2 = new THREE.MeshStandardMaterial({
+  color: 0x4E342E,
+  roughness: 0.8,
+  metalness: 0.05,
+  envMapIntensity: 0.3,
+});
+const beanMat3 = new THREE.MeshStandardMaterial({
+  color: 0x2E1B15,
+  roughness: 0.9,
+  metalness: 0.02,
+  envMapIntensity: 0.3,
+});
+const beanMats = [beanMat, beanMat2, beanMat3];
+
+const beans = [];
+const beanGroup = new THREE.Group();
+
+for (let i = 0; i < 50; i++) {
+  const mat = beanMats[i % beanMats.length];
+  const mesh = new THREE.Mesh(beanGeo.clone(), mat);
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.random() * Math.PI * 2;
+  const radius = 2 + Math.random() * 5;
+  mesh.position.set(
+    Math.cos(theta) * Math.sin(phi) * radius,
+    (Math.random() - 0.5) * 3,
+    Math.sin(theta) * Math.sin(phi) * radius + 1
+  );
+  const scale = 0.4 + Math.random() * 0.6;
+  mesh.scale.set(scale, scale * (0.8 + Math.random() * 0.4), scale * (0.7 + Math.random() * 0.3));
+  mesh.rotation.set(Math.random() * 6, Math.random() * 6, Math.random() * 6);
+  mesh.castShadow = true;
+  mesh.receiveShadow = true;
+  mesh.userData = {
+    floatSpeed: 0.3 + Math.random() * 0.5,
+    floatAmp: 0.05 + Math.random() * 0.1,
+    rotSpeed: 0.2 + Math.random() * 0.4,
+    phase: Math.random() * 6,
+    origPos: mesh.position.clone(),
+  };
+  beanGroup.add(mesh);
+  beans.push(mesh);
+}
+scene.add(beanGroup);
+
+// ============================================================
+//  CREATE FLOWERS (50)
+// ============================================================
+const petalGeo = createPetalGeometry();
+const petalMat = new THREE.MeshStandardMaterial({
+  color: 0xF5F0E8,
+  roughness: 0.6,
+  metalness: 0.0,
+  side: THREE.DoubleSide,
+});
+const petalMat2 = new THREE.MeshStandardMaterial({
+  color: 0xEDE5D8,
+  roughness: 0.6,
+  metalness: 0.0,
+  side: THREE.DoubleSide,
+});
+const petalMat3 = new THREE.MeshStandardMaterial({
+  color: 0xFAF5EC,
+  roughness: 0.5,
+  metalness: 0.0,
+  side: THREE.DoubleSide,
+});
+const petalMats = [petalMat, petalMat2, petalMat3];
+
+const centerMat = new THREE.MeshStandardMaterial({
+  color: 0xF5C842,
+  roughness: 0.4,
+  metalness: 0.1,
+  emissive: 0xF5C842,
+  emissiveIntensity: 0.15,
+});
+
+const flowers = [];
+const flowerGroup = new THREE.Group();
+
+for (let i = 0; i < 50; i++) {
+  const group = new THREE.Group();
+  const mat = petalMats[i % petalMats.length];
+  const numPetals = 5 + Math.floor(Math.random() * 3);
+  const petalScale = 0.2 + Math.random() * 0.25;
+
+  for (let j = 0; j < numPetals; j++) {
+    const petal = new THREE.Mesh(petalGeo.clone(), mat);
+    const angle = (j / numPetals) * Math.PI * 2 + Math.random() * 0.1;
+    petal.rotation.z = angle;
+    petal.rotation.x = 0.2 + Math.random() * 0.15;
+    petal.position.set(
+      Math.cos(angle) * 0.15,
+      Math.sin(angle) * 0.15,
+      0
+    );
+    petal.scale.set(petalScale, petalScale, petalScale);
+    petal.castShadow = true;
+    petal.receiveShadow = true;
+    group.add(petal);
+  }
+
+  // Center
+  const center = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), centerMat);
+  center.scale.set(1, 0.7, 1);
+  group.add(center);
+
+  const theta2 = Math.random() * Math.PI * 2;
+  const phi2 = Math.random() * Math.PI * 2;
+  const radius2 = 2.5 + Math.random() * 5;
+  group.position.set(
+    Math.cos(theta2) * Math.sin(phi2) * radius2,
+    (Math.random() - 0.5) * 2.5,
+    Math.sin(theta2) * Math.sin(phi2) * radius2 + 1
+  );
+  const s = 0.6 + Math.random() * 0.6;
+  group.scale.set(s, s, s);
+  group.rotation.set(Math.random() * 0.5, Math.random() * 6, Math.random() * 0.5);
+  group.castShadow = true;
+  group.receiveShadow = true;
+  group.userData = {
+    floatSpeed: 0.2 + Math.random() * 0.4,
+    floatAmp: 0.04 + Math.random() * 0.08,
+    swaySpeed: 0.3 + Math.random() * 0.4,
+    swayAmp: 0.02 + Math.random() * 0.04,
+    phase: Math.random() * 6,
+    rotSpeed: 0.05 + Math.random() * 0.1,
+    origPos: group.position.clone(),
+    origRot: group.rotation.clone(),
+  };
+  flowerGroup.add(group);
+  flowers.push(group);
+}
+scene.add(flowerGroup);
+
+// ============================================================
+//  CREATE STARS (50) with Bloom
+// ============================================================
+const starGeo = new THREE.BufferGeometry();
+const starCount = 50;
+const starPos = new Float32Array(starCount * 3);
+const starSizes = new Float32Array(starCount);
+const starColors = new Float32Array(starCount * 3);
+
+for (let i = 0; i < starCount; i++) {
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
+  const radius = 3 + Math.random() * 7;
+  starPos[i*3] = Math.sin(phi) * Math.cos(theta) * radius;
+  starPos[i*3+1] = (Math.random() - 0.5) * 4;
+  starPos[i*3+2] = Math.sin(phi) * Math.sin(theta) * radius + 1;
+  starSizes[i] = 0.04 + Math.random() * 0.08;
+  const gold = 0.7 + Math.random() * 0.3;
+  starColors[i*3] = 1.0;
+  starColors[i*3+1] = 0.85 + Math.random() * 0.15;
+  starColors[i*3+2] = 0.4 + Math.random() * 0.3;
+}
+
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+starGeo.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
+starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+
+const starMat = new THREE.PointsMaterial({
+  size: 0.08,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.9,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  sizeAttenuation: true,
+});
+
+const stars = new THREE.Points(starGeo, starMat);
+stars.userData = {
+  twinkleSpeed: 0.5 + Math.random() * 0.5,
+  phase: Math.random() * 6,
+};
+scene.add(stars);
+
+// Store star data for twinkling
+const starData = [];
+for (let i = 0; i < starCount; i++) {
+  starData.push({
+    speed: 0.3 + Math.random() * 0.7,
+    phase: Math.random() * 6,
+  });
+}
+
+// ============================================================
+//  MOUSE PARALLAX
+// ============================================================
+let mouseX = 0, mouseY = 0;
+let targetRotX = 0, targetRotY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  const rect = container.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+  mouseX = x * 0.3;
+  mouseY = y * 0.2;
+});
+
+container.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 0) {
+    const rect = container.getBoundingClientRect();
+    const x = (e.touches[0].clientX - rect.left) / rect.width - 0.5;
+    const y = (e.touches[0].clientY - rect.top) / rect.height - 0.5;
+    mouseX = x * 0.3;
+    mouseY = y * 0.2;
+  }
+}, { passive: true });
+
+// ============================================================
+//  RESIZE
+// ============================================================
+function resize() {
+  const w = container.clientWidth;
+  const h = container.clientHeight || 400;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+  composer.setSize(w, h);
+}
+
+window.addEventListener('resize', resize);
+
+// ============================================================
+//  ANIMATION LOOP
+// ============================================================
+const clock = new THREE.Clock();
+
+function animate() {
+  const t = clock.getElapsedTime();
+  const dt = clock.getDelta();
+
+  // ---- Smooth mouse follow ----
+  targetRotX += (mouseX - targetRotX) * 0.03;
+  targetRotY += (mouseY - targetRotY) * 0.03;
+
+  // ---- Auto-rotation ----
+  const autoRot = t * 0.025;
+
+  // ---- Beans ----
+  beans.forEach((bean, i) => {
+    const ud = bean.userData;
+    const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
+    bean.position.y = ud.origPos.y + floatOffset;
+    bean.rotation.x += ud.rotSpeed * 0.01;
+    bean.rotation.z += ud.rotSpeed * 0.008;
+    const rotX = targetRotX * 0.3 + autoRot * 0.5;
+    const rotY = targetRotY * 0.3;
+    bean.position.x += (ud.origPos.x + rotX * 0.5 - bean.position.x) * 0.005;
+    bean.position.z += (ud.origPos.z + rotY * 0.5 - bean.position.z) * 0.005;
+  });
+
+  // ---- Flowers ----
+  flowers.forEach((flower) => {
+    const ud = flower.userData;
+    const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
+    flower.position.y = ud.origPos.y + floatOffset;
+    const sway = Math.sin(t * ud.swaySpeed + ud.phase) * ud.swayAmp;
+    flower.rotation.x = ud.origRot.x + sway;
+    flower.rotation.z = ud.origRot.z + sway * 0.5;
+    flower.rotation.y += ud.rotSpeed * 0.005;
+  });
+
+  // ---- Stars (twinkling) ----
+  const sizes = stars.geometry.attributes.size;
+  const pos = stars.geometry.attributes.position;
+  for (let i = 0; i < starCount; i++) {
+    const sd = starData[i];
+    const twinkle = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * sd.speed + sd.phase));
+    sizes.array[i] = (0.04 + (i % 5) * 0.01) * twinkle;
+  }
+  sizes.needsUpdate = true;
+
+  // ---- Group rotation (parallax + auto) ----
+  const rotY = targetRotX * 0.8 + autoRot;
+  const rotX = targetRotY * 0.5;
+  beanGroup.rotation.y = rotY;
+  beanGroup.rotation.x = rotX;
+  flowerGroup.rotation.y = rotY * 0.9;
+  flowerGroup.rotation.x = rotX * 0.8;
+  stars.rotation.y = rotY * 0.6;
+  stars.rotation.x = rotX * 0.4;
+
+  // ---- Point light orbits ----
+  pointLight.position.x = Math.sin(t * 0.15) * 3;
+  pointLight.position.z = Math.cos(t * 0.15) * 3;
+  pointLight.position.y = 1 + Math.sin(t * 0.1) * 0.5;
+
+  // ---- Render ----
+  composer.render();
+  requestAnimationFrame(animate);
+}
+
+// Start animation
+animate();
+
+// Initial resize after a moment
+setTimeout(resize, 100);
+
+// ============================================================
+//  FALLBACK for older browsers
+// ============================================================
+console.log('🔥 Hyper Coffee 3D Hero loaded with Three.js');
+</script>
+
+<!-- ===== REST OF PAGE ===== -->
 <!-- ===== ABOUT ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
@@ -818,9 +968,9 @@
           </p>
         </div>
         <div class="footer-map">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789!2d38.7577!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyNy43IkU!5e0!3m2!1sen!2sus!4v1610000000000" 
-            loading="lazy" 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789!2d38.7577!3d8.9806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTgnNTAuMiJOIDM4wrA0NScyNy43IkU!5e0!3m2!1sen!2sus!4v1610000000000"
+            loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Hyper Coffee Location Map">
           </iframe>
@@ -847,4 +997,4 @@
 
 <script src="assets/site.js"></script>
 </body>
-    </html>
+  </html>
