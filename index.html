@@ -13,6 +13,7 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
+    /* ===== SAME AS BEFORE ===== */
     #hero-unified {
       position: relative;
       width: 100%;
@@ -201,6 +202,25 @@
       0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
       50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.8; }
     }
+
+    /* Amharic script below the logo */
+    .hero-amharic {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.8rem);
+      color: rgba(247,239,227,0.25);
+      letter-spacing: 0.15em;
+      margin: -0.5rem 0 1rem;
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+      text-shadow: 0 0 30px rgba(212,165,55,0.1);
+      animation: amharicFloat 4s ease-in-out infinite;
+    }
+    @keyframes amharicFloat {
+      0%, 100% { transform: translateY(0); opacity: 0.25; }
+      50% { transform: translateY(-4px); opacity: 0.4; }
+    }
+
     @media (max-width:768px) {
       #hero-unified { padding-top:76px; min-height:100vh; }
       #three-container { min-height:100vh; }
@@ -209,6 +229,7 @@
       .hero-title { font-size:clamp(1.8rem,6vw,2.8rem); }
       .hero-description { font-size:0.9rem; padding:0 0.5rem; }
       .hero-watermark { font-size:clamp(4rem,12vw,9rem); }
+      .hero-amharic { font-size:clamp(1rem,2vw,1.8rem); }
     }
     @media (max-width:480px) {
       .hero-content-card { padding:1.5rem 1rem; border-radius:16px; }
@@ -216,6 +237,7 @@
       .hero-title { font-size:1.6rem; }
       .hero-buttons .btn { padding:0.6rem 1.2rem; font-size:0.85rem; }
       .hero-watermark { font-size:clamp(3rem,10vw,6rem); }
+      .hero-amharic { font-size:clamp(0.8rem,1.6vw,1.4rem); }
     }
   </style>
 </head>
@@ -275,6 +297,8 @@
         <div class="logo-glow"></div>
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
       </div>
+      <!-- Amharic script directly below the logo -->
+      <div class="hero-amharic">መገኛችን</div>
       <div class="hero-eyebrow"><span class="rule"></span> Bole, Addis Ababa</div>
       <h1 class="hero-title">The Art of Buna</h1>
       <p class="hero-description">One pour, raised high above the cup. A thread of coffee meeting crema.</p>
@@ -287,7 +311,7 @@
 </section>
 
 <!-- ============================================================
-     THREE.JS – ULTRA MAGICAL
+     THREE.JS – ULTRA MAGICAL WITH MOON & FLOATING WORDS
      ============================================================ -->
 <script type="importmap">
 {
@@ -366,7 +390,7 @@ pointLight.position.set(0, 1, 4);
 scene.add(pointLight);
 
 // ============================================================
-//  BEANS (50)
+//  BEANS (50) – same as before
 // ============================================================
 function createBeanGeometry() {
   const pts = [];
@@ -411,7 +435,7 @@ for (let i=0; i<50; i++) {
 scene.add(beanGroup);
 
 // ============================================================
-//  FLOWERS (50)
+//  FLOWERS (50) – same as before
 // ============================================================
 function createPetalGeometry() {
   const shape = new THREE.Shape();
@@ -667,7 +691,118 @@ const snowParticles = new THREE.Points(snowGeo, snowMat);
 scene.add(snowParticles);
 
 // ============================================================
-//  MOUSE PARALLAX
+//  NEW: GLOWING MOON
+// ============================================================
+const moonGeo = new THREE.SphereGeometry(1.2, 32, 32);
+const moonMat = new THREE.MeshStandardMaterial({
+  color: 0xF5E6C8,
+  emissive: 0xF5C842,
+  emissiveIntensity: 0.4,
+  roughness: 0.3,
+  metalness: 0.1,
+});
+const moon = new THREE.Mesh(moonGeo, moonMat);
+moon.position.set(-5, 3, -6);
+moon.castShadow = true;
+scene.add(moon);
+
+// Moon glow (point light)
+const moonLight = new THREE.PointLight(0xF5C842, 1.2, 15);
+moonLight.position.copy(moon.position);
+scene.add(moonLight);
+
+// Moon glow halo (additive sprite)
+const glowCanvas = document.createElement('canvas');
+glowCanvas.width = 128; glowCanvas.height = 128;
+const gCtx = glowCanvas.getContext('2d');
+const gradGlow = gCtx.createRadialGradient(64,64,0,64,64,64);
+gradGlow.addColorStop(0, 'rgba(255,220,150,1)');
+gradGlow.addColorStop(0.3, 'rgba(255,200,100,0.6)');
+gradGlow.addColorStop(1, 'rgba(255,200,100,0)');
+gCtx.fillStyle = gradGlow;
+gCtx.fillRect(0,0,128,128);
+const glowTexture = new THREE.CanvasTexture(glowCanvas);
+const glowMat = new THREE.SpriteMaterial({
+  map: glowTexture,
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false,
+  opacity: 0.4,
+});
+const glowSprite = new THREE.Sprite(glowMat);
+glowSprite.scale.set(5,5,1);
+glowSprite.position.copy(moon.position);
+scene.add(glowSprite);
+
+// ============================================================
+//  NEW: FLOATING 3D WORDS & EMOJIS (as sprites)
+// ============================================================
+const wordData = [
+  { text: '☕ Coffee', color: '#D4A537' },
+  { text: '❤️ Love', color: '#E87070' },
+  { text: '🍵 Drink', color: '#8CB07A' },
+  { text: '⚡ Caffeinate', color: '#F5C842' },
+  { text: '🇪🇹 Ethiopia', color: '#F5E6C8' },
+  { text: '✨ Hyper', color: '#C9BBA4' },
+];
+
+const wordSprites = [];
+wordData.forEach((item, index) => {
+  const canvas = document.createElement('canvas');
+  const size = 256;
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  // Transparent background
+  ctx.clearRect(0,0,size,size);
+  // Text
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  const fontSize = 48;
+  ctx.font = `600 ${fontSize}px 'Inter', 'Segoe UI', system-ui, sans-serif`;
+  // Shadow for readability
+  ctx.shadowColor = 'rgba(0,0,0,0.5)';
+  ctx.shadowBlur = 20;
+  ctx.fillStyle = item.color;
+  ctx.fillText(item.text, size/2, size/2);
+  // Slight glow
+  ctx.shadowBlur = 40;
+  ctx.shadowColor = 'rgba(255,200,100,0.2)';
+  ctx.fillText(item.text, size/2, size/2);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    opacity: 0.7,
+  });
+  const sprite = new THREE.Sprite(material);
+  const radius = 3 + Math.random() * 4;
+  const angle = (index / wordData.length) * Math.PI * 2 + Math.random() * 0.5;
+  const heightOffset = (Math.random() - 0.5) * 3;
+  sprite.position.set(
+    Math.cos(angle) * radius,
+    heightOffset + 0.5,
+    Math.sin(angle) * radius
+  );
+  sprite.scale.set(1.8, 1.8, 1);
+  sprite.userData = {
+    angle: angle,
+    radius: radius,
+    heightOffset: heightOffset,
+    speed: 0.15 + Math.random() * 0.1,
+    floatSpeed: 0.3 + Math.random() * 0.2,
+    phase: Math.random() * 6,
+    rotSpeed: 0.2 + Math.random() * 0.2,
+  };
+  scene.add(sprite);
+  wordSprites.push(sprite);
+});
+
+// ============================================================
+//  MOUSE PARALLAX & RESIZE
 // ============================================================
 let mouseX = 0, mouseY = 0, targetRotX = 0, targetRotY = 0;
 document.addEventListener('mousemove', (e) => {
@@ -687,9 +822,6 @@ container.addEventListener('touchmove', (e) => {
   }
 }, { passive: true });
 
-// ============================================================
-//  RESIZE
-// ============================================================
 function resize() {
   const w = container.clientWidth;
   const h = container.clientHeight || window.innerHeight;
@@ -711,7 +843,7 @@ function animate() {
   // Aurora
   updateAurora(t);
 
-  // Galaxy rotation
+  // Galaxy
   galaxy.rotation.y = t * 0.005;
   galaxy.rotation.x = Math.sin(t * 0.003) * 0.1;
 
@@ -801,6 +933,32 @@ function animate() {
     flower.rotation.y += ud.rotSpeed * 0.005;
   });
 
+  // Moon rotation & gentle bobbing
+  moon.rotation.y += 0.001;
+  moon.rotation.x = Math.sin(t * 0.05) * 0.05;
+  const moonBob = Math.sin(t * 0.08) * 0.08;
+  moon.position.y = 3 + moonBob;
+  moonLight.position.copy(moon.position);
+  glowSprite.position.copy(moon.position);
+  // Pulsing moon light
+  moonLight.intensity = 1.2 + 0.3 * Math.sin(t * 0.1);
+
+  // Floating words
+  wordSprites.forEach((sprite, idx) => {
+    const ud = sprite.userData;
+    const angleOffset = ud.angle + t * ud.speed;
+    const radiusOffset = ud.radius + Math.sin(t * 0.1 + idx) * 0.1;
+    sprite.position.x = Math.cos(angleOffset) * radiusOffset;
+    sprite.position.z = Math.sin(angleOffset) * radiusOffset;
+    const floatY = Math.sin(t * ud.floatSpeed + ud.phase) * 0.3;
+    sprite.position.y = ud.heightOffset + 0.5 + floatY;
+    // Subtle scaling pulse
+    const scalePulse = 1 + 0.05 * Math.sin(t * ud.rotSpeed + ud.phase);
+    sprite.scale.set(1.8 * scalePulse, 1.8 * scalePulse, 1);
+    // Slight opacity variation
+    sprite.material.opacity = 0.6 + 0.15 * Math.sin(t * 0.2 + idx);
+  });
+
   // Mouse / auto rotation
   targetRotX += (mouseX - targetRotX) * 0.03;
   targetRotY += (mouseY - targetRotY) * 0.03;
@@ -820,7 +978,7 @@ function animate() {
   pointLight.position.z = Math.cos(t * 0.12) * 4;
   pointLight.position.y = 1 + Math.sin(t * 0.1) * 0.5;
 
-  // Dynamic light colour shift
+  // Dynamic light colour
   const hue = 0.08 + Math.sin(t * 0.06) * 0.04;
   const col = new THREE.Color().setHSL(hue, 0.6, 0.7);
   dirLight.color.lerp(col, 0.01);
@@ -834,11 +992,10 @@ function animate() {
 
 animate();
 setTimeout(resize, 100);
-console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
+console.log('✨ Hyper Coffee — Ultra Magical with Moon & Words loaded');
 </script>
 
-<!-- ===== REST OF PAGE ===== -->
-<!-- ===== ABOUT ===== -->
+<!-- ===== REST OF PAGE (same as before) ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Our story</span></div>
@@ -847,7 +1004,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== THREE ROUNDS ===== -->
 <section style="background:var(--roast); color:var(--cream); padding:6rem 0;">
   <div class="wrap">
     <div data-reveal style="margin-bottom:3.5rem; max-width:36rem;">
@@ -875,7 +1031,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== MENU ===== -->
 <section id="menu" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="margin-bottom:3rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:1rem;">
     <div>
@@ -891,7 +1046,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== MASONRY GALLERY ===== -->
 <section id="gallery" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap">
     <div data-reveal class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Inside the café</span></div>
@@ -911,7 +1065,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   <div id="img4" class="lightbox"><a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a><img src="assets/images/hyperlogo.png" alt="Coffee beans" style="position:relative; z-index:2;"></div>
 </section>
 
-<!-- ===== TRAINING TEASER ===== -->
 <section class="bg-roast" style="padding:5rem 0; color:var(--cream);">
   <div class="wrap" style="text-align:center; max-width:760px;">
     <div class="eyebrow-line" style="justify-content:center;"><span class="rule" style="background:var(--gold);"></span><span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span></div>
@@ -921,7 +1074,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== UPCOMING EVENT TEASER ===== -->
 <section class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="background:#fff; border-radius:24px; padding:2.5rem; display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:center; border:1px solid var(--line);">
     <div style="max-width:30rem;"><div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Coming up</span></div><h3 class="h-display" style="font-size:1.7rem; color:var(--roast);">Cupping & Ceremony — every first Saturday</h3><p style="color:var(--roast-soft); margin-top:0.5rem;">Join our head roaster for a guided tasting and a full traditional buna ceremony. Free, limited seats.</p></div>
@@ -929,7 +1081,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== CUSTOMER REVIEWS ===== -->
 <section class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap" style="max-width:1240px;">
     <div data-reveal style="text-align:center; margin-bottom:3rem;">
@@ -950,7 +1101,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
 <section id="contact" class="wrap" style="padding:6rem 1.5rem; max-width:760px; text-align:center;">
   <div data-reveal>
     <div class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Get in touch</span></div>
@@ -965,7 +1115,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </section>
 
-<!-- ===== ENHANCED FOOTER ===== -->
 <footer class="footer-enhanced">
   <div class="wrap">
     <div class="footer-grid">
@@ -992,7 +1141,6 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
   </div>
 </footer>
 
-<!-- ===== CART DRAWER ===== -->
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
 <div id="cart-drawer" class="cart-drawer">
   <div style="padding:1.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
@@ -1005,4 +1153,4 @@ console.log('✨ Hyper Coffee — Ultra Magical 3D Hero loaded');
 
 <script src="assets/site.js"></script>
 </body>
-        </html>
+  </html>
