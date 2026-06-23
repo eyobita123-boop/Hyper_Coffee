@@ -13,7 +13,7 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
-    /* ----- Override hero for Three.js ----- */
+    /* ----- Hero with Three.js ----- */
     #split-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -101,7 +101,7 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     }
 
-    /* Three.js canvas container */
+    /* Three.js container */
     #three-container {
       position: relative;
       width: 100%;
@@ -114,6 +114,87 @@
       display: block;
       width: 100% !important;
       height: 100% !important;
+    }
+
+    /* ----- LOGO OVERLAY (visible on top of 3D) ----- */
+    .logo-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none;
+      text-align: center;
+    }
+
+    .logo-overlay .logo-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(212,165,55,0.12), transparent 70%);
+      border-radius: 50%;
+      animation: pulseGlow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .logo-overlay img {
+      position: relative;
+      z-index: 2;
+      width: clamp(140px, 35%, 320px);
+      height: auto;
+      filter: drop-shadow(0 0 60px rgba(212,165,55,0.15));
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: auto;
+      cursor: default;
+    }
+
+    .logo-overlay img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 100px rgba(212,165,55,0.25));
+    }
+
+    .logo-overlay .tagline {
+      font-family: 'Fraunces', serif;
+      color: rgba(247,239,227,0.35);
+      font-size: clamp(0.6rem, 1vw, 0.75rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-top: 0.75rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-overlay .gold-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 0.75rem;
+      position: relative;
+      z-index: 2;
+    }
+    .logo-overlay .gold-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.25;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    .logo-overlay .gold-dots span:nth-child(2) { animation-delay: 0.3s; background: var(--terracotta); }
+    .logo-overlay .gold-dots span:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(1); opacity: 0.2; }
+      50% { transform: scale(1.6); opacity: 0.7; }
     }
 
     /* Responsive */
@@ -130,6 +211,13 @@
       .hero-left-revamp .hero-content { max-width: 100%; }
       .hero-left-revamp .btn-group { justify-content: center; }
       #three-container { min-height: 50vh; }
+      .logo-overlay img { width: clamp(100px, 40%, 200px); }
+      .logo-overlay .tagline { font-size: 0.55rem; }
+    }
+
+    @media (max-width: 480px) {
+      #three-container { min-height: 40vh; }
+      .logo-overlay img { width: clamp(80px, 35%, 150px); }
     }
   </style>
 </head>
@@ -188,7 +276,7 @@
 </div>
 
 <!-- ============================================================
-     HERO — with Three.js 3D Scene
+     HERO — Three.js 3D Scene + Logo Overlay
      ============================================================ -->
 <section id="split-hero">
 
@@ -210,8 +298,20 @@
     </div>
   </div>
 
-  <!-- RIGHT: Three.js 3D Scene -->
-  <div id="three-container"></div>
+  <!-- RIGHT: Three.js 3D Scene + Logo Overlay -->
+  <div id="three-container" style="position:relative;">
+
+    <!-- Logo Overlay (on top of 3D) -->
+    <div class="logo-overlay">
+      <div class="logo-glow"></div>
+      <img src="assets/images/hyperlogo.png" alt="Hyper Coffee">
+      <div class="gold-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="tagline">Specialty Coffee · Addis Ababa</div>
+    </div>
+
+  </div>
 
 </section>
 
@@ -232,7 +332,6 @@
 //  IMPORTS
 // ============================================================
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
@@ -484,7 +583,6 @@ for (let i = 0; i < 50; i++) {
     group.add(petal);
   }
 
-  // Center
   const center = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8), centerMat);
   center.scale.set(1, 0.7, 1);
   group.add(center);
@@ -555,13 +653,8 @@ const starMat = new THREE.PointsMaterial({
 });
 
 const stars = new THREE.Points(starGeo, starMat);
-stars.userData = {
-  twinkleSpeed: 0.5 + Math.random() * 0.5,
-  phase: Math.random() * 6,
-};
 scene.add(stars);
 
-// Store star data for twinkling
 const starData = [];
 for (let i = 0; i < starCount; i++) {
   starData.push({
@@ -615,17 +708,16 @@ const clock = new THREE.Clock();
 
 function animate() {
   const t = clock.getElapsedTime();
-  const dt = clock.getDelta();
 
-  // ---- Smooth mouse follow ----
+  // Smooth mouse follow
   targetRotX += (mouseX - targetRotX) * 0.03;
   targetRotY += (mouseY - targetRotY) * 0.03;
 
-  // ---- Auto-rotation ----
+  // Auto-rotation
   const autoRot = t * 0.025;
 
-  // ---- Beans ----
-  beans.forEach((bean, i) => {
+  // Beans
+  beans.forEach((bean) => {
     const ud = bean.userData;
     const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
     bean.position.y = ud.origPos.y + floatOffset;
@@ -637,7 +729,7 @@ function animate() {
     bean.position.z += (ud.origPos.z + rotY * 0.5 - bean.position.z) * 0.005;
   });
 
-  // ---- Flowers ----
+  // Flowers
   flowers.forEach((flower) => {
     const ud = flower.userData;
     const floatOffset = Math.sin(t * ud.floatSpeed + ud.phase) * ud.floatAmp;
@@ -648,9 +740,8 @@ function animate() {
     flower.rotation.y += ud.rotSpeed * 0.005;
   });
 
-  // ---- Stars (twinkling) ----
+  // Stars (twinkling)
   const sizes = stars.geometry.attributes.size;
-  const pos = stars.geometry.attributes.position;
   for (let i = 0; i < starCount; i++) {
     const sd = starData[i];
     const twinkle = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(t * sd.speed + sd.phase));
@@ -658,7 +749,7 @@ function animate() {
   }
   sizes.needsUpdate = true;
 
-  // ---- Group rotation (parallax + auto) ----
+  // Group rotation
   const rotY = targetRotX * 0.8 + autoRot;
   const rotX = targetRotY * 0.5;
   beanGroup.rotation.y = rotY;
@@ -668,25 +759,18 @@ function animate() {
   stars.rotation.y = rotY * 0.6;
   stars.rotation.x = rotX * 0.4;
 
-  // ---- Point light orbits ----
+  // Point light orbits
   pointLight.position.x = Math.sin(t * 0.15) * 3;
   pointLight.position.z = Math.cos(t * 0.15) * 3;
   pointLight.position.y = 1 + Math.sin(t * 0.1) * 0.5;
 
-  // ---- Render ----
   composer.render();
   requestAnimationFrame(animate);
 }
 
-// Start animation
 animate();
-
-// Initial resize after a moment
 setTimeout(resize, 100);
 
-// ============================================================
-//  FALLBACK for older browsers
-// ============================================================
 console.log('🔥 Hyper Coffee 3D Hero loaded with Three.js');
 </script>
 
