@@ -200,6 +200,125 @@ a {
               box-shadow 0.4s var(--ease-out),
               backdrop-filter 0.4s var(--ease-out);
   overflow: hidden;
+   /* ---------- HEADER – Full width with generous padding ---------- */
+.site-header .wrap {
+  max-width: 100% !important;      /* Override the default 1240px */
+  padding: 0 2.5rem !important;    /* Generous side padding */
+}
+
+/* ---------- Brand area: ensure enough space ---------- */
+.site-header .brand {
+  flex-direction: row !important;  /* Keep everything in one row */
+  align-items: center !important;
+  gap: 1rem !important;
+  max-width: 100% !important;
+  flex-shrink: 1;
+}
+
+.site-header .brand .brand-row {
+  gap: clamp(0.6rem, 1.2vw, 1.2rem) !important;
+}
+
+.site-header .brand .brand-name {
+  font-size: clamp(1.2rem, 2.4vw, 2rem) !important;
+  white-space: nowrap;
+}
+
+.site-header .brand-mark {
+  width: clamp(3.2rem, 8vw, 5.5rem) !important;
+  height: auto !important;
+  flex-shrink: 0;
+}
+
+/* ---------- Amharic SVG in header – scales and stays visible ---------- */
+.site-header .brand svg {
+  width: clamp(100px, 18vw, 160px) !important;
+  height: auto !important;
+  flex-shrink: 0;
+}
+
+.site-header .brand svg text {
+  font-size: clamp(10px, 1.6vw, 13px) !important;
+}
+
+/* ---------- Navigation links – ensure no overflow ---------- */
+.nav-links {
+  gap: 1.5rem !important;
+  flex-wrap: nowrap !important;
+}
+
+.nav-links a {
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 1024px) {
+  .site-header .wrap {
+    padding: 0 1.5rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(1rem, 2vw, 1.4rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(80px, 14vw, 120px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header .wrap {
+    padding: 0 1rem !important;
+  }
+  .site-header .brand {
+    gap: 0.5rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
+  }
+  .site-header .brand-mark {
+    width: clamp(2.2rem, 8vw, 3rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(60px, 12vw, 90px) !important;
+  }
+  .site-header .brand svg text {
+    font-size: clamp(7px, 1.2vw, 9px) !important;
+  }
+  .nav-links {
+    gap: 0.8rem !important;
+  }
+  .nav-links a {
+    font-size: 0.8rem !important;
+  }
+  .btn-accent.btn-sm {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header .wrap {
+    padding: 0 0.6rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(0.7rem, 3.5vw, 0.9rem) !important;
+  }
+  .site-header .brand-mark {
+    width: clamp(1.8rem, 7vw, 2.4rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(40px, 10vw, 65px) !important;
+  }
+  .site-header .brand svg text {
+    font-size: clamp(5px, 1vw, 7px) !important;
+  }
+  .nav-links {
+    gap: 0.4rem !important;
+  }
+  .nav-links a {
+    font-size: 0.7rem !important;
+  }
+   }
 }
 
 .site-header.shrink {
