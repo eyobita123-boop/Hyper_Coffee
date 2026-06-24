@@ -190,7 +190,9 @@ a {
   left: 0;
   right: 0;
   z-index: 60;
-  height: var(--header-height);
+  height: 96px(--header-height);
+   padding: 0;
+   min-height: 96px;
   background: rgba(247, 239, 227, 0.84);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
@@ -199,20 +201,25 @@ a {
               background 0.4s var(--ease-out),
               box-shadow 0.4s var(--ease-out),
               backdrop-filter 0.4s var(--ease-out);
-  overflow: hidden;
+  overflow: visible;
    /* ---------- HEADER – Full width with generous padding ---------- */
 .site-header .wrap {
   max-width: 100% !important;      /* Override the default 1240px */
   padding: 0 2.5rem !important;    /* Generous side padding */
+   height: 100%
+   display: flex;
+   align-item: center;
+   justify-content: space-between;
 }
 
 /* ---------- Brand area: ensure enough space ---------- */
 .site-header .brand {
   flex-direction: row !important;  /* Keep everything in one row */
   align-items: center !important;
-  gap: 1rem !important;
+  gap: 1.2rem !important;
   max-width: 100% !important;
   flex-shrink: 1;
+   height: 100;
 }
 
 .site-header .brand .brand-row {
@@ -232,24 +239,26 @@ a {
 
 /* ---------- Amharic SVG in header – scales and stays visible ---------- */
 .site-header .brand svg {
-  width: clamp(100px, 18vw, 160px) !important;
+  width: clamp(120px, 18vw, 170px) !important;
   height: auto !important;
   flex-shrink: 0;
+   display: block
 }
 
 .site-header .brand svg text {
-  font-size: clamp(10px, 1.6vw, 13px) !important;
+  font-size: clamp(11px, 1.6vw, 13px) !important;
 }
 
 /* ---------- Navigation links – ensure no overflow ---------- */
 .nav-links {
   gap: 1.5rem !important;
   flex-wrap: nowrap !important;
+   align-item: center;
 }
 
 .nav-links a {
   white-space: nowrap;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 
 /* ---------- Responsive tweaks ---------- */
