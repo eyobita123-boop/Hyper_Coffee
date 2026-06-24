@@ -13,17 +13,22 @@
   <meta name="theme-color" content="#2B1810">
 
   <style>
+    /* ================================================================
+       HERO – No Background Lights, Clean & Focused
+       ================================================================ */
+
     #hero-unified {
       position: relative;
       width: 100%;
       min-height: 100vh;
-      padding-top: 76px;
+      padding-top: 96px; /* matches header height */
       overflow: hidden;
       background: #0E0A07;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     #three-container {
       position: absolute;
       inset: 0;
@@ -32,18 +37,23 @@
       height: 100%;
       min-height: 100vh;
     }
+
     #three-container canvas {
       display: block;
       width: 100% !important;
       height: 100% !important;
     }
+
+    /* Simple dark overlay – replaces background lights */
     .hero-dark-overlay {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: radial-gradient(ellipse at center, rgba(14,10,7,0.15) 0%, rgba(14,10,7,0.7) 100%);
+      background: radial-gradient(ellipse at center, rgba(14, 10, 7, 0.15) 0%, rgba(14, 10, 7, 0.6) 100%);
       pointer-events: none;
     }
+
+    /* Amharic watermark – subtle background */
     .hero-watermark {
       position: absolute;
       top: 50%;
@@ -52,7 +62,7 @@
       z-index: 2;
       font-family: 'Fraunces', serif;
       font-size: clamp(7rem, 18vw, 22rem);
-      color: rgba(247,239,227,0.15);
+      color: rgba(247, 239, 227, 0.08);
       font-weight: 700;
       letter-spacing: 0.08em;
       pointer-events: none;
@@ -61,6 +71,8 @@
       text-align: center;
       white-space: nowrap;
     }
+
+    /* Overlay content – glass card */
     .hero-overlay {
       position: relative;
       z-index: 3;
@@ -71,52 +83,74 @@
       padding: 2rem;
       pointer-events: none;
     }
+
     .hero-content-card {
       max-width: 960px;
       width: 100%;
       text-align: center;
       padding: 3rem 4rem;
-      background: rgba(14,10,7,0.3);
+      background: rgba(14, 10, 7, 0.3);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-radius: 32px;
-      border: 1px solid rgba(247,239,227,0.06);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      border: 1px solid rgba(247, 239, 227, 0.06);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
       pointer-events: auto;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .hero-content-card:hover { transform: scale(1.01); }
+
+    /* Large animated logo */
     .hero-logo {
       width: clamp(320px, 60vw, 750px);
       height: auto;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 80px rgba(212,165,55,0.4)) drop-shadow(0 0 160px rgba(212,165,55,0.15));
+      filter: drop-shadow(0 0 80px rgba(212, 165, 55, 0.4)) drop-shadow(0 0 160px rgba(212, 165, 55, 0.15));
       animation: floatLogoSpin 5s ease-in-out infinite;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), filter 0.4s cubic-bezier(0.16,1,0.3,1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: block;
       margin-left: auto;
       margin-right: auto;
       position: relative;
       z-index: 2;
     }
+
     .hero-logo:hover {
       transform: scale(1.06);
-      filter: drop-shadow(0 0 120px rgba(212,165,55,0.6)) drop-shadow(0 0 200px rgba(212,165,55,0.3));
+      filter: drop-shadow(0 0 120px rgba(212, 165, 55, 0.6)) drop-shadow(0 0 200px rgba(212, 165, 55, 0.3));
     }
+
+    /* Logo glow – soft and subtle */
     .logo-glow {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       width: 180%;
       height: 180%;
-      background: radial-gradient(ellipse at center, rgba(212,165,55,0.2), rgba(212,165,55,0.02) 60%, transparent 80%);
+      background: radial-gradient(ellipse at center, rgba(212, 165, 55, 0.15), rgba(212, 165, 55, 0.02) 60%, transparent 80%);
       border-radius: 50%;
       animation: pulseGlow 4s ease-in-out infinite;
       pointer-events: none;
       filter: blur(25px);
       z-index: 1;
     }
+
+    /* Amharic below logo – highly visible */
+    .hero-amharic {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 2.8vw, 3.2rem);
+      color: rgba(247, 239, 227, 0.9);
+      letter-spacing: 0.15em;
+      margin: -0.5rem 0 1rem;
+      position: relative;
+      z-index: 2;
+      font-weight: 600;
+      text-shadow: 0 0 30px rgba(212, 165, 55, 0.3), 0 0 60px rgba(212, 165, 55, 0.1);
+      animation: amharicFloat 4s ease-in-out infinite;
+    }
+
     .hero-eyebrow {
       font-family: var(--mono);
       font-size: clamp(0.6rem, 0.9vw, 0.8rem);
@@ -128,6 +162,7 @@
       position: relative;
       z-index: 2;
     }
+
     .hero-eyebrow .rule {
       display: inline-block;
       width: 24px;
@@ -137,6 +172,7 @@
       vertical-align: middle;
       border-radius: 2px;
     }
+
     .hero-title {
       font-family: var(--serif);
       font-size: clamp(2.4rem, 5vw, 4.5rem);
@@ -145,21 +181,23 @@
       color: #F2E9DC;
       line-height: 1.1;
       margin-bottom: 1rem;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
       letter-spacing: -0.02em;
       position: relative;
       z-index: 2;
     }
+
     .hero-description {
       font-size: clamp(0.95rem, 1.2vw, 1.2rem);
       line-height: 1.8;
       color: #C9BBA4;
       max-width: 600px;
       margin: 0 auto 2rem;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
       position: relative;
       z-index: 2;
     }
+
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -168,90 +206,57 @@
       position: relative;
       z-index: 2;
     }
-    .hero-buttons .btn-primary {
-      background: linear-gradient(135deg, var(--terracotta), var(--gold));
-      color: #1C1410;
-      font-weight: 700;
-      box-shadow: 0 6px 24px rgba(196,98,45,0.3);
-      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
-    }
-    .hero-buttons .btn-primary:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 12px 40px rgba(196,98,45,0.5);
-    }
-    .hero-buttons .btn-ghost {
-      background: rgba(255,255,255,0.06);
-      border: 1.5px solid rgba(247,239,227,0.2);
-      color: #F2E9DC;
-      backdrop-filter: blur(4px);
-      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .hero-buttons .btn-ghost:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
+
     @keyframes floatLogoSpin {
       0% { transform: translateY(0) rotate(0); }
       33% { transform: translateY(-30px) rotate(3deg); }
       66% { transform: translateY(12px) rotate(-3deg); }
       100% { transform: translateY(0) rotate(0); }
     }
+
     @keyframes pulseGlow {
-      0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
-      50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.8; }
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.7; }
     }
 
-    /* ---- Highly Visible Amharic Below Logo ---- */
-    .hero-amharic {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.6rem, 2.8vw, 3.2rem);
-      color: rgba(247,239,227,0.9);
-      letter-spacing: 0.15em;
-      margin: -0.5rem 0 1rem;
-      position: relative;
-      z-index: 2;
-      font-weight: 600;
-      text-shadow: 0 0 30px rgba(212,165,55,0.3), 0 0 60px rgba(212,165,55,0.1);
-      animation: amharicFloat 4s ease-in-out infinite;
-    }
     @keyframes amharicFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
     }
 
-    @media (max-width:768px) {
-      #hero-unified { padding-top:76px; min-height:100vh; }
-      #three-container { min-height:100vh; }
-      .hero-content-card { padding:2rem 1.5rem; border-radius:24px; background:rgba(14,10,7,0.5); backdrop-filter:blur(16px); }
-      .hero-logo { width:clamp(200px,45vw,350px); }
-      .hero-title { font-size:clamp(1.8rem,6vw,2.8rem); }
-      .hero-description { font-size:0.9rem; padding:0 0.5rem; }
-      .hero-watermark { font-size:clamp(4rem,12vw,9rem); }
-      .hero-amharic { font-size:clamp(1.2rem,2.2vw,2rem); }
+    /* Responsive */
+    @media (max-width: 768px) {
+      #hero-unified { padding-top: 76px; }
+      .hero-content-card { padding: 2rem 1.5rem; border-radius: 24px; background: rgba(14, 10, 7, 0.5); backdrop-filter: blur(16px); }
+      .hero-logo { width: clamp(200px, 45vw, 350px); }
+      .hero-title { font-size: clamp(1.8rem, 6vw, 2.8rem); }
+      .hero-description { font-size: 0.9rem; padding: 0 0.5rem; }
+      .hero-watermark { font-size: clamp(4rem, 12vw, 9rem); }
+      .hero-amharic { font-size: clamp(1.2rem, 2.2vw, 2rem); }
     }
-    @media (max-width:480px) {
-      .hero-content-card { padding:1.5rem 1rem; border-radius:16px; }
-      .hero-logo { width:clamp(150px,40vw,220px); }
-      .hero-title { font-size:1.6rem; }
-      .hero-buttons .btn { padding:0.6rem 1.2rem; font-size:0.85rem; }
-      .hero-watermark { font-size:clamp(3rem,10vw,6rem); }
-      .hero-amharic { font-size:clamp(1rem,1.8vw,1.6rem); }
+
+    @media (max-width: 480px) {
+      .hero-content-card { padding: 1.5rem 1rem; border-radius: 16px; }
+      .hero-logo { width: clamp(150px, 40vw, 220px); }
+      .hero-title { font-size: 1.6rem; }
+      .hero-buttons .btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+      .hero-watermark { font-size: clamp(3rem, 10vw, 6rem); }
+      .hero-amharic { font-size: clamp(1rem, 1.8vw, 1.6rem); }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ===== HEADER – Full Width ===== -->
 <header class="site-header">
   <div class="wrap">
-    <a href="/" class="brand" style="flex-direction:column; align-items:center; gap:0; text-decoration:none; max-width:100%; padding: 0 2.5rem;">
-      <div style="display:flex; align-items:center; gap:clamp(0.4rem,1vw,0.8rem);">
-        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:clamp(3rem,8vw,5.5rem); height:auto; flex-shrink:0; margin-top:4px;">
-        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.1rem,2.4vw,1.8rem); color:var(--roast); white-space:nowrap; line-height:1.2;">Hyper Coffee</span>
+    <a href="/" class="brand">
+      <div style="display:flex; align-items:center; gap:clamp(0.4rem, 1vw, 0.8rem);">
+        <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="brand-mark" style="width:clamp(3.2rem, 8vw, 5.5rem); height:auto; flex-shrink:0; margin-top:0;">
+        <span class="brand-name" style="font-family:var(--serif); font-weight:700; font-size:clamp(1.2rem, 2.4vw, 2rem); color:var(--roast); white-space:nowrap; line-height:1.2;">Hyper Coffee</span>
       </div>
-      <svg style="display:block; margin:2px auto 0; width:clamp(100px,18vw,150px); height:auto; max-width:100%;" viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
-        <text font-family="'Fraunces', serif" font-size="clamp(9px,1.6vw,12px)" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
+      <svg style="display:block; margin:0; width:clamp(120px, 18vw, 170px); height:auto; flex-shrink:0;" viewBox="0 0 140 28" preserveAspectRatio="xMidYMid meet">
+        <text font-family="'Fraunces', serif" font-size="clamp(11px, 1.6vw, 14px)" fill="var(--terracotta)" font-weight="600" letter-spacing="2.5">
           <textPath href="#brandCurve" startOffset="50%" text-anchor="middle">መገኛችን</textPath>
         </text>
         <defs><path id="brandCurve" d="M20,20 Q70,8 120,20"/></defs>
@@ -285,7 +290,7 @@
   <a href="/order" style="color:var(--terracotta); font-weight:700;">Order online →</a>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO – No Background Lights ===== -->
 <section id="hero-unified">
   <div id="three-container"></div>
   <div class="hero-dark-overlay"></div>
@@ -296,7 +301,6 @@
         <div class="logo-glow"></div>
         <img src="assets/images/hyperlogo.png" alt="Hyper Coffee" class="hero-logo">
       </div>
-      <!-- Highly visible Amharic below the logo -->
       <div class="hero-amharic">መገኛችን</div>
       <div class="hero-eyebrow"><span class="rule"></span> Bole, Addis Ababa</div>
       <h1 class="hero-title">The Art of Buna</h1>
@@ -310,7 +314,7 @@
 </section>
 
 <!-- ============================================================
-     THREE.JS – REDUCED BLOOM, STATIC LIGHTING, WORD RAIN
+     THREE.JS – No Aurora, No Dynamic Lights, Fast Word Rain
      ============================================================ -->
 <script type="importmap">
 {
@@ -360,7 +364,7 @@ const bloomPass = new UnrealBloomPass(new THREE.Vector2(width, height), 0.15, 0.
 composer.addPass(bloomPass);
 
 // ============================================================
-//  STATIC WARM LIGHTING (No dynamic shifting)
+//  STATIC WARM LIGHTING – No dynamic shifting
 // ============================================================
 const ambient = new THREE.AmbientLight(0x443322, 0.4);
 scene.add(ambient);
@@ -487,7 +491,7 @@ for (let i=0; i<50; i++) {
 scene.add(flowerGroup);
 
 // ============================================================
-//  GALAXY (200 stars)
+//  GALAXY (200 stars) – Kept for atmosphere
 // ============================================================
 const galaxyCount = 200;
 const galaxyGeo = new THREE.BufferGeometry();
@@ -513,45 +517,7 @@ const galaxy = new THREE.Points(galaxyGeo, galaxyMat);
 scene.add(galaxy);
 
 // ============================================================
-//  AURORA
-// ============================================================
-const canvas = document.createElement('canvas');
-canvas.width = 512; canvas.height = 128;
-const ctx = canvas.getContext('2d');
-const auroraTexture = new THREE.CanvasTexture(canvas);
-const auroraMat = new THREE.MeshBasicMaterial({ map:auroraTexture, transparent:true, opacity:0.15, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide });
-const aurora = new THREE.Mesh(new THREE.PlaneGeometry(20,6), auroraMat);
-aurora.position.set(0,2,-8);
-aurora.rotation.x = -0.3;
-scene.add(aurora);
-function updateAurora(t) {
-  const w=512, h=128;
-  ctx.clearRect(0,0,w,h);
-  const h1=0.05+0.03*Math.sin(t*0.02), h2=0.12+0.03*Math.cos(t*0.025+1), h3=0.08+0.04*Math.sin(t*0.03+2);
-  const g = ctx.createLinearGradient(0,0,w,0);
-  g.addColorStop(0, `hsla(${h1*360},80%,50%,0.6)`);
-  g.addColorStop(0.3, `hsla(${h2*360},70%,60%,0.5)`);
-  g.addColorStop(0.7, `hsla(${h3*360},75%,55%,0.4)`);
-  g.addColorStop(1, `hsla(${(h1+0.1)*360},80%,50%,0)`);
-  ctx.fillStyle = g;
-  ctx.fillRect(0,0,w,h);
-  for (let i=0; i<5; i++) {
-    ctx.beginPath();
-    const y = h*(0.3+0.4*(i/5));
-    ctx.moveTo(0,y);
-    for (let x=0; x<w; x+=2) {
-      const wave = Math.sin(x*0.02 + t*0.01 + i*0.5)*8;
-      ctx.lineTo(x, y+wave);
-    }
-    ctx.strokeStyle = `hsla(${(h1+0.05)*360},70%,70%,0.2)`;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-  }
-  auroraTexture.needsUpdate = true;
-}
-
-// ============================================================
-//  GOLDEN RING
+//  GOLDEN RING – Kept for elegance
 // ============================================================
 const ringCount = 120;
 const ringGeo = new THREE.BufferGeometry();
@@ -569,7 +535,7 @@ ring.position.set(0,0.2,0);
 scene.add(ring);
 
 // ============================================================
-//  SPARKLE DUST
+//  SPARKLE DUST – Kept for magic
 // ============================================================
 const sparkleCount = 150;
 const sparkleGeo = new THREE.BufferGeometry();
@@ -592,7 +558,7 @@ sparkles.position.set(0,0.2,0);
 scene.add(sparkles);
 
 // ============================================================
-//  FIREFLIES (60)
+//  FIREFLIES (60) – Kept for warmth
 // ============================================================
 const ffCount = 60;
 const ffGeo = new THREE.BufferGeometry();
@@ -625,7 +591,7 @@ const fireflies = new THREE.Points(ffGeo, ffMat);
 scene.add(fireflies);
 
 // ============================================================
-//  PETALS (80)
+//  PETALS (80) – Kept for softness
 // ============================================================
 function createPetalShape() {
   const s = new THREE.Shape();
@@ -662,7 +628,7 @@ for (let i=0; i<80; i++) {
 scene.add(petalGroup);
 
 // ============================================================
-//  SNOW (800)
+//  SNOW (800) – Kept for atmosphere
 // ============================================================
 const snowCount = 800;
 const snowGeo = new THREE.BufferGeometry();
@@ -690,7 +656,7 @@ const snowParticles = new THREE.Points(snowGeo, snowMat);
 scene.add(snowParticles);
 
 // ============================================================
-//  GLOWING MOON
+//  GLOWING MOON – Kept for beauty
 // ============================================================
 const moonGeo = new THREE.SphereGeometry(1.2, 32, 32);
 const moonMat = new THREE.MeshStandardMaterial({
@@ -724,7 +690,7 @@ glowSprite.position.copy(moon.position);
 scene.add(glowSprite);
 
 // ============================================================
-//  WORD RAIN – Ethiopian Coffee Culture Emojis & Words
+//  WORD RAIN – FAST & MANY (30 words, 2x speed)
 // ============================================================
 const wordData = [
   { text: '🫘 Buna', color: '#D4A537' },
@@ -745,6 +711,18 @@ const wordData = [
   { text: '⚡ Caffeinate', color: '#F5C842' },
   { text: '☕ Tradition', color: '#D4A537' },
   { text: '🌄 Sunrise', color: '#F9A86C' },
+  { text: '🌋 Volcano', color: '#E87A5A' },
+  { text: '🍃 Fresh', color: '#7BA05B' },
+  { text: '🌺 Flower', color: '#E87070' },
+  { text: '🎵 Rhythm', color: '#C9BBA4' },
+  { text: '🌿 Green', color: '#8CB07A' },
+  { text: '✨ Magic', color: '#F5C842' },
+  { text: '🫖 Pour', color: '#D4A537' },
+  { text: '☕ Cup', color: '#E8B25A' },
+  { text: '🌍 Origin', color: '#F5E6C8' },
+  { text: '⏳ Time', color: '#A8B5C0' },
+  { text: '🔥 Fire', color: '#E87070' },
+  { text: '🌊 Flow', color: '#6D9BB0' },
 ];
 
 const wordSprites = [];
@@ -777,16 +755,17 @@ wordData.forEach((item) => {
     opacity: 0.8,
   });
   const sprite = new THREE.Sprite(material);
-  const x = (Math.random() - 0.5) * 24;
-  const y = Math.random() * 16 + 2;
-  const z = (Math.random() - 0.5) * 18;
+  // More centered distribution
+  const x = (Math.random() - 0.5) * 18;
+  const y = Math.random() * 12 + 2;
+  const z = (Math.random() - 0.5) * 14;
   sprite.position.set(x, y, z);
   sprite.scale.set(2.0, 0.6, 1);
   sprite.userData = {
-    speedY: 0.4 + Math.random() * 0.6,
-    driftX: (Math.random() - 0.5) * 0.4,
-    driftZ: (Math.random() - 0.5) * 0.4,
-    rotSpeed: 0.1 + Math.random() * 0.3,
+    speedY: 0.8 + Math.random() * 1.2,  // 2x faster than before
+    driftX: (Math.random() - 0.5) * 0.6,
+    driftZ: (Math.random() - 0.5) * 0.6,
+    rotSpeed: 0.2 + Math.random() * 0.4,
     phase: Math.random() * 6,
   };
   wordGroup.add(sprite);
@@ -831,9 +810,6 @@ const clock = new THREE.Clock();
 
 function animate() {
   const t = clock.getElapsedTime();
-
-  // Aurora
-  updateAurora(t);
 
   // Galaxy
   galaxy.rotation.y = t * 0.005;
@@ -934,23 +910,23 @@ function animate() {
   glowSprite.position.copy(moon.position);
   moonLight.intensity = 1.2 + 0.3 * Math.sin(t * 0.1);
 
-  // ---- WORD RAIN (falling from top to bottom) ----
+  // ---- FAST WORD RAIN (falling from top to bottom) ----
   wordSprites.forEach((sprite) => {
     const ud = sprite.userData;
-    // Fall down
-    sprite.position.y -= ud.speedY * 0.012;
+    // Fall down faster
+    sprite.position.y -= ud.speedY * 0.025;
     // Drift sideways
-    sprite.position.x += Math.sin(t * 0.3 + ud.phase) * ud.driftX * 0.012;
-    sprite.position.z += Math.cos(t * 0.3 + ud.phase) * ud.driftZ * 0.012;
+    sprite.position.x += Math.sin(t * 0.5 + ud.phase) * ud.driftX * 0.015;
+    sprite.position.z += Math.cos(t * 0.5 + ud.phase) * ud.driftZ * 0.015;
     // Reset to top when below view
     if (sprite.position.y < -4) {
       sprite.position.y = 12 + Math.random() * 4;
-      sprite.position.x = (Math.random() - 0.5) * 24;
-      sprite.position.z = (Math.random() - 0.5) * 18;
+      sprite.position.x = (Math.random() - 0.5) * 16;
+      sprite.position.z = (Math.random() - 0.5) * 12;
     }
     // Slight rotation / scale pulse
-    sprite.material.rotation += 0.001;
-    const pulse = 1 + 0.05 * Math.sin(t * 0.2 + ud.phase);
+    sprite.material.rotation += 0.002;
+    const pulse = 1 + 0.06 * Math.sin(t * 0.3 + ud.phase);
     sprite.scale.set(2.0 * pulse, 0.6 * pulse, 1);
   });
 
@@ -979,10 +955,11 @@ function animate() {
 
 animate();
 setTimeout(resize, 100);
-console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
+console.log('✨ Hyper Coffee — Fast Word Rain & No Background Lights');
 </script>
 
-<!-- ===== REST OF PAGE (unchanged) ===== -->
+<!-- ===== REST OF PAGE (unchanged – About, Three Rounds, Menu, Gallery, etc.) ===== -->
+<!-- ===== ABOUT ===== -->
 <section id="about" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="max-width:42rem;">
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Our story</span></div>
@@ -991,6 +968,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== THREE ROUNDS ===== -->
 <section style="background:var(--roast); color:var(--cream); padding:6rem 0;">
   <div class="wrap">
     <div data-reveal style="margin-bottom:3.5rem; max-width:36rem;">
@@ -1018,6 +996,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== MENU ===== -->
 <section id="menu" class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="margin-bottom:3rem; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:1rem;">
     <div>
@@ -1033,6 +1012,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== GALLERY ===== -->
 <section id="gallery" class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap">
     <div data-reveal class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Inside the café</span></div>
@@ -1052,6 +1032,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   <div id="img4" class="lightbox"><a href="#gallery" style="position:absolute; inset:0; z-index:1;"></a><img src="assets/images/hyperlogo.png" alt="Coffee beans" style="position:relative; z-index:2;"></div>
 </section>
 
+<!-- ===== TRAINING TEASER ===== -->
 <section class="bg-roast" style="padding:5rem 0; color:var(--cream);">
   <div class="wrap" style="text-align:center; max-width:760px;">
     <div class="eyebrow-line" style="justify-content:center;"><span class="rule" style="background:var(--gold);"></span><span class="h-eyebrow" style="color:var(--gold);">Learn from the experts</span></div>
@@ -1061,6 +1042,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== EVENT TEASER ===== -->
 <section class="wrap" style="padding:6rem 1.5rem; max-width:1240px;">
   <div data-reveal style="background:#fff; border-radius:24px; padding:2.5rem; display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:center; border:1px solid var(--line);">
     <div style="max-width:30rem;"><div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Coming up</span></div><h3 class="h-display" style="font-size:1.7rem; color:var(--roast);">Cupping & Ceremony — every first Saturday</h3><p style="color:var(--roast-soft); margin-top:0.5rem;">Join our head roaster for a guided tasting and a full traditional buna ceremony. Free, limited seats.</p></div>
@@ -1068,6 +1050,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== REVIEWS ===== -->
 <section class="bg-cream-deep" style="padding:6rem 0;">
   <div class="wrap" style="max-width:1240px;">
     <div data-reveal style="text-align:center; margin-bottom:3rem;">
@@ -1088,6 +1071,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="wrap" style="padding:6rem 1.5rem; max-width:760px; text-align:center;">
   <div data-reveal>
     <div class="eyebrow-line" style="justify-content:center;"><span class="rule"></span><span class="h-eyebrow">Get in touch</span></div>
@@ -1102,6 +1086,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </section>
 
+<!-- ===== FOOTER ===== -->
 <footer class="footer-enhanced">
   <div class="wrap">
     <div class="footer-grid">
@@ -1128,6 +1113,7 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
   </div>
 </footer>
 
+<!-- ===== CART DRAWER ===== -->
 <div id="cart-overlay" class="cart-overlay" data-close-cart></div>
 <div id="cart-drawer" class="cart-drawer">
   <div style="padding:1.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
@@ -1140,4 +1126,4 @@ console.log('✨ Hyper Coffee — Word Rain & Visible Amharic loaded');
 
 <script src="assets/site.js"></script>
 </body>
-                                                                                                          </html>
+  </html>
