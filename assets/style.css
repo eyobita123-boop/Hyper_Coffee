@@ -190,9 +190,9 @@ a {
   left: 0;
   right: 0;
   z-index: 60;
-  height: 96px(--header-height);
+  height: 125px(--header-height);
    padding: 0;
-   min-height: 96px;
+   min-height: 125px;
   background: rgba(247, 239, 227, 0.84);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
@@ -375,9 +375,9 @@ a {
 
 .brand-mark {
   width: clamp(3rem, 8vw, 5rem);
-  height: auto;
+  height: 96%;
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 3.5px;
   transition: width 0.4s var(--ease-out), height 0.4s var(--ease-out), margin 0.4s var(--ease-out);
 }
 
@@ -386,7 +386,7 @@ a {
   display: block;
   margin: 2px auto 0;
   width: clamp(100px, 18vw, 150px);
-  height: auto;
+  height: 85;
   max-width: 100%;
   transition: max-height 0.4s var(--ease-out),
               opacity 0.4s var(--ease-out),
