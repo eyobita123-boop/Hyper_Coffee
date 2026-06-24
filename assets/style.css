@@ -1,14 +1,50 @@
-/* ============================================
-   HYPER COFFEE — Premium Design System v2.0
-   ============================================
-   Palette: roast #2B1810, cream #F7EFE3, terracotta #C4622D,
-            sage #8A9A7E, gold #D4A537
-   Type: Fraunces (display) / Inter (body+ui) / JetBrains Mono (data)
-   ============================================ */
+/* ================================================================
+   HYPER COFFEE — Design System v2.0
+   ================================================================
+   
+   🎨 Colors:
+     --roast          #2B1810  (dark brown)
+     --cream          #F7EFE3  (warm off-white)
+     --terracotta     #C4622D  (burnt orange)
+     --gold           #D4A537  (golden yellow)
+     --sage           #8A9A7E  (muted green)
+   
+   📐 Typography:
+     --serif   = 'Fraunces'      (headings, display)
+     --sans    = 'Inter'         (body, UI)
+     --mono    = 'JetBrains Mono' (prices, data)
 
-/* ---------- 1. CSS Variables ---------- */
+   📦 What's inside:
+     1. CSS Variables
+     2. Reset & Base
+     3. Utility Classes
+     4. Typography
+     5. Accessibility
+     6. HEADER & NAVIGATION  ← The part you asked about
+     7. Buttons
+     8. Hero
+     9. Three Rounds
+    10. Menu Cards
+    11. Masonry Gallery
+    12. Lightbox
+    13. Reviews (Social Proof)
+    14. Event Calendar
+    15. Cart Drawer
+    16. Quantity Controls
+    17. Scroll Reveal
+    18. Toast
+    19. Footer (Enhanced)
+    20. Responsive Breakpoints
+    21. Three.js Hero Additions
+   ================================================================ */
+
+
+/* ================================================================
+   1. CSS VARIABLES (Design Tokens)
+   ================================================================ */
+
 :root {
-  /* Colors */
+  /* ----- Colors ----- */
   --roast: #2B1810;
   --roast-soft: #4A2E20;
   --cream: #F7EFE3;
@@ -23,43 +59,46 @@
   --line: rgba(43, 24, 16, 0.1);
   --line-strong: rgba(43, 24, 16, 0.18);
 
-  /* Typography */
+  /* ----- Typography ----- */
   --serif: 'Fraunces', serif;
   --sans: 'Inter', sans-serif;
   --mono: 'JetBrains Mono', monospace;
 
-  /* Spacing */
+  /* ----- Spacing ----- */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1.5rem;
   --space-lg: 3rem;
   --space-xl: 6rem;
 
-  /* Borders */
+  /* ----- Border Radius ----- */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadows */
+  /* ----- Shadows ----- */
   --shadow-sm: 0 2px 8px rgba(43, 24, 16, 0.06);
   --shadow-md: 0 8px 30px rgba(43, 24, 16, 0.08);
   --shadow-lg: 0 20px 60px -16px rgba(43, 24, 16, 0.14);
   --shadow-xl: 0 30px 80px rgba(43, 24, 16, 0.18);
 
-  /* Transitions */
+  /* ----- Transitions ----- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.4, 0, 1, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Header */
+  /* ----- Header Heights ----- */
   --header-height: 76px;
   --header-height-shrunk: 56px;
 }
 
 
-/* ---------- 2. Reset & Base ---------- */
+/* ================================================================
+   2. RESET & BASE
+   ================================================================ */
+
 *,
 *::before,
 *::after {
@@ -95,7 +134,11 @@ a {
   text-decoration: none;
 }
 
-/* ---------- 3. Utility ---------- */
+
+/* ================================================================
+   3. UTILITY CLASSES
+   ================================================================ */
+
 .wrap {
   max-width: 1240px;
   margin: 0 auto;
@@ -127,7 +170,11 @@ a {
   color: var(--terracotta);
 }
 
-/* ---------- 4. Typography ---------- */
+
+/* ================================================================
+   4. TYPOGRAPHY
+   ================================================================ */
+
 .h-display {
   font-family: var(--serif);
   font-weight: 600;
@@ -161,13 +208,18 @@ a {
   font-size: 1rem;
 }
 
-/* ---------- 5. Focus & Accessibility ---------- */
+
+/* ================================================================
+   5. ACCESSIBILITY
+   ================================================================ */
+
 :focus-visible {
   outline: 2px solid var(--terracotta);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
+/* Reduced motion for people who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -180,228 +232,99 @@ a {
 }
 
 
-/* ============================================
-   SECTION 2 — HEADER & NAVIGATION
-   ============================================ */
+/* ================================================================
+   6. HEADER & NAVIGATION (⭐ The part you asked about)
+   ================================================================ */
 
+/* ----- The fixed header bar ----- */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 60;
-  height: 125px(--header-height);
-   padding: 0;
-   min-height: 125px;
+
+  /* 📏 Height: enough room for logo + Amharic */
+  height: 96px;
+  min-height: 96px;
+
+  /* 🎨 Background with blur */
   background: rgba(247, 239, 227, 0.84);
   backdrop-filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
   border-bottom: 1px solid var(--line);
+
+  /* ✨ Smooth transitions for shrink effect */
   transition: height 0.4s var(--ease-out),
               background 0.4s var(--ease-out),
               box-shadow 0.4s var(--ease-out),
               backdrop-filter 0.4s var(--ease-out);
+
+  /* ⚠️ Important: allow content to be visible (no clipping) */
   overflow: visible;
-   /* ---------- HEADER – Full width with generous padding ---------- */
-.site-header .wrap {
-  max-width: 100% !important;      /* Override the default 1240px */
-  padding: 0 2.5rem !important;    /* Generous side padding */
-   height: 100%
-   display: flex;
-   align-item: center;
-   justify-content: space-between;
+  padding: 0;
 }
 
-/* ---------- Brand area: ensure enough space ---------- */
-.site-header .brand {
-  flex-direction: row !important;  /* Keep everything in one row */
-  align-items: center !important;
-  gap: 1.2rem !important;
-  max-width: 100% !important;
-  flex-shrink: 1;
-   height: 100;
-}
-
-.site-header .brand .brand-row {
-  gap: clamp(0.6rem, 1.2vw, 1.2rem) !important;
-}
-
-.site-header .brand .brand-name {
-  font-size: clamp(1.2rem, 2.4vw, 2rem) !important;
-  white-space: nowrap;
-}
-
-.site-header .brand-mark {
-  width: clamp(3.2rem, 8vw, 5.5rem) !important;
-  height: auto !important;
-  flex-shrink: 0;
-}
-
-/* ---------- Amharic SVG in header – scales and stays visible ---------- */
-.site-header .brand svg {
-  width: clamp(120px, 18vw, 170px) !important;
-  height: auto !important;
-  flex-shrink: 0;
-   display: block
-}
-
-.site-header .brand svg text {
-  font-size: clamp(11px, 1.6vw, 13px) !important;
-}
-
-/* ---------- Navigation links – ensure no overflow ---------- */
-.nav-links {
-  gap: 1.5rem !important;
-  flex-wrap: nowrap !important;
-   align-item: center;
-}
-
-.nav-links a {
-  white-space: nowrap;
-  font-size: 0.92rem;
-}
-
-/* ---------- Responsive tweaks ---------- */
-@media (max-width: 1024px) {
-  .site-header .wrap {
-    padding: 0 1.5rem !important;
-  }
-  .site-header .brand .brand-name {
-    font-size: clamp(1rem, 2vw, 1.4rem) !important;
-  }
-  .site-header .brand svg {
-    width: clamp(80px, 14vw, 120px) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .site-header .wrap {
-    padding: 0 1rem !important;
-  }
-  .site-header .brand {
-    gap: 0.5rem !important;
-  }
-  .site-header .brand .brand-name {
-    font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
-  }
-  .site-header .brand-mark {
-    width: clamp(2.2rem, 8vw, 3rem) !important;
-  }
-  .site-header .brand svg {
-    width: clamp(60px, 12vw, 90px) !important;
-  }
-  .site-header .brand svg text {
-    font-size: clamp(7px, 1.2vw, 9px) !important;
-  }
-  .nav-links {
-    gap: 0.8rem !important;
-  }
-  .nav-links a {
-    font-size: 0.8rem !important;
-  }
-  .btn-accent.btn-sm {
-    padding: 0.3rem 0.7rem !important;
-    font-size: 0.7rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .site-header .wrap {
-    padding: 0 0.6rem !important;
-  }
-  .site-header .brand .brand-name {
-    font-size: clamp(0.7rem, 3.5vw, 0.9rem) !important;
-  }
-  .site-header .brand-mark {
-    width: clamp(1.8rem, 7vw, 2.4rem) !important;
-  }
-  .site-header .brand svg {
-    width: clamp(40px, 10vw, 65px) !important;
-  }
-  .site-header .brand svg text {
-    font-size: clamp(5px, 1vw, 7px) !important;
-  }
-  .nav-links {
-    gap: 0.4rem !important;
-  }
-  .nav-links a {
-    font-size: 0.7rem !important;
-  }
-   }
-}
-
+/* ----- Shrink state (when user scrolls down) ----- */
 .site-header.shrink {
-  height: var(--header-height-shrunk);
+  height: 68px;
+  min-height: 68px;
   background: rgba(247, 239, 227, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 4px 40px rgba(43, 24, 16, 0.1);
 }
 
+/* ----- The inner container – full width! ----- */
 .site-header .wrap {
-   max-width: 100% !important;
-   padding: 0 2.5rem !important;
+  max-width: 100% !important;      /* ⬅️ Full width, not 1240px */
+  padding: 0 2.5rem !important;    /* ⬅️ Generous side padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
 }
 
-/* ---------- Brand ---------- */
-.brand {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  text-decoration: none;
-  max-width: 100%;
-}
-
-.brand .brand-row {
+/* ----- Brand row: logo + name + Amharic ----- */
+.site-header .brand {
   display: flex;
-  align-items: center;
-  gap: clamp(0.4rem, 1vw, 0.8rem);
+  flex-direction: row !important;   /* ⬅️ Horizontal row */
+  align-items: center !important;
+  gap: 1.2rem !important;          /* ⬅️ Space between items */
+  max-width: 100% !important;
+  flex-shrink: 1;
+  height: 100%;
 }
 
-.brand .brand-name {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-  color: var(--roast);
-  white-space: nowrap;
-  line-height: 1.2;
-  transition: font-size 0.4s var(--ease-out);
-}
-
-.brand-mark {
-  width: clamp(3rem, 8vw, 5rem);
-  height: 96%;
+/* Logo image */
+.site-header .brand-mark {
+  width: clamp(3.2rem, 8vw, 5.5rem) !important;  /* 📱→🖥️ responsive */
+  height: auto !important;
   flex-shrink: 0;
-  margin-top: 3.5px;
-  transition: width 0.4s var(--ease-out), height 0.4s var(--ease-out), margin 0.4s var(--ease-out);
+  margin-top: 0 !important;          /* ⬅️ No extra top margin */
 }
 
-/* Brand SVG (Amharic curve) */
-.brand svg {
-  display: block;
-  margin: 2px auto 0;
-  width: clamp(100px, 18vw, 150px);
-  height: 85;
-  max-width: 100%;
-  transition: max-height 0.4s var(--ease-out),
-              opacity 0.4s var(--ease-out),
-              margin 0.3s var(--ease-out);
+/* Brand name */
+.site-header .brand .brand-name {
+  font-size: clamp(1.2rem, 2.4vw, 2rem) !important;
+  white-space: nowrap;
+  line-height: 1.2 !important;
 }
 
-.brand svg text {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(9px, 1.6vw, 12px);
-  fill: var(--terracotta);
-  font-weight: 600;
-  letter-spacing: 2.5;
+/* Amharic SVG signature */
+.site-header .brand svg {
+  width: clamp(120px, 18vw, 170px) !important;
+  height: auto !important;
+  flex-shrink: 0;
+  display: block !important;
+  margin: 0 !important;
 }
 
-/* Shrink effects */
+.site-header .brand svg text {
+  font-size: clamp(11px, 1.6vw, 14px) !important;
+}
+
+/* ----- Shrink effects (when scrolled) ----- */
 .site-header.shrink .brand-mark {
   width: 30px !important;
   height: 30px !important;
@@ -419,13 +342,14 @@ a {
   pointer-events: none;
 }
 
-/* ---------- Navigation ---------- */
+/* ----- Navigation links ----- */
 .nav-links {
   display: none;
-  gap: 2rem;
-  font-size: 0.9rem;
+  gap: 1.8rem !important;
+  font-size: 0.92rem !important;
   font-weight: 500;
   align-items: center;
+  flex-wrap: nowrap !important;
 }
 
 @media (min-width: 880px) {
@@ -438,9 +362,11 @@ a {
   position: relative;
   padding: 0.3rem 0;
   color: var(--roast-soft);
+  white-space: nowrap;
   transition: color 0.3s var(--ease-out);
 }
 
+/* Underline animation on hover */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -463,7 +389,7 @@ a {
   color: var(--roast);
 }
 
-/* ---------- Accent Button (gold shimmer) ---------- */
+/* ----- Accent "Order Online" button (gold shimmer) ----- */
 .btn-accent {
   background: linear-gradient(135deg, var(--gold), var(--terracotta), var(--gold)) !important;
   background-size: 200% 200% !important;
@@ -509,7 +435,7 @@ a {
   }
 }
 
-/* ---------- Cart Button ---------- */
+/* ----- Cart button ----- */
 .nav-cart {
   position: relative;
   display: inline-flex;
@@ -549,7 +475,7 @@ a {
   padding: 0 4px;
 }
 
-/* ---------- Mobile Menu ---------- */
+/* ----- Mobile menu button (hamburger) ----- */
 .menu-btn {
   display: flex;
   flex-direction: column;
@@ -585,7 +511,7 @@ a {
   }
 }
 
-/* ---------- Mobile Panel ---------- */
+/* ----- Mobile slide-out panel ----- */
 .mobile-panel {
   position: fixed;
   inset: var(--header-height) 0 0 0;
@@ -594,8 +520,7 @@ a {
   transform: translateY(-8px);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.4s var(--ease-out),
-              opacity 0.4s var(--ease-out);
+  transition: transform 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;
@@ -624,9 +549,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 3 — BUTTONS
-   ============================================ */
+/* ================================================================
+   7. BUTTONS (Generic)
+   ================================================================ */
 
 .btn {
   display: inline-flex;
@@ -698,9 +623,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 4 — HERO
-   ============================================ */
+/* ================================================================
+   8. HERO (Split layout)
+   ================================================================ */
 
 .hero-refined {
   position: relative;
@@ -764,29 +689,25 @@ a {
     grid-template-columns: 1fr;
     padding-top: calc(var(--header-height) - 8px);
   }
-
   .hero-refined .hero-content {
     padding: 2.5rem 1.5rem;
     text-align: center;
   }
-
   .hero-refined .hero-content p {
     max-width: 100%;
   }
-
   .hero-refined .hero-content .btn-group {
     justify-content: center;
   }
-
   .hero-refined .hero-visual {
     min-height: 40vh;
   }
 }
 
 
-/* ============================================
-   SECTION 5 — JEBENA ANIMATIONS
-   ============================================ */
+/* ================================================================
+   9. JEBENA ANIMATIONS (Steam & Pour)
+   ================================================================ */
 
 @keyframes wispRise {
   0% {
@@ -858,9 +779,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 6 — THREE ROUNDS
-   ============================================ */
+/* ================================================================
+   10. THREE ROUNDS (Abol, Tona, Baraka)
+   ================================================================ */
 
 .round-card {
   border-top: 1px solid rgba(247, 239, 227, 0.12);
@@ -886,9 +807,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 7 — MENU CARDS
-   ============================================ */
+/* ================================================================
+   11. MENU CARDS
+   ================================================================ */
 
 .menu-card {
   background: #fff;
@@ -922,9 +843,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 8 — MASONRY GALLERY
-   ============================================ */
+/* ================================================================
+   12. MASONRY GALLERY
+   ================================================================ */
 
 .masonry-grid {
   column-count: 3;
@@ -982,7 +903,7 @@ a {
   transform: scale(1.04);
 }
 
-/* Video overlay in masonry */
+/* Video overlay */
 .masonry-grid .gallery-item .play-icon {
   position: absolute;
   inset: 0;
@@ -1002,7 +923,7 @@ a {
   opacity: 1;
 }
 
-/* Add button */
+/* Add button in masonry */
 .masonry-grid .gallery-add {
   break-inside: avoid;
   margin-bottom: 1.25rem;
@@ -1058,9 +979,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 9 — LIGHTBOX
-   ============================================ */
+/* ================================================================
+   13. LIGHTBOX
+   ================================================================ */
 
 .lightbox {
   display: none;
@@ -1100,9 +1021,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 10 — REVIEWS (Social Proof)
-   ============================================ */
+/* ================================================================
+   14. REVIEWS (Social Proof)
+   ================================================================ */
 
 .reviews-grid {
   display: grid;
@@ -1199,9 +1120,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 11 — EVENT CALENDAR
-   ============================================ */
+/* ================================================================
+   15. EVENT CALENDAR
+   ================================================================ */
 
 .cal-day {
   aspect-ratio: 1;
@@ -1295,9 +1216,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 12 — CART DRAWER
-   ============================================ */
+/* ================================================================
+   16. CART DRAWER
+   ================================================================ */
 
 .cart-overlay {
   position: fixed;
@@ -1375,9 +1296,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 13 — ORDER PAGE QUANTITY PILL
-   ============================================ */
+/* ================================================================
+   17. ORDER PAGE QUANTITY PILL
+   ================================================================ */
 
 .qty-pill {
   display: inline-flex;
@@ -1428,9 +1349,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 14 — SCROLL REVEAL
-   ============================================ */
+/* ================================================================
+   18. SCROLL REVEAL
+   ================================================================ */
 
 [data-reveal] {
   opacity: 0;
@@ -1449,9 +1370,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 15 — TOAST
-   ============================================ */
+/* ================================================================
+   19. TOAST NOTIFICATION
+   ================================================================ */
 
 .toast {
   position: fixed;
@@ -1478,9 +1399,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 16 — EMPTY STATE
-   ============================================ */
+/* ================================================================
+   20. EMPTY STATE
+   ================================================================ */
 
 .empty-state {
   text-align: center;
@@ -1490,9 +1411,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 17 — EYEBROW LINE
-   ============================================ */
+/* ================================================================
+   21. EYEBROW LINE (decorative rule + label)
+   ================================================================ */
 
 .eyebrow-line {
   display: flex;
@@ -1509,9 +1430,9 @@ a {
 }
 
 
-/* ============================================
-   SECTION 18 — FOOTER (Enhanced)
-   ============================================ */
+/* ================================================================
+   22. ENHANCED FOOTER
+   ================================================================ */
 
 .footer-enhanced {
   background: var(--roast);
@@ -1689,7 +1610,6 @@ a {
   opacity: 0.4;
 }
 
-/* Responsive Footer */
 @media (max-width: 992px) {
   .footer-enhanced .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1702,25 +1622,22 @@ a {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
-
   .footer-enhanced .footer-brand p {
     max-width: 100%;
   }
-
   .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
-
   .footer-social {
     justify-content: center;
   }
 }
 
 
-/* ============================================
-   SECTION 19 — RESPONSIVE GRIDS
-   ============================================ */
+/* ================================================================
+   23. RESPONSIVE GRIDS
+   ================================================================ */
 
 @media (min-width: 640px) {
   .menu-grid {
@@ -1765,51 +1682,10 @@ a {
 }
 
 
-/* ============================================
-   SECTION 20 — MOBILE BRAND & HEADER OVERRIDES
-   ============================================ */
+/* ================================================================
+   24. THREE.JS HERO — Additional Styles
+   ================================================================ */
 
-@media (max-width: 640px) {
-  :root {
-    --header-height: 64px;
-    --header-height-shrunk: 50px;
-  }
-
-  .site-header .wrap {
-    height: 100%;
-  }
-
-  .brand .brand-name {
-    font-size: clamp(0.9rem, 4vw, 1.2rem);
-  }
-
-  .brand-mark {
-    width: clamp(2.5rem, 10vw, 3.5rem);
-  }
-
-  .site-header.shrink .brand-mark {
-    width: 24px !important;
-    height: 24px !important;
-  }
-
-  .site-header.shrink .brand .brand-name {
-    font-size: 0.8rem !important;
-  }
-
-  .btn-accent {
-    padding: 0.35rem 0.75rem !important;
-    font-size: 0.7rem !important;
-  }
-
-  .btn-accent .fa-coffee {
-    font-size: 0.7rem !important;
-  }
-}
-/* ============================================
-   THREE.JS HERO — Additional Styles
-   ============================================ */
-
-/* Ensure Three.js container fills its space */
 #three-container {
   position: relative;
   width: 100%;
@@ -1832,24 +1708,133 @@ a {
   align-items: center;
   justify-content: center;
 }
+
 .no-three-js #three-container::after {
   content: '✨ 3D experience available in modern browsers';
-  color: rgba(247,239,227,0.3);
+  color: rgba(247, 239, 227, 0.3);
   font-family: var(--mono);
   font-size: 0.8rem;
   letter-spacing: 0.1em;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   #three-container {
     min-height: 50vh;
   }
 }
 
-/* Prevent overflow on very small screens */
 @media (max-width: 480px) {
   #three-container {
     min-height: 40vh;
+  }
+}
+
+
+/* ================================================================
+   25. HEADER RESPONSIVE OVERRIDES (Desktop → Mobile)
+   ================================================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .site-header {
+    height: 84px !important;
+    min-height: 84px !important;
+  }
+  .site-header.shrink {
+    height: 62px !important;
+    min-height: 62px !important;
+  }
+  .site-header .wrap {
+    padding: 0 1.5rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(1rem, 2vw, 1.4rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(80px, 14vw, 120px) !important;
+  }
+  .nav-links {
+    gap: 1rem !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 72px;
+    --header-height-shrunk: 56px;
+  }
+  .site-header {
+    height: 72px !important;
+    min-height: 72px !important;
+  }
+  .site-header.shrink {
+    height: 56px !important;
+    min-height: 56px !important;
+  }
+  .site-header .wrap {
+    padding: 0 1rem !important;
+  }
+  .site-header .brand {
+    gap: 0.6rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
+  }
+  .site-header .brand-mark {
+    width: clamp(2.2rem, 8vw, 3rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(60px, 12vw, 90px) !important;
+  }
+  .site-header .brand svg text {
+    font-size: clamp(7px, 1.2vw, 9px) !important;
+  }
+  .nav-links {
+    gap: 0.8rem !important;
+  }
+  .nav-links a {
+    font-size: 0.8rem !important;
+  }
+  .btn-accent.btn-sm {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 64px;
+    --header-height-shrunk: 50px;
+  }
+  .site-header {
+    height: 64px !important;
+    min-height: 64px !important;
+  }
+  .site-header.shrink {
+    height: 50px !important;
+    min-height: 50px !important;
+  }
+  .site-header .wrap {
+    padding: 0 0.6rem !important;
+  }
+  .site-header .brand .brand-name {
+    font-size: clamp(0.7rem, 3.5vw, 0.9rem) !important;
+  }
+  .site-header .brand-mark {
+    width: clamp(1.8rem, 7vw, 2.4rem) !important;
+  }
+  .site-header .brand svg {
+    width: clamp(40px, 10vw, 65px) !important;
+  }
+  .site-header .brand svg text {
+    font-size: clamp(5px, 1vw, 7px) !important;
+  }
+  .nav-links {
+    gap: 0.4rem !important;
+  }
+  .nav-links a {
+    font-size: 0.7rem !important;
   }
 }
