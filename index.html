@@ -695,8 +695,8 @@ scene.add(glowSprite);
 const wordData = [
   { text: '🫘 Buna', color: '#D4A537' },
   { text: '☕ Jebena', color: '#E8B25A' },
-  { text: '🌿 Sidamo', color: '#8CB07A' },
-  { text: '🌸 Yirgacheffe', color: '#F5C842' },
+  { text: '🌿 Sidamo Coffee', color: '#8CB07A' },
+  { text: '🌸 Yirgacheffe Coffee', color: '#F5C842' },
   { text: '👑 Ethiopian', color: '#F5E6C8' },
   { text: '🎉 Ceremony', color: '#E87070' },
   { text: '⛰️ Highlands', color: '#A8B5C0' },
@@ -705,7 +705,7 @@ const wordData = [
   { text: '☀️ Sunshine', color: '#F9D976' },
   { text: '🌱 Coffee', color: '#7BA05B' },
   { text: '🇪🇹 Ethiopia', color: '#F5E6C8' },
-  { text: '✨ Hyper', color: '#C9BBA4' },
+  { text: '✨ Hyper Coffee', color: '#C9BBA4' },
   { text: '❤️ Love', color: '#E87070' },
   { text: '🍵 Drink', color: '#8CB07A' },
   { text: '⚡ Caffeinate', color: '#F5C842' },
@@ -965,6 +965,147 @@ console.log('✨ Hyper Coffee — Fast Word Rain & No Background Lights');
     <div class="eyebrow-line"><span class="rule"></span><span class="h-eyebrow">Our story</span></div>
     <h2 class="h-display" style="font-size:clamp(2rem,4vw,2.8rem); color:var(--roast); margin-bottom:1.25rem;">From Yirgacheffe to your table</h2>
     <p class="body-lg" style="color:var(--roast-soft);">We work directly with smallholder growers in Yirgacheffe and Sidamo, roasting in small batches a few times a week. Our baristas are trained in both the espresso bar and the traditional ceremony — because we think a city café can hold both.</p>
+  </div>
+</section>
+  <!-- ============================================================
+     FOUNDER STORY – Mission, Vision, Values
+     ============================================================ -->
+<section id="founder" style="padding:6rem 0; background:linear-gradient(180deg, var(--cream), var(--cream-deep));">
+  <div class="wrap" style="max-width:1240px;">
+
+    <!-- Section Header -->
+    <div data-reveal style="text-align:center; margin-bottom:4rem;">
+      <div class="eyebrow-line" style="justify-content:center;">
+        <span class="rule"></span>
+        <span class="h-eyebrow">The story behind the cup</span>
+      </div>
+      <h2 class="h-display" style="font-size:clamp(2.2rem,4vw,3.2rem); color:var(--roast); margin-top:0.5rem;">
+        Why Hyper Coffee exists
+      </h2>
+    </div>
+
+    <!-- Founder Story Grid -->
+    <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:3rem; align-items:center;">
+
+      <!-- LEFT: Founder Photo -->
+      <div data-reveal style="position:relative;">
+        <!-- Main photo placeholder -->
+        <div style="border-radius:24px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(43,24,16,0.3); background:var(--cream-deep); aspect-ratio:4/5; display:flex; align-items:center; justify-content:center; position:relative;">
+
+          <!-- Replace src with your actual founder photo -->
+          <img src="assets/images/founder.jpg" alt="Founder of Hyper Coffee"
+               style="width:100%; height:100%; object-fit:cover; display:block;"
+               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'text-align:center;padding:2rem;\'><i class=\'fas fa-user-circle\' style=\'font-size:5rem;color:var(--terracotta);opacity:0.3;\'></i><p style=\'color:var(--roast-soft);margin-top:1rem;font-size:0.9rem;\'>Founder photo coming soon</p></div>'">
+
+          <!-- Decorative gold frame accent -->
+          <div style="position:absolute; inset:-8px; border:2px solid var(--gold); border-radius:28px; pointer-events:none; opacity:0.2;"></div>
+
+          <!-- Small badge -->
+          <div style="position:absolute; bottom:1.5rem; right:1.5rem; background:var(--roast); color:var(--gold); padding:0.5rem 1.2rem; border-radius:999px; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+            <i class="fas fa-quote-left" style="margin-right:0.3rem;"></i> Since 2019
+          </div>
+        </div>
+
+        <!-- Decorative coffee bean icon -->
+        <div style="position:absolute; bottom:-1rem; left:-1rem; font-size:3rem; opacity:0.1; transform:rotate(-15deg);">
+          <i class="fas fa-seedling"></i>
+        </div>
+      </div>
+
+      <!-- RIGHT: Story & Mission/Vision/Values -->
+      <div data-reveal>
+
+        <!-- Founder name & title -->
+        <div style="margin-bottom:1.5rem;">
+          <h3 style="font-family:var(--serif); font-size:clamp(1.6rem,2.5vw,2.2rem); color:var(--roast); margin:0 0 0.2rem;">
+            Meet the Founder
+          </h3>
+          <p style="font-family:var(--mono); font-size:0.8rem; color:var(--terracotta); letter-spacing:0.08em; text-transform:uppercase;">
+            Kill Mesfin · Coffee Alchemist
+          </p>
+        </div>
+
+        <!-- Story -->
+        <p style="font-size:1.05rem; line-height:1.8; color:var(--roast-soft); margin-bottom:1.5rem;">
+          <span style="font-size:2rem; color:var(--gold); font-family:var(--serif); line-height:1; float:left; margin-right:0.4rem;">"</span>
+          Hyper Coffee was born from a simple belief: <strong>great coffee should tell a story</strong>.
+          After years of traveling through Ethiopia's coffee regions, I realized that the soul of
+          Ethiopian coffee isn't just in the bean – it's in the ceremony, the connection, the
+          shared pause between pours.
+        </p>
+        <p style="font-size:1.05rem; line-height:1.8; color:var(--roast-soft); margin-bottom:2rem;">
+          Here, every cup is an invitation to slow down, taste deeply, and remember that
+          coffee is more than a drink – it's a bridge between people, places, and traditions.
+        </p>
+
+        <!-- Divider -->
+        <div style="width:60px; height:2px; background:linear-gradient(90deg, var(--gold), transparent); margin-bottom:2rem;"></div>
+
+        <!-- Mission, Vision, Values -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+
+          <!-- Mission -->
+          <div style="background:#fff; border-radius:16px; padding:1.25rem; border:1px solid var(--line); box-shadow:var(--shadow-sm);">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem; color:var(--terracotta);"><i class="fas fa-bullseye"></i></span>
+              <h4 style="font-family:var(--serif); font-size:1rem; color:var(--roast); margin:0;">Mission</h4>
+            </div>
+            <p style="font-size:0.9rem; color:var(--roast-soft); line-height:1.5; margin:0;">
+              To bring Ethiopia's finest specialty coffee to the world, roasted with integrity
+              and served with the warmth of tradition.
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div style="background:#fff; border-radius:16px; padding:1.25rem; border:1px solid var(--line); box-shadow:var(--shadow-sm);">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem; color:var(--gold);"><i class="fas fa-eye"></i></span>
+              <h4 style="font-family:var(--serif); font-size:1rem; color:var(--roast); margin:0;">Vision</h4>
+            </div>
+            <p style="font-size:0.9rem; color:var(--roast-soft); line-height:1.5; margin:0;">
+              A world where every cup of coffee connects you to its origin – and to the
+              people who cultivated it.
+            </p>
+          </div>
+
+          <!-- Values (3 items) -->
+          <div style="background:#fff; border-radius:16px; padding:1.25rem; border:1px solid var(--line); box-shadow:var(--shadow-sm); grid-column:1/-1;">
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.5rem;">
+              <span style="font-size:1.2rem; color:var(--sage);"><i class="fas fa-heart"></i></span>
+              <h4 style="font-family:var(--serif); font-size:1rem; color:var(--roast); margin:0;">Values</h4>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem;">
+              <div>
+                <p style="font-weight:600; font-size:0.85rem; color:var(--roast); margin:0 0 0.1rem;">
+                  <span style="color:var(--terracotta);">✦</span> Authenticity
+                </p>
+                <p style="font-size:0.75rem; color:var(--roast-soft); margin:0; opacity:0.7;">From bean to cup, no shortcuts.</p>
+              </div>
+              <div>
+                <p style="font-weight:600; font-size:0.85rem; color:var(--roast); margin:0 0 0.1rem;">
+                  <span style="color:var(--gold);">✦</span> Community
+                </p>
+                <p style="font-size:0.75rem; color:var(--roast-soft); margin:0; opacity:0.7;">Coffee brings people together.</p>
+              </div>
+              <div>
+                <p style="font-weight:600; font-size:0.85rem; color:var(--roast); margin:0 0 0.1rem;">
+                  <span style="color:var(--sage);">✦</span> Craftsmanship
+                </p>
+                <p style="font-size:0.75rem; color:var(--roast-soft); margin:0; opacity:0.7;">Every pour is a practice of care.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Signature / Quote -->
+        <div style="margin-top:1.5rem; font-family:var(--serif); font-style:italic; color:var(--roast-soft); font-size:0.95rem; opacity:0.6; border-left:3px solid var(--gold); padding-left:1rem;">
+          <span style="color:var(--gold); font-size:1.2rem;">—</span> "We don't just sell coffee. We pour stories."
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
