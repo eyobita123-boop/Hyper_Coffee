@@ -1019,6 +1019,26 @@ a {
     opacity: 1;
   }
 }
+/* Founder section – smooth transitions */
+#founder .founder-card {
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+
+#founder .founder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive founder grid */
+@media (max-width: 768px) {
+  #founder [style*="grid-template-columns:1fr 1.2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  #founder .founder-values {
+    grid-template-columns: 1fr !important;
+  }
+}
 
 
 /* ================================================================
