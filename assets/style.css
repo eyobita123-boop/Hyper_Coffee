@@ -321,7 +321,7 @@ a {
 /* Amharic SVG signature */
 .site-header .brand svg {
   width: clamp(120px, 18vw, 170px) !important;
-  height: auto !important;
+  height: 95% !important;
   flex-shrink: 0;
   display: block !important;
   margin: 0 !important;
