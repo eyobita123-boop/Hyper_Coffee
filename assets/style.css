@@ -1801,12 +1801,21 @@ a {
   }
   .site-header .wrap {
     padding: 0 1rem !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
   .site-header .brand {
     gap: 0.6rem !important;
+    min-width: 0;
+  }
+  .site-header .brand-details {
+    min-width: 0;
+    overflow: hidden;
   }
   .site-header .brand .brand-name {
     font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .site-header .brand-mark {
     width: clamp(2.8rem, 9vw, 4.5rem) !important;
@@ -1845,9 +1854,17 @@ a {
   }
   .site-header .wrap {
     padding: 0 0.6rem !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .site-header .brand {
+    gap: 0.45rem !important;
+    min-width: 0;
   }
   .site-header .brand .brand-name {
     font-size: clamp(0.7rem, 3.5vw, 0.9rem) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .site-header .brand-mark {
     width: clamp(2.2rem, 8vw, 3.2rem) !important;
