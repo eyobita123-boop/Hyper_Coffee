@@ -90,8 +90,8 @@
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* ----- Header Heights ----- */
-  --header-height: 76px;
-  --header-height-shrunk: 56px;
+  --header-height: 110px;
+  --header-height-shrunk: 82px;
 }
 
 
@@ -245,8 +245,8 @@ a {
   z-index: 60;
 
   /* 📏 Height: enough room for logo + Amharic */
-  height: 96px;
-  min-height: 96px;
+  height: 110px;
+  min-height: 110px;
 
   /* 🎨 Background with blur */
   background: rgba(247, 239, 227, 0.84);
@@ -267,8 +267,8 @@ a {
 
 /* ----- Shrink state (when user scrolls down) ----- */
 .site-header.shrink {
-  height: 68px;
-  min-height: 68px;
+  height: 82px;
+  min-height: 82px;
   background: rgba(247, 239, 227, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
