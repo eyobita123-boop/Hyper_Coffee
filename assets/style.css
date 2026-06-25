@@ -298,10 +298,17 @@ a {
 
 /* Logo image */
 .site-header .brand-mark {
-  width: clamp(3.2rem, 8vw, 5.5rem) !important;  /* 📱→🖥️ responsive */
+  width: clamp(4rem, 9vw, 7rem) !important;  /* 📱→🖥️ larger responsive logo */
   height: auto !important;
   flex-shrink: 0;
   margin-top: 0 !important;          /* ⬅️ No extra top margin */
+}
+
+.site-header .brand-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 /* Brand name */
@@ -1802,13 +1809,13 @@ a {
     font-size: clamp(0.85rem, 4vw, 1.1rem) !important;
   }
   .site-header .brand-mark {
-    width: clamp(2.2rem, 8vw, 3rem) !important;
+    width: clamp(2.8rem, 9vw, 4.5rem) !important;
   }
   .site-header .brand svg {
-    width: clamp(60px, 12vw, 90px) !important;
+    width: clamp(80px, 14vw, 110px) !important;
   }
   .site-header .brand svg text {
-    font-size: clamp(7px, 1.2vw, 9px) !important;
+    font-size: clamp(9px, 1.4vw, 11px) !important;
   }
   .nav-links {
     gap: 0.8rem !important;
@@ -1843,13 +1850,13 @@ a {
     font-size: clamp(0.7rem, 3.5vw, 0.9rem) !important;
   }
   .site-header .brand-mark {
-    width: clamp(1.8rem, 7vw, 2.4rem) !important;
+    width: clamp(2.2rem, 8vw, 3.2rem) !important;
   }
   .site-header .brand svg {
-    width: clamp(40px, 10vw, 65px) !important;
+    width: clamp(55px, 11vw, 80px) !important;
   }
   .site-header .brand svg text {
-    font-size: clamp(5px, 1vw, 7px) !important;
+    font-size: clamp(6px, 1vw, 8px) !important;
   }
   .nav-links {
     gap: 0.4rem !important;
