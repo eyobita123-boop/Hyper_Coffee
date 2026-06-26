@@ -857,7 +857,7 @@ a {
 .masonry-grid {
   column-count: 3;
   column-gap: 1.25rem;
-  max-width: 1240px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
