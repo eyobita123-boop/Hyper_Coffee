@@ -1821,10 +1821,10 @@ a {
     width: clamp(2.8rem, 9vw, 4.5rem) !important;
   }
   .site-header .brand svg {
-    width: clamp(80px, 14vw, 110px) !important;
+    width: clamp(100px, 14vw, 150px) !important;
   }
   .site-header .brand svg text {
-    font-size: clamp(9px, 1.4vw, 11px) !important;
+    font-size: clamp(13px, 1.5vw, 15px) !important;
   }
   .nav-links {
     gap: 0.8rem !important;
